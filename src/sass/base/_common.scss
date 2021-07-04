@@ -1,0 +1,87 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: $primary-font-family;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.67;
+  letter-spacing: 0.08em;
+  color: $primary-text-color;
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+}
+ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+
+  width: 100%;
+
+  @include for-size(tablet) {
+    padding-left: 20px;
+    padding-right: 20px;
+
+    width: 768px;
+  }
+
+  @include for-size(desktop) {
+    padding-left: 30px;
+    padding-right: 30px;
+
+    width: 1100px;
+  }
+}
+
+
+.is-hidden {
+  display: none;
+}
+
+// .hidden {
+//   position: absolute !important;
+//   clip: rect(1px 1px 1px 1px);
+//   /* IE6, IE7 */
+//   clip: rect(1px 1px 1px 1px);
+//   padding: 0 !important;
+//   border: 0 !important;
+//   height: 0 !important;
+//   width: 0 !important;
+//   overflow: hidden;
+// }

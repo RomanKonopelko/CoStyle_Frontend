@@ -1,48 +1,7 @@
-@import './sass/variables.scss';
+// order matters // 
 
-body {
-  overflow-x: hidden;
-}
+@import './sass/utils/variables';
+@import './sass/utils/mixins';
+@import './sass/base/common';
+@import './sass/base/normalize';
 
-.hidden {
-  position: absolute !important;
-  clip: rect(1px 1px 1px 1px);
-  /* IE6, IE7 */
-  clip: rect(1px 1px 1px 1px);
-  padding: 0 !important;
-  border: 0 !important;
-  height: 0 !important;
-  width: 0 !important;
-  overflow: hidden;
-}
-
-ul,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  margin: 0;
-  padding: 0;
-}
-
-a {
-  text-decoration: none;
-}
-
-li {
-  list-style: none;
-}
-
-img {
-  max-width: 100%;
-}
-
-.container {
-  width: 1440px;
-  padding-left: 216px;
-  padding-right: 216px;
-  margin: 0 auto;
-}
