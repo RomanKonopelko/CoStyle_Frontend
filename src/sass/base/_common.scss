@@ -49,23 +49,23 @@ li {
 .container {
   margin-left: auto;
   margin-right: auto;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
 
   width: 100%;
 
   @include for-size(tablet) {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
 
     width: 768px;
   }
 
   @include for-size(desktop) {
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 85px;
+    padding-right: 85px;
 
-    width: 1100px;
+    width: 1280px;
   }
 }
 
