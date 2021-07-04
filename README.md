@@ -1,2 +1,1 @@
-##MCoStyle_PROJECT_FRONTEND
-#Coming soon...
+# react-practice
