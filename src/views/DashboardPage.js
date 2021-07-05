@@ -1,4 +1,5 @@
 import React from 'react';
+import Header from '../components/Header';
 import Navigation from '../components/Navigation/Navigation';
 
 import HomeTab from '../components/HomeTab/HomeTab';
@@ -6,11 +7,10 @@ import HomeTab from '../components/HomeTab/HomeTab';
 import Balance from '../components/Balance';
 import Currency from '../components/Currency';
 
-
 export default function DashboardPage() {
   return (
     <>
-      <h1>Tут буде header</h1>
+      <Header />
       <Navigation />
       <Balance />
       <Currency />
