@@ -2,6 +2,7 @@
 
 // import routes from './routes';
 import Container from './components/Container/Container';
+import RegistrationPage from '../src/views/RegistrationPage';
 
 // import { useDispatch } from 'react-redux';
 // import { Route, Switch } from 'react-router';
@@ -24,6 +25,7 @@ export default function App() {
   return (
     <Container>
       <h1>Hello World!</h1>
+      <RegistrationPage />
       {/* <Suspense fallback={Load()}>
         <Switch>
           <PublicRoute
