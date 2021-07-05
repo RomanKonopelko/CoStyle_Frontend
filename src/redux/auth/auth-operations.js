@@ -15,7 +15,7 @@ import {
   userLogoutError,
 } from './auth-actions';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com';
 
 const token = {
   set(token) {
@@ -49,7 +49,6 @@ const getCurrentUser = () => async (dispatch, getState) => {
 
 const registerUser = credentials => async dispatch => {
   dispatch(userRegisterRequest());
-  console.log(credentials);
 
   try {
     const { data } = await axios.post('/users/signup', credentials);
