@@ -28,8 +28,6 @@ export default function App() {
 
   return (
     <Container>
-      <h1>My Wallet</h1>
-
       {/*  <Suspense fallback={Load()}> */}
       <Switch>
         <PublicRoute
