@@ -29,6 +29,7 @@ export default function App() {
 
   return (
     <Container>
+      <div>Фигня</div>;{/*  */}
       {/*  <Suspense fallback={Load()}> */}
       <Switch>
         <PublicRoute
