@@ -1,4 +1,6 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { OperationsAuth } from '../../redux/auth';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import Button from '@material-ui/core/Button';
@@ -6,7 +8,6 @@ import TextField from '@material-ui/core/TextField';
 import Icon from '@material-ui/core/Icon';
 import EmailIcon from '@material-ui/icons/Email';
 import LockIcon from '@material-ui/icons/Lock';
-import AccountBoxIcon from '@material-ui/icons/AccountBox';
 
 const validationSchema = yup.object({
   email: yup
@@ -18,28 +19,20 @@ const validationSchema = yup.object({
     .min(6, 'Password should be of minimum 6 characters length')
     .max(8, 'Password should be of maximum 8 characters length')
     .required('Password is required'),
-  confirmPassword: yup
-    .string('Enter your password')
-    .oneOf([yup.ref('password'), null], 'Password must match')
-    .required('Confirm Password is required'),
-  name: yup
-    .string()
-    .min(1, 'Too Short!')
-    .max(12, 'Too Long!')
-    .required('Required'),
 });
 
 export default function LoginForm() {
+  const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: {
       email: '',
       password: '',
-      confirmPassword: '',
-      name: '',
     },
     validationSchema: validationSchema,
     onSubmit: values => {
-      alert('Hello');
+      const { email, password } = values;
+      dispatch(OperationsAuth.LoginUser({ email, password }));
     },
   });
 

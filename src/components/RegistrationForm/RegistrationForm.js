@@ -1,4 +1,6 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { OperationsAuth } from '../../redux/auth';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import Button from '@material-ui/core/Button';
@@ -30,6 +32,8 @@ const validationSchema = yup.object({
 });
 
 export default function RegistrationForm() {
+  const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -39,7 +43,8 @@ export default function RegistrationForm() {
     },
     validationSchema: validationSchema,
     onSubmit: values => {
-      alert('Hello');
+      const { name, email, password } = values;
+      dispatch(OperationsAuth.registerUser({ name, email, password }));
     },
   });
 
