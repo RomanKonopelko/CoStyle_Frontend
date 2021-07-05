@@ -1,0 +1,33 @@
+.container {
+  width: 280px;
+  height: 174px;
+  text-align: center;
+  background-color: #4a56e2;
+  border-radius: 30px;
+}
+
+.table {
+  display: block;
+}
+
+.tableContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.tableHeaderTitle {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 27px;
+  padding-top: 11px;
+  padding-bottom: 22px;
+}
+
+.rowTitle {
+  color: white;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 24px;
+  padding-bottom: 10px;
+}
