@@ -5,6 +5,7 @@ import Container from './components/Container/Container';
 import RegistrationPage from '../src/views/RegistrationPage';
 import LoginPage from '../src/views/LoginPage';
 import DashboardPage from './views/DashboardPage';
+import DiagramTab from './components/DiagramTab';
 
 // import { useDispatch } from 'react-redux';
 import { Route, Switch } from 'react-router';

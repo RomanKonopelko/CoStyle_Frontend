@@ -1,6 +1,8 @@
 import React from 'react';
-import RegistrationForm from '../components/RegistrationForm/RegistrationForm';
+
 import img from '../images/Frame.png';
+
+import RegistrationForm from '../components/RegistrationForm';
 
 export default function RegistrationPage() {
   return (
