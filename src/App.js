@@ -17,11 +17,11 @@ const Login = lazy(() => import('./views/LoginPage'));
 const Dashboard = lazy(() => import('./views/DashboardPage'));
 
 export default function App() {
-  const disputch = useDispatch();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    disputch(OperationsAuth.getCurrentUser());
-  }, [disputch]);
+    dispatch(OperationsAuth.getCurrentUser());
+  }, [dispatch]);
 
   return (
     <Container>

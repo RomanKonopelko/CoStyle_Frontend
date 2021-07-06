@@ -1,55 +1,59 @@
 import axios from 'axios';
 import {
-  addContactRequest,
-  addContactSuccess,
-  addContactError,
-  deleteContactRequest,
-  deleteContactSuccess,
-  deleteContactError,
-  getContactsRequest,
-  getContactsSuccess,
-  getContactsError,
-} from './contacts-actions';
+  getTransactionRequest,
+  getTransactionSuccess,
+  getTransactionError,
+  addTransactionRequest,
+  addTransactionSuccess,
+  addTransactionError,
+  // deleteTransactionRequest,
+  // deleteTransactionSuccess,
+  // deleteTransactionError,
+} from './statistics-actions';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+axios.defaults.baseURL = 'https://costyle-wallet-app.herokuapp.com/';
 
-const getContacts = () => async dispatch => {
-  dispatch(getContactsRequest());
+const getTransaction = () => async dispatch => {
+  dispatch(getTransactionRequest());
 
   try {
-    const { data } = await axios.get('/contacts');
+    const { data } = await axios.get('/api/transaction');
 
-    dispatch(getContactsSuccess(data));
+    dispatch(getTransactionSuccess(data));
   } catch (error) {
-    dispatch(getContactsError(error.message));
+    dispatch(getTransactionError(error.message));
   }
 };
 
-const addContact = (name, number) => async dispatch => {
-  const contact = {
+const addTransaction = (name, number) => async dispatch => {
+  const Transaction = {
     name,
     number,
   };
 
-  dispatch(addContactRequest());
+  dispatch(addTransactionRequest());
 
   try {
-    const { data } = await axios.post('/contacts', contact);
-    dispatch(addContactSuccess(data));
+    const { data } = await axios.post('/api/transaction', Transaction);
+    dispatch(addTransactionSuccess(data));
   } catch (error) {
-    dispatch(addContactError(error.message));
+    dispatch(addTransactionError(error.message));
   }
 };
 
-const deleteContact = id => async dispatch => {
-  dispatch(deleteContactRequest());
+// const deleteTransaction = id => async dispatch => {
+//   dispatch(deleteTransactionRequest());
 
-  try {
-    await axios.delete(`/contacts/${id}`);
-    dispatch(deleteContactSuccess(id));
-  } catch (error) {
-    dispatch(deleteContactError(error.message));
-  }
+//   try {
+//     await axios.delete(`/transactions/${id}`);
+//     dispatch(deleteTransactionSuccess(id));
+//   } catch (error) {
+//     dispatch(deleteTransactionError(error.message));
+//   }
+// };
+
+export {
+  getTransaction,
+  addTransaction,
+  // deleteTransaction,
 };
-
-export { addContact, deleteContact, getContacts };
