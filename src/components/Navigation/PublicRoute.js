@@ -1,29 +1,19 @@
 import React from 'react';
-//import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 
-//import { authSelectors } from '../../redux/auth';
+import { selectorsAuth } from '../../redux/auth';
 
-export default function PublicRoute({
-  component: Component,
-  redirectTo,
-  ...routeProps
-}) {
-  //const isAuthenticated = useSelector(authSelectors.getIsAuthenticated);
+export default function PublicRoute({ children, ...routeProps }) {
+  const isAuthenticated = useSelector(selectorsAuth.getIsAuthenticated);
+  console.log(isAuthenticated);
   return (
-    <Route
-      //  test began //
-      component={Component}
-      //test ended //
-
-      //   {...routeProps}
-      //   render={props =>
-      // isAuthenticated && routeProps.restricted ? (
-      //<Redirect to={redirectTo} />
-      // ) :  (
-      // <Component {...props} />
-      // )
-      //  }
-    />
+    <Route {...routeProps}>
+      {isAuthenticated && routeProps.restricted ? (
+        <Redirect to={routeProps.redirectTo} />
+      ) : (
+        children
+      )}
+    </Route>
   );
 }
