@@ -4,19 +4,27 @@
 import { createAction } from '@reduxjs/toolkit';
 
 // ========ToolKit =======
-const getContactsRequest = createAction('contacts/getContactsRequest');
-const getContactsSuccess = createAction('contacts/getContactsSuccess');
-const getContactsError = createAction('contacts/getContactsError');
+const getTransactionsRequest = createAction(
+  'transaction/getTransactionsRequest',
+);
+const getTransactionsSuccess = createAction(
+  'transaction/getTransactionsSuccess',
+);
+const getTransactionsError = createAction('transaction/getTransactionsError');
 
-const addContactRequest = createAction('contacts/addContactRequest');
-const addContactSuccess = createAction('contacts/addContactSuccess');
-const addContactError = createAction('contacts/addContactError');
+const addTransactionRequest = createAction(
+  'transactions/addTransactionRequest',
+);
+const addTransactionSuccess = createAction(
+  'transactions/addTransactionSuccess',
+);
+const addTransactionError = createAction('transactions/addTransactionError');
 
-const deleteContactRequest = createAction('contacts/deleteContactRequest');
-const deleteContactSuccess = createAction('contacts/deleteContactSuccess');
-const deleteContactError = createAction('contacts/deleteContactError');
+// const deleteTransactionRequest = createAction('transactions/deleteTransactionRequest');
+// const deleteTransactionSuccess = createAction('transactions/deleteTransactionSuccess');
+// const deleteTransactionError = createAction('transactions/deleteTransactionError');
 
-const filterContacts = createAction('contact/filter');
+// const filterTransactions = createAction('contact/filter');
 
 // ========ToolKit =======
 
@@ -40,14 +48,14 @@ const filterContacts = createAction('contact/filter');
 // });
 
 export {
-  addContactRequest,
-  addContactSuccess,
-  addContactError,
-  deleteContactRequest,
-  deleteContactSuccess,
-  deleteContactError,
-  getContactsRequest,
-  getContactsSuccess,
-  getContactsError,
-  filterContacts,
+  getTransactionsRequest,
+  getTransactionsSuccess,
+  getTransactionsError,
+  addTransactionRequest,
+  addTransactionSuccess,
+  addTransactionError,
+  // deleteTransactionRequest,
+  // deleteTransactionSuccess,
+  // deleteTransactionError,
+  // filterTransactions,
 };

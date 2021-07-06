@@ -15,7 +15,7 @@ import {
   userLogoutError,
 } from './auth-actions';
 
-axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com';
+axios.defaults.baseURL = 'https://costyle-wallet-app.herokuapp.com/';
 
 const token = {
   set(token) {
@@ -51,7 +51,7 @@ const registerUser = credentials => async dispatch => {
   dispatch(userRegisterRequest());
 
   try {
-    const { data } = await axios.post('/users/signup', credentials);
+    const { data } = await axios.post('/api/users/register', credentials);
     token.set(data.token);
     dispatch(userRegisterSuccess(data));
   } catch (error) {
@@ -63,7 +63,7 @@ const LoginUser = credentials => async dispatch => {
   dispatch(userLoginRequest());
 
   try {
-    const { data } = await axios.post('/users/login', credentials);
+    const { data } = await axios.post('/api/users/login', credentials);
     token.set(data.token);
     dispatch(userLoginSuccess(data));
   } catch (error) {
