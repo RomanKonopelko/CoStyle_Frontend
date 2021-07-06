@@ -30,30 +30,34 @@ export default function Currency() {
   }, []);
 
   return (
-    <div className={s.container}>
-      <table className={s.table}>
-        <tr className={s.tableContainer}>
-          <th className={s.tableHeaderTitle}>Валюта</th>
-          <th className={s.tableHeaderTitle}>Покупка</th>
-          <th className={s.tableHeaderTitle}>Продажа</th>
-        </tr>
-        {currency.map(item => {
-          const buy = pad(Number(item.buy).toFixed(2));
-          const sale = pad(Number(item.sale).toFixed(2));
+    <>
+      {currency && (
+        <div className={s.container}>
+          <table className={s.table}>
+            <tr className={s.tableContainer}>
+              <th className={s.tableHeaderTitle}>Валюта</th>
+              <th className={s.tableHeaderTitle}>Покупка</th>
+              <th className={s.tableHeaderTitle}>Продажа</th>
+            </tr>
+            {currency.map(item => {
+              const buy = pad(Number(item.buy).toFixed(2));
+              const sale = pad(Number(item.sale).toFixed(2));
 
-          return CURRENCY_EXCHANGE.map(coint => {
-            if (coint === item.ccy) {
-              return (
-                <tr className={s.tableContainer}>
-                  <td className={s.rowTitle}>{item.ccy}</td>
-                  <td className={s.rowTitle}>{buy}</td>
-                  <td className={s.rowTitle}>{sale}</td>
-                </tr>
-              );
-            }
-          });
-        })}
-      </table>
-    </div>
+              return CURRENCY_EXCHANGE.map(coint => {
+                if (coint === item.ccy) {
+                  return (
+                    <tr className={s.tableContainer}>
+                      <td className={s.rowTitle}>{item.ccy}</td>
+                      <td className={s.rowTitle}>{buy}</td>
+                      <td className={s.rowTitle}>{sale}</td>
+                    </tr>
+                  );
+                }
+              });
+            })}
+          </table>
+        </div>
+      )}
+    </>
   );
 }
