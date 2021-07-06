@@ -1,25 +1,21 @@
-// import React, { useEffect, Suspense, lazy } from 'react';
+import React, { useEffect, Suspense, lazy } from 'react';
 
 import routes from './routes';
 import Container from './components/Container/Container';
-import RegistrationPage from '../src/views/RegistrationPage';
-import LoginPage from '../src/views/LoginPage';
-import DashboardPage from './views/DashboardPage/DashboardPage';
-
-import DiagramTab from './components/DiagramTab';
 
 // import { useDispatch } from 'react-redux';
-import { Route, Switch } from 'react-router';
+import { Switch } from 'react-router';
 // import { OperationsAuth } from './redux/auth';
-// import Load from './components/Loader/Loader';
+import Load from './components/Loader/Loader';
 
 import PrivateRoute from './components/Navigation/PrivateRoute';
 import PublicRoute from './components/Navigation/PublicRoute';
+import { Redirect } from 'react-router-dom';
 //import { Dashboard } from '@material-ui/icons';
 
-// const Register = lazy(() => import('./views/RegistrationPage'));
-// const Login = lazy(() => import('./views/LoginPage'));
-// const Dashboard = lazy(() => import('./views/DashboardPage'));
+const Register = lazy(() => import('./views/RegistrationPage'));
+const Login = lazy(() => import('./views/LoginPage'));
+const Dashboard = lazy(() => import('./views/DashboardPage'));
 
 export default function App() {
   // const disputch = useDispatch();
@@ -30,34 +26,33 @@ export default function App() {
 
   return (
     <Container>
-      {/*  <Suspense fallback={Load()}> */}
-      <Switch>
-        <PublicRoute
-          path={routes.register}
-          restricted
-          redirectTo={routes.register}
-          component={RegistrationPage}
-        ></PublicRoute>
-        <PublicRoute
-          path={routes.login}
-          restricted
-          //redirectTo={routes.contacts}
-          component={LoginPage}
-        ></PublicRoute>
-
-        <PrivateRoute
-          path={routes.home}
-          redirectTo={routes.login}
-          component={DashboardPage}
-        ></PrivateRoute>
-        <PrivateRoute
-          path={routes.diagram}
-          redirectTo={routes.login}
-          component={DiagramTab}
-        ></PrivateRoute>
-        <Route />
-      </Switch>
-      {/* </Suspense>  */}
+      <Suspense fallback={Load()}>
+        <Switch>
+          <PublicRoute
+            path={routes.register}
+            restricted
+            redirectTo={routes.login}
+            component={Register}
+          ></PublicRoute>
+          <PublicRoute
+            path={routes.login}
+            restricted
+            redirectTo={routes.home}
+            component={Login}
+          ></PublicRoute>
+          <PrivateRoute
+            path={routes.home}
+            redirectTo={routes.login}
+            component={Dashboard}
+          ></PrivateRoute>
+          <PrivateRoute
+            path={routes.stats}
+            redirectTo={routes.login}
+            component={Dashboard}
+          ></PrivateRoute>
+          <Redirect to={routes.register} />
+        </Switch>
+      </Suspense>
     </Container>
   );
 }
