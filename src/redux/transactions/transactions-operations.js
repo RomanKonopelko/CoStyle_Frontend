@@ -9,7 +9,7 @@ import {
   // deleteTransactionRequest,
   // deleteTransactionSuccess,
   // deleteTransactionError,
-} from './statistics-actions';
+} from './transactions-actions';
 
 axios.defaults.baseURL = 'https://costyle-wallet-app.herokuapp.com/';
 
