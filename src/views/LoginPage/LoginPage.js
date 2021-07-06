@@ -1,6 +1,8 @@
 import React from 'react';
-import LoginForm from '../components/LoginForm/LoginForm';
-import img from '../images/Frame.png';
+import LoginForm from '../../components/LoginForm/LoginForm';
+import img from '../../images/Frame.png';
+
+import './loginPage.scss';
 
 export default function RegistrationPage() {
   return (
