@@ -64,11 +64,16 @@ const LoginUser = credentials => async dispatch => {
 
   try {
     const { data } = await axios.post('/api/users/login', credentials);
-    token.set(data.token);
+    console.log(data.payload.token);
+    token.set(data.payload.token);
     dispatch(userLoginSuccess(data));
   } catch (error) {
     dispatch(userLoginError(error.message));
   }
+
+  // const { data } = await axios.get('/api/transactions');
+
+  // console.log(data);
 };
 
 const LogoutUser = () => async dispatch => {
