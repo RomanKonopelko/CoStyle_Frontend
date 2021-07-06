@@ -16,6 +16,8 @@ const userLogoutRequest = createAction('auth/userLogoutRequest');
 const userLogoutSuccess = createAction('auth/userLogoutSuccess');
 const userLogoutError = createAction('auth/userLogoutError');
 
+const showModal = createAction('auth/Modal');
+
 export {
   getCurrentUserRequest,
   getCurrentUserSuccess,
@@ -29,4 +31,5 @@ export {
   userLogoutRequest,
   userLogoutSuccess,
   userLogoutError,
+  showModal,
 };

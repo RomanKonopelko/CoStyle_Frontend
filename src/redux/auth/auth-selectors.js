@@ -4,4 +4,6 @@ const getUsername = state => state.auth.user.name;
 
 const getToken = state => Boolean(state.auth.token);
 
-export { getIsAuthenticated, getUsername, getToken };
+const getShowModal = state => state.auth.showModal;
+
+export { getIsAuthenticated, getUsername, getToken, getShowModal };

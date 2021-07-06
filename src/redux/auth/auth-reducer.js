@@ -7,6 +7,7 @@ import {
   userRegisterError,
   userLogoutSuccess,
   userLogoutError,
+  showModal,
 } from './auth-actions';
 
 import { createReducer, combineReducers } from '@reduxjs/toolkit';
@@ -45,11 +46,16 @@ const errorReducers = createReducer(null, {
   [gentCurrentUserError]: setError,
 });
 
+const showModalReducer = createReducer(false, {
+  [showModal]: (_, { payload }) => payload,
+});
+
 const authReducers = combineReducers({
   user: userReducer,
   token: tokenReducer,
   isAutorized: isAutorizedReducer,
   errors: errorReducers,
+  showModal: showModalReducer,
 });
 
 export default authReducers;
