@@ -4,7 +4,8 @@ import routes from './routes';
 import Container from './components/Container/Container';
 import RegistrationPage from '../src/views/RegistrationPage';
 import LoginPage from '../src/views/LoginPage';
-import DashboardPage from './views/DashboardPage';
+import DashboardPage from './views/DashboardPage/DashboardPage';
+
 import DiagramTab from './components/DiagramTab';
 
 // import { useDispatch } from 'react-redux';
@@ -48,9 +49,12 @@ export default function App() {
           path={routes.home}
           redirectTo={routes.login}
           component={DashboardPage}
-        >
-          {/* <DashboardPage /> */}
-        </PrivateRoute>
+        ></PrivateRoute>
+        <PrivateRoute
+          path={routes.diagram}
+          redirectTo={routes.login}
+          component={DiagramTab}
+        ></PrivateRoute>
         <Route />
       </Switch>
       {/* </Suspense>  */}
