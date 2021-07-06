@@ -9,6 +9,8 @@ import Icon from '@material-ui/core/Icon';
 import EmailIcon from '@material-ui/icons/Email';
 import LockIcon from '@material-ui/icons/Lock';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
+import { NavLink } from 'react-router-dom';
+import routes from '../../routes';
 
 const validationSchema = yup.object({
   email: yup
@@ -44,6 +46,7 @@ export default function RegistrationForm() {
     validationSchema: validationSchema,
     onSubmit: values => {
       const { name, email, password } = values;
+      console.log(name, email, password);
       dispatch(OperationsAuth.registerUser({ name, email, password }));
     },
   });
@@ -142,11 +145,13 @@ export default function RegistrationForm() {
           </Button>
         </div>
 
-        <div>
-          <Button color="default" variant="contained">
-            Вход
-          </Button>
-        </div>
+        <NavLink to={routes.login}>
+          <div>
+            <Button color="default" variant="contained">
+              Вход
+            </Button>
+          </div>
+        </NavLink>
       </form>
     </div>
   );

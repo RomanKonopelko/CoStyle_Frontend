@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import routes from '../../routes';
 
 import { Typography } from '@material-ui/core';
-import LockIcon from '@material-ui/icons/Lock';
+// import LockIcon from '@material-ui/icons/Lock';
 import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
 import EqualizerOutlinedIcon from '@material-ui/icons/EqualizerOutlined';
 

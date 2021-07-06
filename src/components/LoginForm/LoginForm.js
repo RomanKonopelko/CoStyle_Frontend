@@ -9,6 +9,9 @@ import Icon from '@material-ui/core/Icon';
 import EmailIcon from '@material-ui/icons/Email';
 import LockIcon from '@material-ui/icons/Lock';
 
+import { NavLink } from 'react-router-dom';
+import routes from '../../routes';
+
 const validationSchema = yup.object({
   email: yup
     .string('Enter your email')
@@ -32,6 +35,7 @@ export default function LoginForm() {
     validationSchema: validationSchema,
     onSubmit: values => {
       const { email, password } = values;
+      console.log(email, password);
       dispatch(OperationsAuth.LoginUser({ email, password }));
     },
   });
@@ -78,17 +82,19 @@ export default function LoginForm() {
             helperText={formik.touched.password && formik.errors.password}
           />
         </div>
+
         <div>
           <Button color="primary" variant="contained" type="submit">
             Вход
           </Button>
         </div>
-
-        <div>
-          <Button color="default" variant="contained">
-            Регистрация
-          </Button>
-        </div>
+        <NavLink to={routes.register}>
+          <div>
+            <Button color="default" variant="contained">
+              Регистрация
+            </Button>
+          </div>
+        </NavLink>
       </form>
     </div>
   );
