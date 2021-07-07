@@ -23,34 +23,40 @@ export default function DiagramTab() {
   const [tableData, setTableData] = useState(transactions);
   const [selected, setSelected] = useState('');
 
-  function handleChange(event) {
-    setSelected(event.target.value);
-    console.log(`event.target.value`, event.target.value);
+  let filteredData;
 
-    const tableMonthFilter = transactions.filter(r => {
-      const myMonth = moment(r.time, 'DD.MM.YYYY').locale('ru').format('MMMM');
-      console.log(`myMonth`, myMonth);
-      return myMonth;
+  function handleChange(event) {
+    // console.log(tableData);
+    setSelected(event.target.value);
+
+    filteredData = tableData.filter(el => {
+      const myMonth = moment(el.time, 'DD.MM.YYYY').locale('ru').format('MMMM');
+      const target = event.target.value;
+
+      return myMonth === target;
     });
+
+    // console.log(filteredData);
 
     const tableYearFilter = transactions.filter(r => {
       const myYear = moment(r.time, 'DD.MM.YYYY').locale('ru').format('YYYY');
-      console.log(`myYear`, myYear);
+      // console.log(`myYear`, myYear);
       return myYear;
     });
 
     // что-то тут не так ((
-    let _vals = event.target.value
-      ? tableMonthFilter === event.target.value
-      : tableData;
-    setTableData(_vals);
+    // let _vals = event.target.value
+    //   ? tableMonthFilter === event.target.value
+    //   : tableData;
+
+    setTableData(filteredData);
   }
 
   return (
     <>
-      <Chart transactions={transactions} handleChange={handleChange} />
+      <Chart transactions={tableData} handleChange={handleChange} />
       <Table
-        transactions={transactions}
+        tableData={tableData}
         selected={selected}
         handleChange={handleChange}
       />

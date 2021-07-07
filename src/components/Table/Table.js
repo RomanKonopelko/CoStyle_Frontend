@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function MyTable({ transactions, selected, handleChange }) {
+function MyTable({ tableData, selected, handleChange }) {
   const classes = useStyles();
 
   return (
@@ -81,7 +81,7 @@ function MyTable({ transactions, selected, handleChange }) {
         </TableHead>
 
         <TableBody>
-          {transactions.map(row => (
+          {tableData.map(row => (
             <TableRow key={row.id}>
               <TableCell align="left">{row.category}</TableCell>
               <TableCell align="left">{Number(row.amount)}</TableCell>

@@ -13,10 +13,10 @@ const getCurrencyRate = async () => {
     const { data } = await axios.get(
       'https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11',
     );
-    console.log(data);
+    // console.log(data);
     return data;
   } catch (e) {
-    console.log(e.message);
+    // console.log(e.message);
   }
 };
 
@@ -30,10 +30,10 @@ export default function Currency() {
 
   useEffect(() => {
     getCurrencyRate().then(data => setCurrency(data));
-    console.log('say Hello');
+    // console.log('say Hello');
   }, []);
 
-  console.log(currency);
+  // console.log(currency);
 
   const money = [
     {
