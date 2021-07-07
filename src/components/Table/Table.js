@@ -83,7 +83,10 @@ function MyTable({ tableData, selected, handleChange }) {
         <TableBody>
           {tableData.map(row => (
             <TableRow key={row.id}>
-              <TableCell align="left">{row.category}</TableCell>
+              <TableCell align="left">
+                <span>{row.color} </span>
+                {row.category}
+              </TableCell>
               <TableCell align="left">{Number(row.amount)}</TableCell>
             </TableRow>
           ))}
