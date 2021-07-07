@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -9,7 +9,6 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import moment from 'moment';
 
 // предварительные стили
 const useStyles = makeStyles(theme => ({
@@ -26,34 +25,8 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function MyTable({ transactions }) {
+function MyTable({ transactions, selected, handleChange }) {
   const classes = useStyles();
-
-  const [tableData, setTableData] = React.useState(transactions);
-  const [selected, setSelected] = React.useState('');
-
-  function handleChange(event) {
-    setSelected(event.target.value);
-    console.log(`event.target.value`, event.target.value);
-
-    const tableMonthFilter = tableData.filter(r => {
-      const myMonth = moment(r.time, 'DD.MM.YYYY').locale('ru').format('MMMM');
-      console.log(`myMonth`, myMonth);
-      return myMonth;
-    });
-
-    const tableYearFilter = tableData.filter(r => {
-      const myYear = moment(r.time, 'DD.MM.YYYY').locale('ru').format('YYYY');
-      console.log(`myYear`, myYear);
-      return myYear;
-    });
-
-    // что-то тут не так ((
-    // let _vals = event.target.value
-    //   ? tableMonthFilter === event.target.value
-    //   : tableData;
-    // setTableData(_vals);
-  }
 
   return (
     <div>
@@ -108,7 +81,7 @@ function MyTable({ transactions }) {
         </TableHead>
 
         <TableBody>
-          {tableData.map(row => (
+          {transactions.map(row => (
             <TableRow key={row.id}>
               <TableCell align="left">{row.category}</TableCell>
               <TableCell align="left">{Number(row.amount)}</TableCell>
