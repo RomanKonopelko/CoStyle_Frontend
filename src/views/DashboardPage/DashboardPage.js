@@ -23,21 +23,21 @@ export default function DashboardPage() {
   return (
     <>
       <Header />
-      <div className="dashboradPage">
-        <div>
-          <Navigation />
-          <Balance />
-          <Currency />
-          <ButtonAddTransaction />
-          {isShowModal && <Modal />}
-        </div>
-        <Suspense fallback={Load()}>
+      <Suspense fallback={Load()}>
+        <div className="dashboradPage">
+          <div>
+            <Navigation />
+            <Balance />
+            <Currency />
+            <ButtonAddTransaction />
+            {isShowModal && <Modal />}
+          </div>
           <Switch>
             <Route path={routes.home} component={HomeTab}></Route>
             <Route path={routes.diagram} component={DiagramTab}></Route>
           </Switch>
-        </Suspense>
-      </div>
+        </div>
+      </Suspense>
     </>
   );
 }
