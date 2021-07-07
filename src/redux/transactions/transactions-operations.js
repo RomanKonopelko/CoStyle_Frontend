@@ -18,7 +18,7 @@ const getTransaction = () => async dispatch => {
 
   try {
     const { data } = await axios.get('/api/transactions');
-    console.log(data);
+    console.log(`data`, data);
     dispatch(getTransactionsSuccess(data));
   } catch (error) {
     dispatch(getTransactionsError(error.message));
