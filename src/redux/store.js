@@ -18,7 +18,7 @@ import {
 
 import storage from 'redux-persist/lib/storage';
 
-// import contactReducers from '../redux/contacts/contacts-reducer';
+import reducers from '../redux/transactions/transactions-reducer';
 import authReducers from '../redux/auth/auth-reducer';
 
 const persistConfig = {
@@ -36,18 +36,18 @@ const middleware = [
   logger,
 ];
 
-// const contactsReducer = combineReducers({
-//   items: contactReducers.itemsReducers,
-//   filter: contactReducers.filterReducer,
-//   loading: contactReducers.loading,
-// });
+const transactionsReducer = combineReducers({
+  items: reducers.itemsReducers,
+  // filter: transactionReducers.filterReducer,
+  loading: reducers.itemsReducers.loading,
+});
 
 const AuthPersistedReducer = persistReducer(persistConfig, authReducers);
 
 let store = configureStore({
   reducer: {
     auth: AuthPersistedReducer,
-    // contacts: contactsReducer,
+    transactions: transactionsReducer,
   },
   middleware,
 });

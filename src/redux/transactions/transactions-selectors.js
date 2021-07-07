@@ -1,7 +1,8 @@
 // import { createSelector } from 'reselect';
 
-const getAllTransactions = state => state.contacts.items;
-
+const getAllTransactions = state => {
+  return state.transactions.items;
+};
 // const getFilterValue = state => state.contacts.filter;
 
 // const getSearchedContacts = createSelector(

@@ -9,7 +9,7 @@ import {
   // deleteTransactionSuccess,
   // deleteTransactionError,
   // filterTransactions,
-} from './statistics-actions';
+} from './transactions-actions';
 
 import { createReducer } from '@reduxjs/toolkit';
 

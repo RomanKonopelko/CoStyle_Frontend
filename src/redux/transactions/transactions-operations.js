@@ -1,8 +1,8 @@
 import axios from 'axios';
 import {
-  getTransactionRequest,
-  getTransactionSuccess,
-  getTransactionError,
+  getTransactionsRequest,
+  getTransactionsSuccess,
+  getTransactionsError,
   addTransactionRequest,
   addTransactionSuccess,
   addTransactionError,
@@ -14,14 +14,14 @@ import {
 axios.defaults.baseURL = 'https://costyle-wallet-app.herokuapp.com/';
 
 const getTransaction = () => async dispatch => {
-  dispatch(getTransactionRequest());
+  dispatch(getTransactionsRequest());
 
   try {
-    const { data } = await axios.get('/api/transaction');
+    const { data } = await axios.get('/api/transactions');
 
-    dispatch(getTransactionSuccess(data));
+    dispatch(getTransactionsSuccess(data));
   } catch (error) {
-    dispatch(getTransactionError(error.message));
+    dispatch(getTransactionsError(error.message));
   }
 };
 
@@ -34,7 +34,7 @@ const addTransaction = (name, number) => async dispatch => {
   dispatch(addTransactionRequest());
 
   try {
-    const { data } = await axios.post('/api/transaction', Transaction);
+    const { data } = await axios.post('/api/transactions', Transaction);
     dispatch(addTransactionSuccess(data));
   } catch (error) {
     dispatch(addTransactionError(error.message));
