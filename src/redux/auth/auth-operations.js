@@ -34,13 +34,11 @@ const getCurrentUser = () => async (dispatch, getState) => {
   if (!persistedToken) {
     return;
   }
-
   token.set(persistedToken);
   dispatch(getCurrentUserRequest());
 
   try {
-    const { data } = await axios.get('/users/current');
-
+    const { data } = await axios.get('/api/users/current');
     dispatch(getCurrentUserSuccess(data));
   } catch (error) {
     dispatch(gentCurrentUserError(error.message));
@@ -64,9 +62,8 @@ const LoginUser = credentials => async dispatch => {
 
   try {
     const { data } = await axios.post('/api/users/login', credentials);
-    console.log(data.payload.token);
     token.set(data.payload.token);
-    dispatch(userLoginSuccess(data));
+    dispatch(userLoginSuccess(data.payload));
   } catch (error) {
     dispatch(userLoginError(error.message));
   }

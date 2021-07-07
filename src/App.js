@@ -27,6 +27,9 @@ export default function App() {
     <Container>
       <Suspense fallback={Load()}>
         <Switch>
+          <PublicRoute path={routes.login} restricted redirectTo={routes.home}>
+            <Login />
+          </PublicRoute>
           <PublicRoute
             path={routes.register}
             restricted
@@ -34,16 +37,14 @@ export default function App() {
           >
             <Register />
           </PublicRoute>
-          <PublicRoute path={routes.login} restricted redirectTo={routes.home}>
-            <Login />
-          </PublicRoute>
+
           <PrivateRoute path={routes.home} redirectTo={routes.login}>
             <Dashboard />
           </PrivateRoute>
           <PrivateRoute path={routes.stats} redirectTo={routes.login}>
             <Dashboard />
           </PrivateRoute>
-          <Redirect to={routes.register} />
+          <Redirect to={routes.login} />
         </Switch>
       </Suspense>
     </Container>
