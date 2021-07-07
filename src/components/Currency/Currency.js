@@ -3,6 +3,9 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import s from './Currency.module.scss';
 
+import Loader from 'react-loader-spinner';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+
 const CURRENCY_EXCHANGE = ['EUR', 'USD', 'RUR'];
 
 const getCurrencyRate = async () => {
@@ -55,33 +58,46 @@ export default function Currency() {
   return (
     <>
       <div className={s.container}>
-        <table className={s.table}>
-          <thead>
-            <tr className={s.tableContainer}>
-              <th className={s.tableHeaderTitle}>Валюта</th>
-              <th className={s.tableHeaderTitle}>Покупка</th>
-              <th className={s.tableHeaderTitle}>Продажа</th>
-            </tr>
-          </thead>
-          <tbody>
-            {money.map(item => {
-              const buy = pad(Number(item.buy).toFixed(2));
-              const sale = pad(Number(item.sale).toFixed(2));
+        {!money ? (
+          <div className={s.loaderContainer}>
+            <Loader
+              type="MutatingDots"
+              color="#24cca7"
+              secondaryColor="#4a56e2"
+              height={120}
+              width={120}
+              timeout={5000}
+            />
+          </div>
+        ) : (
+          <table className={s.table}>
+            <thead>
+              <tr className={s.tableContainer}>
+                <th className={s.tableHeaderTitle}>Валюта</th>
+                <th className={s.tableHeaderTitle}>Покупка</th>
+                <th className={s.tableHeaderTitle}>Продажа</th>
+              </tr>
+            </thead>
+            <tbody>
+              {money.map(item => {
+                const buy = pad(Number(item.buy).toFixed(2));
+                const sale = pad(Number(item.sale).toFixed(2));
 
-              return CURRENCY_EXCHANGE.map(coint => {
-                if (coint === item.ccy) {
-                  return (
-                    <tr key={item.ccy} className={s.tableContainer}>
-                      <td className={s.rowTitle}>{item.ccy}</td>
-                      <td className={s.rowTitle}>{buy}</td>
-                      <td className={s.rowTitle}>{sale}</td>
-                    </tr>
-                  );
-                }
-              });
-            })}
-          </tbody>
-        </table>
+                return CURRENCY_EXCHANGE.map(coint => {
+                  if (coint === item.ccy) {
+                    return (
+                      <tr key={item.ccy} className={s.tableContainer}>
+                        <td className={s.rowTitle}>{item.ccy}</td>
+                        <td className={s.rowTitle}>{buy}</td>
+                        <td className={s.rowTitle}>{sale}</td>
+                      </tr>
+                    );
+                  }
+                });
+              })}
+            </tbody>
+          </table>
+        )}
       </div>
     </>
   );

@@ -39,7 +39,7 @@ const middleware = [
 const transactionsReducer = combineReducers({
   items: reducers.itemsReducers,
   // filter: transactionReducers.filterReducer,
-  loading: reducers.itemsReducers.loading,
+  loading: reducers.loading,
 });
 
 const AuthPersistedReducer = persistReducer(persistConfig, authReducers);
@@ -54,4 +54,5 @@ let store = configureStore({
 
 let persistor = persistStore(store);
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default { store, persistor };
