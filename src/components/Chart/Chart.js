@@ -1,17 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 
-const labels = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'];
+const Chart = ({ tableData, handleChange }) => {
+  const { categoriesSummary, incomeValue, consumptionValue } = tableData;
 
-const Chart = () => {
-  const [chartData, setChartData] = useState({});
+  const resultСategoriesSummary = Object.entries(categoriesSummary);
+
+  const [chartData, setChartData] = useState({ resultСategoriesSummary });
+
+  let result = [];
+  const tableAmountFilter = resultСategoriesSummary.map(r => result.push(r[1]));
+
+  // let resultColor = [];
+  // const colorFilter = tableData.map(r => resultColor.push(r.color));
 
   const chart = () => {
     setChartData({
-      labels: labels,
       datasets: [
         {
-          data: [610, 1230, 3400, 300, 2208, 800, 1500, 3800, 8700],
+          data: result,
           backgroundColor: [
             'rgba(0, 173, 132, 1)',
             'rgba(36, 204, 167, 1)',
@@ -23,7 +30,7 @@ const Chart = () => {
             'rgba(255, 216, 208, 1)',
             'rgba(254, 208, 87, 1)',
           ],
-          hoverOffset: 4,
+          hoverOffset: 5,
         },
       ],
     });
@@ -36,6 +43,7 @@ const Chart = () => {
   return (
     <div style={{ height: '320px', width: '320px' }}>
       <Doughnut
+        onChange={handleChange}
         data={chartData}
         options={{
           cutout: 90,
@@ -47,11 +55,8 @@ const Chart = () => {
             },
             title: {
               display: true,
-              text: 'Тут можно поставить общую сумму!',
+              text: `${incomeValue + consumptionValue} грн.`,
             },
-          },
-          animation: {
-            animateScale: true,
           },
           responsive: true,
         }}

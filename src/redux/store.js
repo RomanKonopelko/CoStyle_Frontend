@@ -38,7 +38,8 @@ const middleware = [
 
 const transactionsReducer = combineReducers({
   items: reducers.itemsReducers,
-  // filter: transactionReducers.filterReducer,
+  itemsStatistic: reducers.itemsReducersStatistic,
+  filter: reducers.filterReducer,
   loading: reducers.loading,
 });
 

@@ -1,3 +1,4 @@
+import ModalLogout from '../ModalLogout/ModalLogout';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import headerLogo from './header-logo.png';
 import './header.scss';
@@ -10,9 +11,7 @@ export default function Header() {
       <p className="name">Имя</p>
       <span className="decor"></span>
       <ExitToAppIcon className="icon" />
-      <button type="button" className="btn">
-        <p className="text">Выйти</p>
-      </button>
+      <ModalLogout />
     </header>
   );
 }

@@ -8,14 +8,18 @@ import {
   // deleteTransactionRequest,
   // deleteTransactionSuccess,
   // deleteTransactionError,
-  // filterTransactions,
+  filterTransactions,
+  getTransactionsStatisticRequest,
+  getTransactionsStatisticSuccess,
+  getTransactionsStatisticError,
 } from './transactions-actions';
 
 import { createReducer } from '@reduxjs/toolkit';
 
 const initialState = [];
+const initialStatistic = [];
 
-// const initialFilter = '';
+const initialFilter = '';
 
 // ========ToolKit =======
 const itemsReducers = createReducer(initialState, {
@@ -23,6 +27,11 @@ const itemsReducers = createReducer(initialState, {
   [addTransactionSuccess]: (state, { payload }) => [...state, payload],
   // [deleteTransactionSuccess]: (state, { payload }) =>
   //   state.filter(contact => contact.id !== payload),
+  [getTransactionsStatisticSuccess]: (_, { payload }) => payload,
+});
+
+const itemsReducersStatistic = createReducer(initialStatistic, {
+  [getTransactionsStatisticSuccess]: (_, { payload }) => payload,
 });
 
 const loading = createReducer(false, {
@@ -35,15 +44,19 @@ const loading = createReducer(false, {
   // [deleteTransactionRequest]: () => true,
   // [deleteTransactionSuccess]: () => false,
   // [deleteTransactionError]: () => false,
+  [getTransactionsStatisticRequest]: () => true,
+  [getTransactionsStatisticSuccess]: () => false,
+  [getTransactionsStatisticError]: () => false,
 });
 
-// const filterReducer = createReducer(initialFilter, {
-//   [filterTransactions]: (_, { payload }) => payload,
-// });
+const filterReducer = createReducer(initialFilter, {
+  [filterTransactions]: (_, { payload }) => payload,
+});
 
 const reducers = {
   itemsReducers,
-  // filterReducer,
+  itemsReducersStatistic,
+  filterReducer,
   loading,
 };
 
