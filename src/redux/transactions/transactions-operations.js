@@ -25,12 +25,12 @@ const getTransaction = () => async dispatch => {
   }
 };
 
-const addTransaction = (name, number) => async dispatch => {
-  const Transaction = {
-    name,
-    number,
-  };
-
+const addTransaction = Transaction => async dispatch => {
+  // const Transaction = {
+  //   name,
+  //   number,
+  // };
+  console.log(Transaction);
   dispatch(addTransactionRequest());
 
   try {
