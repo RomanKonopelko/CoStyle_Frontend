@@ -24,9 +24,9 @@ export default function DiagramTab() {
   const [selected, setSelected] = useState('');
 
   let filteredData;
+  let tableYearFilter;
 
   function handleChange(event) {
-    // console.log(tableData);
     setSelected(event.target.value);
 
     filteredData = tableData.filter(el => {
@@ -36,25 +36,19 @@ export default function DiagramTab() {
       return myMonth === target;
     });
 
-    // console.log(filteredData);
-
-    const tableYearFilter = transactions.filter(r => {
-      const myYear = moment(r.time, 'DD.MM.YYYY').locale('ru').format('YYYY');
-      // console.log(`myYear`, myYear);
-      return myYear;
+    tableYearFilter = transactions.filter(el => {
+      const myYear = moment(el.time, 'DD.MM.YYYY').locale('ru').format('YYYY');
+      const target = event.target.value;
+      return myYear === target;
     });
 
-    // что-то тут не так ((
-    // let _vals = event.target.value
-    //   ? tableMonthFilter === event.target.value
-    //   : tableData;
-
     setTableData(filteredData);
+    setTableData(tableYearFilter);
   }
 
   return (
     <>
-      <Chart transactions={tableData} handleChange={handleChange} />
+      <Chart tableData={tableData} handleChange={handleChange} />
       <Table
         tableData={tableData}
         selected={selected}

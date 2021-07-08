@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 
-const Chart = ({ transactions, handleChange }) => {
-  const [chartData, setChartData] = useState({ transactions });
+const Chart = ({ tableData, handleChange }) => {
+  const [chartData, setChartData] = useState({ tableData });
 
   let result = [];
-  const tableAmountFilter = transactions.map(r => result.push(r.amount));
+  const tableAmountFilter = tableData.map(r => result.push(r.amount));
 
   let resultColor = [];
-  const colorFilter = transactions.map(r => resultColor.push(r.color));
+  const colorFilter = tableData.map(r => resultColor.push(r.color));
 
-  let total = transactions.reduce((sum, r) => sum + r.amount, 0);
+  let total = tableData.reduce((sum, r) => sum + r.amount, 0);
 
   const chart = () => {
     setChartData({
