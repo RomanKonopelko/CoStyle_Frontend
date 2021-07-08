@@ -1,0 +1,71 @@
+.modalContainer {
+  position: absolute;
+  background-color: #ffffff;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 540px;
+  height: 540px;
+  border-radius: 20px;
+  padding-top: 20px;
+}
+h2.title {
+  text-align: center;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 45px;
+  color: #000000;
+  margin-bottom: 40px;
+}
+
+.radioBtn {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.green {
+  color: #24cca7;
+}
+
+.red {
+  color: #ff6596;
+}
+
+.grey {
+  color: #e0e0e0;
+}
+
+.cetegory {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+}
+.comment {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+}
+.addBtn {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+.cancelBtn {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+.dataMoney {
+  padding: 0 30px;
+  display: flex;
+  justify-content: space-around;
+}
