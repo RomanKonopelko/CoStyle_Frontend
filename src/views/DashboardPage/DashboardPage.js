@@ -10,6 +10,7 @@ import Load from '../../components/Loader/Loader';
 import Modal from '../../components/Shared/Modal';
 import ButtonAddTransaction from '../../components/ButtonAddTransactions/ButtonAddTransactions';
 import { Route, Switch } from 'react-router';
+import ModalAddTransaction from '../../components/ModalAddTransaction/ModalAddTransaction';
 
 import './dashboardPage.scss';
 
@@ -30,7 +31,12 @@ export default function DashboardPage() {
             <Balance />
             <Currency />
             <ButtonAddTransaction />
-            {isShowModal && <Modal />}
+            {isShowModal && (
+              <Modal>
+                {' '}
+                <ModalAddTransaction />
+              </Modal>
+            )}
           </div>
           <Switch>
             <Route path={routes.home} component={HomeTab}></Route>
