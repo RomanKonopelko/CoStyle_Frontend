@@ -1,6 +1,9 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { Operations } from '../../redux/transactions';
 import { selectorsAuth } from '../../redux/auth';
+
 import routes from '../../routes';
 import Header from '../../components/Header';
 import Navigation from '../../components/Navigation/Navigation';
@@ -21,6 +24,12 @@ const DiagramTab = lazy(() => import('../../components/DiagramTab'));
 
 export default function DashboardPage() {
   const isShowModal = useSelector(selectorsAuth.getShowModal);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(Operations.getTransaction());
+  }, [dispatch]);
+
   return (
     <>
       <Header />

@@ -9,8 +9,6 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import { makeStyles } from '@material-ui/styles';
-
-import { Operations } from '../../redux/transactions';
 import { Selectors } from '../../redux/transactions';
 
 import './homeTab.scss';
@@ -67,81 +65,85 @@ export default function HomeTab() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage] = React.useState(10);
 
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(Operations.getTransaction());
-  }, [dispatch]);
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(Operations.getTransaction());
+  // }, [dispatch]);
 
   const transactionsList = useSelector(Selectors.getAllTransactions);
 
-  const { transactions } = transactionsList.payload;
+  console.log(transactionsList.payload, 'transactionsList');
+  //const { transactions } = transactionsList.payload;
 
   let rows = [];
 
-  transactions.map(t => {
-    rows.push(
-      createData(
-        t.time,
-        t.sort,
-        t.category,
-        t.commentary || 'Без комментариев',
-        t.amount,
-        '6900',
-      ),
-    );
-    return rows;
-  });
+  // if (transactions) {
+  //   transactions.map(t => {
+  //     rows.push(
+  //       createData(
+  //         t.time,
+  //         t.sort,
+  //         t.category,
+  //         t.commentary || 'Без комментариев',
+  //         t.amount,
+  //         '6900',
+  //       ),
+  //     );
+  //     return rows;
+  //   });
+  // }
 
   return (
     <>
-      {transactions && (
-        <div className="hometab">
-          <Paper>
-            <TableContainer className={classes.container}>
-              <Table>
-                <TableHead fontWeight={700} className={classes.tableHead}>
-                  <TableRow>
-                    {columns.map(column => (
-                      <TableCell
-                        key={column.id}
-                        align={column.align}
-                        style={{ minWidth: column.minWidth }}
+      {transactionsList && <h1>Hallo, Jenja</h1>}
+      {/* {transactions && ( */}
+      <div className="hometab">
+        <Paper>
+          <TableContainer className={classes.container}>
+            <Table>
+              <TableHead fontWeight={700} className="tableHead test">
+                <TableRow>
+                  {columns.map(column => (
+                    <TableCell
+                      key={column.id}
+                      align={column.align}
+                      style={{ minWidth: column.minWidth }}
+                    >
+                      {column.label}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              </TableHead>
+              <TableBody className={classes.tableBody}>
+                {rows
+                  // .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map(row => {
+                    return (
+                      <TableRow
+                        hover
+                        role="checkbox"
+                        tabIndex={-1}
+                        key={row.code}
                       >
-                        {column.label}
-                      </TableCell>
-                    ))}
-                  </TableRow>
-                </TableHead>
-                <TableBody className={classes.tableBody}>
-                  {rows
-                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                    .map(row => {
-                      return (
-                        <TableRow
-                          hover
-                          role="checkbox"
-                          tabIndex={-1}
-                          key={row.code}
-                        >
-                          {columns.map(column => {
-                            const value = row[column.id];
-                            return (
-                              <TableCell key={column.id} align={column.align}>
-                                {column.format && typeof value === 'number'
-                                  ? column.format(value)
-                                  : value}
-                              </TableCell>
-                            );
-                          })}
-                        </TableRow>
-                      );
-                    })}
-                </TableBody>
-              </Table>
-            </TableContainer>
-          </Paper>
-        </div>
-      )}
+                        {columns.map(column => {
+                          const value = row[column.id];
+                          return (
+                            <TableCell key={column.id} align={column.align}>
+                              {column.format && typeof value === 'number'
+                                ? column.format(value)
+                                : value}
+                            </TableCell>
+                          );
+                        })}
+                      </TableRow>
+                    );
+                  })}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Paper>
+      </div>
+      {/* )} */}
     </>
   );
 }
