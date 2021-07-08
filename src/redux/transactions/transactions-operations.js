@@ -9,6 +9,9 @@ import {
   // deleteTransactionRequest,
   // deleteTransactionSuccess,
   // deleteTransactionError,
+  getTransactionsStatisticRequest,
+  getTransactionsStatisticSuccess,
+  getTransactionsStatisticError,
 } from './transactions-actions';
 
 axios.defaults.baseURL = 'https://costyle-wallet-app.herokuapp.com/';
@@ -52,8 +55,20 @@ const addTransaction = (name, number) => async dispatch => {
 //   }
 // };
 
+const getTransactionsStatistic = () => async dispatch => {
+  dispatch(getTransactionsStatisticRequest());
+
+  try {
+    const { data } = await axios.get('/api/transactions/statistic');
+    dispatch(getTransactionsStatisticSuccess(data));
+  } catch (error) {
+    dispatch(getTransactionsStatisticError(error.message));
+  }
+};
+
 export {
   getTransaction,
   addTransaction,
   // deleteTransaction,
+  getTransactionsStatistic,
 };

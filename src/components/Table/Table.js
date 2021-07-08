@@ -14,7 +14,7 @@ import TableRow from '@material-ui/core/TableRow';
 const useStyles = makeStyles(theme => ({
   formControl: {
     margin: theme.spacing(1),
-    minWidth: '40%',
+    // minWidth: '40%',
   },
   head: {
     backgroundColor: theme.palette.common.white,
@@ -26,6 +26,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function MyTable({ tableData, selected, handleChange }) {
+  const { categoriesSummary, incomeValue, consumptionValue } = tableData;
+
+  const result = Object.entries(categoriesSummary);
+  console.log(`result`, result);
+
   const classes = useStyles();
 
   return (
@@ -81,23 +86,23 @@ function MyTable({ tableData, selected, handleChange }) {
         </TableHead>
 
         <TableBody>
-          {tableData.map(row => (
-            <TableRow key={row.id}>
+          {result.map(row => (
+            <TableRow key={row[0]}>
               <TableCell align="left">
                 <span>{row.color} </span>
-                {row.category}
+                {row[0]}
               </TableCell>
-              <TableCell align="left">{Number(row.amount)}</TableCell>
+              <TableCell align="left">{row[1]}</TableCell>
             </TableRow>
           ))}
 
           <TableRow>
-            <TableCell align="left">Расходы</TableCell>
-            <TableCell align="left">{'Тут будет общая сумма'}</TableCell>
+            <TableCell align="left">Расход</TableCell>
+            <TableCell align="left">{consumptionValue}</TableCell>
           </TableRow>
           <TableRow>
-            <TableCell align="left">Доходы</TableCell>
-            <TableCell align="left">{'Тут будет общая сумма'}</TableCell>
+            <TableCell align="left">Доход</TableCell>
+            <TableCell align="left">{incomeValue}</TableCell>
           </TableRow>
         </TableBody>
       </Table>
