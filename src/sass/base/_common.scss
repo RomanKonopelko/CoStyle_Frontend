@@ -16,6 +16,7 @@ body {
   letter-spacing: 0.08em;
   color: $primary-text-color;
   overflow-x: hidden;
+  backdrop-filter: blur(50px);
 }
 
 img {
