@@ -10,6 +10,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
+import './Table.scss';
+
 // предварительные стили
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -87,12 +89,16 @@ function MyTable({ tableData, selected, handleChange }) {
 
         <TableBody>
           {result.map(row => (
-            <TableRow key={row[0]}>
-              <TableCell align="left">
-                <span>{row.color} </span>
+            <TableRow key={row[0]} className="Table__color__row">
+              <TableCell>
+                <span
+                  className="Table__option"
+                  style={{ backgroundColor: row[1].color }}
+                ></span>
+
                 {row[0]}
               </TableCell>
-              <TableCell align="left">{row[1]}</TableCell>
+              <TableCell align="left">{row[1].value}</TableCell>
             </TableRow>
           ))}
 
