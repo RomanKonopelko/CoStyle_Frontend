@@ -10,13 +10,14 @@ html {
 
 body {
   font-family: $primary-font-family;
-  font-weight: 500;
   font-size: 12px;
   line-height: 1.67;
   letter-spacing: 0.08em;
   color: $primary-text-color;
   overflow-x: hidden;
   backdrop-filter: blur(50px);
+  background-size: cover;
+  background-image: url('../../images/Rectangle3.png');
 }
 
 img {
@@ -38,6 +39,7 @@ h6,
 p {
   margin: 0;
   padding: 0;
+  color: $title-text-color;
 }
 
 li {
@@ -54,7 +56,6 @@ li {
   padding-left: 20px;
   padding-right: 20px;
   width: 100%;
-  background-image: url('../../images/Rectangle3.png');
 
   @include for-size(tablet) {
     padding-left: 40px;

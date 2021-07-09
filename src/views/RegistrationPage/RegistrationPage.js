@@ -9,7 +9,7 @@ export default function RegistrationPage() {
     <div className="registrationPage">
       <div>
         <img src={img} alt="finance app" className="img" />
-        <h1>Finance App</h1>
+        <h1 className="title">Finance App</h1>
       </div>
       <RegistrationForm className="registrationForm" />
     </div>
