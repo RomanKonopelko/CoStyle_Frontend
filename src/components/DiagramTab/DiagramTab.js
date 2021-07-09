@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import moment from 'moment';
 import Load from '../../components/Loader/Loader';
@@ -14,15 +14,21 @@ import Table from '../Table';
 export default function DiagramTab() {
   const dispatch = useDispatch();
 
+  const transactionsList = useSelector(Selectors.getTransactionsStatistic);
+  console.log('transactionsList', transactionsList);
+
+  const { categoriesSummary, incomeValue, consumptionValue } = transactionsList;
+
   useEffect(() => {
-    dispatch(Operations.getTransactionsStatistic());
+    categoriesSummary === 0 &&
+      consumptionValue === 0 &&
+      incomeValue === 0 &&
+      dispatch(Operations.getTransactionsStatistic());
   }, [dispatch]);
 
-  const transactionsList = useSelector(Selectors.getTransactionsStatistic);
-  // console.log('transactionsList', transactionsList);
   const selected = useSelector(Selectors.getFilterValue);
 
-  const { payload } = transactionsList;
+  // const { payload } = transactionsList;
   // console.log('payload', payload);
 
   function handleChange(event) {
@@ -41,11 +47,11 @@ export default function DiagramTab() {
 
   return (
     <>
-      {payload ? (
+      {transactionsList ? (
         <>
-          <Chart tableData={payload} handleChange={handleChange} />
+          <Chart tableData={transactionsList} handleChange={handleChange} />
           <Table
-            tableData={payload}
+            tableData={transactionsList}
             selected={selected}
             handleChange={handleChange}
           />

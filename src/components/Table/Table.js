@@ -28,6 +28,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function MyTable({ tableData, selected, handleChange }) {
+  console.log(`object`);
   const { categoriesSummary, incomeValue, consumptionValue } = tableData;
 
   const result = Object.entries(categoriesSummary);

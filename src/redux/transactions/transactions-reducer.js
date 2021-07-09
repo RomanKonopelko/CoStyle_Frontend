@@ -17,13 +17,17 @@ import {
 import { createReducer } from '@reduxjs/toolkit';
 
 const initialState = [];
-const initialStatistic = [];
+const initialStatistic = {
+  categoriesSummary: 0,
+  incomeValue: 0,
+  consumptionValue: 0,
+};
 
 const initialFilter = '';
 
 // ========ToolKit =======
 const itemsReducers = createReducer(initialState, {
-  [getTransactionsSuccess]: (_, { payload }) => payload,
+  [getTransactionsSuccess]: (_, { payload }) => payload.transactions,
   [addTransactionSuccess]: (state, { payload }) => [...state, payload],
   // [deleteTransactionSuccess]: (state, { payload }) =>
   //   state.filter(contact => contact.id !== payload),

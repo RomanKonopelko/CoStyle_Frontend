@@ -51,11 +51,11 @@ const useStyles = makeStyles({
 
 export default function HomeTab({ tableData }) {
   const classes = useStyles();
-  const { transactions } = tableData;
+  // const { transactions } = tableData;
 
   let rows = [];
 
-  transactions.map(t => {
+  tableData.map(t => {
     rows.push(
       createData(
         t.time,

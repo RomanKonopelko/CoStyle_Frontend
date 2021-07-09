@@ -6,7 +6,7 @@ import { selectorsAuth } from '../../redux/auth';
 import { Selectors } from '../../redux/transactions';
 
 import routes from '../../routes';
-import Header from '../../components/Header';
+
 import Navigation from '../../components/Navigation/Navigation';
 import Balance from '../../components/Balance';
 import Currency from '../../components/Currency';
@@ -18,7 +18,7 @@ import ModalAddTransaction from '../../components/ModalAddTransaction/ModalAddTr
 
 import './dashboardPage.scss';
 
-import { Suspense, lazy } from 'react';
+import { lazy } from 'react';
 
 const HomeTab = lazy(() => import('../../components/HomeTab/HomeTab'));
 const DiagramTab = lazy(() => import('../../components/DiagramTab'));
@@ -32,10 +32,11 @@ export default function DashboardPage() {
   }, [dispatch]);
 
   const transactionsList = useSelector(Selectors.getAllTransactions);
+  console.log(`transactionsList.payload`, transactionsList);
 
   return (
     <>
-      {transactionsList.payload && (
+      {transactionsList && (
         <>
           <div className="dashboradPage">
             <div>
@@ -49,17 +50,17 @@ export default function DashboardPage() {
                 </Modal>
               )}
             </div>
-            {transactionsList.payload && (
-              <Switch>
-                <Route
-                  path={routes.home}
-                  render={props => (
-                    <HomeTab {...props} tableData={transactionsList.payload} />
-                  )}
-                />
-                <Route path={routes.diagram} component={DiagramTab}></Route>
-              </Switch>
-            )}
+
+            <Switch>
+              <Route
+                path={routes.home}
+                render={props => (
+                  <HomeTab {...props} tableData={transactionsList} />
+                )}
+              />
+
+              <Route path={routes.diagram} component={DiagramTab} />
+            </Switch>
           </div>
           <ButtonAddTransaction />
         </>
