@@ -47,6 +47,7 @@ export default function App() {
           <Redirect to={routes.login} />
         </Switch>
       </Suspense>
+      //{' '}
     </Container>
   );
 }

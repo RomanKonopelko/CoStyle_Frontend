@@ -27,7 +27,6 @@ const itemsReducers = createReducer(initialState, {
   [addTransactionSuccess]: (state, { payload }) => [...state, payload],
   // [deleteTransactionSuccess]: (state, { payload }) =>
   //   state.filter(contact => contact.id !== payload),
-  [getTransactionsStatisticSuccess]: (_, { payload }) => payload,
 });
 
 const itemsReducersStatistic = createReducer(initialStatistic, {

@@ -1,6 +1,8 @@
 .header {
   display: flex;
   align-items: center;
+  background-color: white;
+  z-index: 2;
 
   .title {
     margin-left: 20px;

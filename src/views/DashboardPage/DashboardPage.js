@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { Operations } from '../../redux/transactions';
 import { selectorsAuth } from '../../redux/auth';
+import { Selectors } from '../../redux/transactions';
 
 import routes from '../../routes';
 import Header from '../../components/Header';
@@ -30,6 +31,8 @@ export default function DashboardPage() {
     dispatch(Operations.getTransaction());
   }, [dispatch]);
 
+  const transactionsList = useSelector(Selectors.getAllTransactions);
+
   return (
     <>
       <Header />
@@ -39,7 +42,6 @@ export default function DashboardPage() {
             <Navigation />
             <Balance />
             <Currency />
-            <ButtonAddTransaction />
             {isShowModal && (
               <Modal>
                 {' '}
@@ -47,11 +49,20 @@ export default function DashboardPage() {
               </Modal>
             )}
           </div>
-          <Switch>
-            <Route path={routes.home} component={HomeTab}></Route>
-            <Route path={routes.diagram} component={DiagramTab}></Route>
-          </Switch>
+          {transactionsList.payload && (
+            <Switch>
+              <Route
+                path={routes.home}
+                render={props => (
+                  <HomeTab {...props} tableData={transactionsList.payload} />
+                )}
+              ></Route>
+
+              <Route path={routes.diagram} component={DiagramTab}></Route>
+            </Switch>
+          )}
         </div>
+        <ButtonAddTransaction />
       </Suspense>
     </>
   );
