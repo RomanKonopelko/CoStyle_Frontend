@@ -50,7 +50,7 @@ const Chart = ({ tableData, handleChange }) => {
             },
             title: {
               display: true,
-              text: `${incomeValue + consumptionValue} грн.`,
+              text: `${incomeValue - consumptionValue} грн.`,
             },
           },
           responsive: true,
