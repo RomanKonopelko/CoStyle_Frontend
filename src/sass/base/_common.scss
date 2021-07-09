@@ -53,8 +53,8 @@ li {
   margin-right: auto;
   padding-left: 20px;
   padding-right: 20px;
-
   width: 100%;
+  background-image: url('../../images/Rectangle3.png');
 
   @include for-size(tablet) {
     padding-left: 40px;

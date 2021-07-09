@@ -29,7 +29,7 @@ function MyTable({ tableData, selected, handleChange }) {
   const { categoriesSummary, incomeValue, consumptionValue } = tableData;
 
   const result = Object.entries(categoriesSummary);
-  console.log(`result`, result);
+  // console.log(`result`, result);
 
   const classes = useStyles();
 

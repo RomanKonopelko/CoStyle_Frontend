@@ -15,7 +15,7 @@ const getFilterValue = state => state.transactions.filter;
 // );
 
 const getTransactionsStatistic = state => {
-  console.log(`state`, state);
+  // console.log(`state`, state);
   return state.transactions.itemsStatistic;
 };
 

@@ -21,7 +21,7 @@ export default function DiagramTab() {
   const selected = useSelector(Selectors.getFilterValue);
 
   const { payload } = transactionsList;
-  console.log('payload', payload);
+  // console.log('payload', payload);
 
   function handleChange(event) {
     // dispatch(Action.filterTransactions(event.target.value));
