@@ -6,7 +6,7 @@ import { selectorsAuth } from '../../redux/auth';
 import { Selectors } from '../../redux/transactions';
 
 import routes from '../../routes';
-import Header from '../../components/Header';
+
 import Navigation from '../../components/Navigation/Navigation';
 import Balance from '../../components/Balance';
 import Currency from '../../components/Currency';
@@ -18,7 +18,7 @@ import ModalAddTransaction from '../../components/ModalAddTransaction/ModalAddTr
 
 import './dashboardPage.scss';
 
-import { Suspense, lazy } from 'react';
+import { lazy } from 'react';
 
 const HomeTab = lazy(() => import('../../components/HomeTab/HomeTab'));
 const DiagramTab = lazy(() => import('../../components/DiagramTab'));
@@ -38,7 +38,6 @@ export default function DashboardPage() {
     <>
       {transactionsList && (
         <>
-          <Header />
           <div className="dashboradPage">
             <div>
               <Navigation />
