@@ -10,7 +10,7 @@ import Header from '../../components/Header';
 import Navigation from '../../components/Navigation/Navigation';
 import Balance from '../../components/Balance';
 import Currency from '../../components/Currency';
-import Load from '../../components/Loader/Loader';
+
 import Modal from '../../components/Shared/Modal';
 import ButtonAddTransaction from '../../components/ButtonAddTransactions/ButtonAddTransactions';
 import { Route, Switch } from 'react-router';
@@ -35,35 +35,37 @@ export default function DashboardPage() {
 
   return (
     <>
-      <Header />
-      <Suspense fallback={Load()}>
-        <div className="dashboradPage">
-          <div>
-            <Navigation />
-            <Balance />
-            <Currency />
-            {isShowModal && (
-              <Modal>
-                {' '}
-                <ModalAddTransaction />
-              </Modal>
+      {transactionsList.payload && (
+        <>
+          <Header />
+          <div className="dashboradPage">
+            <div>
+              <Navigation />
+              <Balance />
+              <Currency />
+              {isShowModal && (
+                <Modal>
+                  {' '}
+                  <ModalAddTransaction />
+                </Modal>
+              )}
+            </div>
+            {transactionsList.payload && (
+              <Switch>
+                <Route
+                  path={routes.home}
+                  render={props => (
+                    <HomeTab {...props} tableData={transactionsList.payload} />
+                  )}
+                ></Route>
+
+                <Route path={routes.diagram} component={DiagramTab}></Route>
+              </Switch>
             )}
           </div>
-          {transactionsList.payload && (
-            <Switch>
-              <Route
-                path={routes.home}
-                render={props => (
-                  <HomeTab {...props} tableData={transactionsList.payload} />
-                )}
-              ></Route>
-
-              <Route path={routes.diagram} component={DiagramTab}></Route>
-            </Switch>
-          )}
-        </div>
-        <ButtonAddTransaction />
-      </Suspense>
+          <ButtonAddTransaction />
+        </>
+      )}
     </>
   );
 }
