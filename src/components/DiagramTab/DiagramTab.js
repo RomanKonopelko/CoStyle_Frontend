@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import moment from 'moment';
+// import moment from 'moment';
+import Load from '../../components/Loader/Loader';
+import Loader from 'react-loader-spinner';
 
 import { Operations } from '../../redux/transactions';
 import { Selectors } from '../../redux/transactions';
@@ -39,7 +41,7 @@ export default function DiagramTab() {
 
   return (
     <>
-      {payload && (
+      {payload ? (
         <>
           <Chart tableData={payload} handleChange={handleChange} />
           <Table
@@ -48,6 +50,8 @@ export default function DiagramTab() {
             handleChange={handleChange}
           />
         </>
+      ) : (
+        <Loader />
       )}
     </>
   );
