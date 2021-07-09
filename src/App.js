@@ -41,7 +41,7 @@ export default function App() {
           <PrivateRoute path={routes.home} redirectTo={routes.login}>
             <Dashboard />
           </PrivateRoute>
-          <PrivateRoute path={routes.stats} redirectTo={routes.login}>
+          <PrivateRoute path={routes.diagram} redirectTo={routes.login}>
             <Dashboard />
           </PrivateRoute>
           <Redirect to={routes.login} />

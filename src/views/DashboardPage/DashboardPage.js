@@ -32,10 +32,11 @@ export default function DashboardPage() {
   }, [dispatch]);
 
   const transactionsList = useSelector(Selectors.getAllTransactions);
+  console.log(`transactionsList.payload`, transactionsList);
 
   return (
     <>
-      {transactionsList.payload && (
+      {transactionsList && (
         <>
           <Header />
           <div className="dashboradPage">
@@ -50,18 +51,17 @@ export default function DashboardPage() {
                 </Modal>
               )}
             </div>
-            {transactionsList.payload && (
-              <Switch>
-                <Route
-                  path={routes.home}
-                  render={props => (
-                    <HomeTab {...props} tableData={transactionsList.payload} />
-                  )}
-                ></Route>
 
-                <Route path={routes.diagram} component={DiagramTab}></Route>
-              </Switch>
-            )}
+            <Switch>
+              <Route
+                path={routes.home}
+                render={props => (
+                  <HomeTab {...props} tableData={transactionsList} />
+                )}
+              />
+
+              <Route path={routes.diagram} component={DiagramTab} />
+            </Switch>
           </div>
           <ButtonAddTransaction />
         </>

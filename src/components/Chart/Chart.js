@@ -1,45 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React, { memo } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 
 const Chart = ({ tableData, handleChange }) => {
-  const { categoriesSummary, incomeValue, consumptionValue } = tableData;
+  // console.log(tableData, handleChange);
+  const { categoriesSummary } = tableData;
 
   const resultСategoriesSummary = Object.entries(categoriesSummary);
 
-  const [chartData, setChartData] = useState({ resultСategoriesSummary });
-
-  let result = [];
+  const result = [];
   const tableAmountFilter = resultСategoriesSummary.map(r =>
     result.push(r[1].value),
   );
 
-  let resultColor = [];
+  const resultColor = [];
   const colorFilter = resultСategoriesSummary.map(r =>
     resultColor.push(r[1].color),
   );
-  // console.log(`resultColor`, resultColor);
-
-  const chart = () => {
-    setChartData({
-      datasets: [
-        {
-          data: result,
-          backgroundColor: resultColor,
-          hoverOffset: 5,
-        },
-      ],
-    });
-  };
-
-  useEffect(() => {
-    chart();
-  }, []);
 
   return (
     <div style={{ height: '320px', width: '320px' }}>
       <Doughnut
         onChange={handleChange}
-        data={chartData}
+        data={{
+          datasets: [
+            {
+              data: result,
+              backgroundColor: resultColor,
+              hoverOffset: 5,
+            },
+          ],
+        }}
         options={{
           cutout: 90,
           rotation: 180,
@@ -50,7 +40,6 @@ const Chart = ({ tableData, handleChange }) => {
             },
             title: {
               display: true,
-              text: `${incomeValue - consumptionValue} грн.`,
             },
           },
           responsive: true,
@@ -60,4 +49,4 @@ const Chart = ({ tableData, handleChange }) => {
   );
 };
 
-export default Chart;
+export default memo(Chart);

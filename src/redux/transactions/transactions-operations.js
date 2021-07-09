@@ -22,7 +22,7 @@ const getTransaction = () => async dispatch => {
   try {
     const { data } = await axios.get('/api/transactions');
     // console.log(`data`, data);
-    dispatch(getTransactionsSuccess(data));
+    dispatch(getTransactionsSuccess(data.payload));
   } catch (error) {
     dispatch(getTransactionsError(error.message));
   }
@@ -60,7 +60,7 @@ const getTransactionsStatistic = () => async dispatch => {
 
   try {
     const { data } = await axios.get('/api/transactions/statistic');
-    dispatch(getTransactionsStatisticSuccess(data));
+    dispatch(getTransactionsStatisticSuccess(data.payload));
   } catch (error) {
     dispatch(getTransactionsStatisticError(error.message));
   }

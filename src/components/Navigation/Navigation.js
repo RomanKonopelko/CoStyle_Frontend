@@ -27,7 +27,7 @@ export default function Navigation() {
         <Typography variant="h6">
           <NavLink
             exact
-            to={routes.stats}
+            to={routes.diagram}
             className="Nav-link"
             activeClassName="NavLink--active"
           >

@@ -5,8 +5,7 @@ import classes from './Balance.module.scss';
 
 export default function Balance() {
   let balance = 0;
-  const transactionsList = useSelector(Selectors.getAllTransactions);
-  const transactions = transactionsList.payload?.transactions;
+  const transactions = useSelector(Selectors.getAllTransactions);
 
   if (transactions) {
     transactions.map(el =>
