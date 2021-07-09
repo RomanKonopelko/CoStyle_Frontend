@@ -8,6 +8,8 @@ import TextField from '@material-ui/core/TextField';
 import Icon from '@material-ui/core/Icon';
 import EmailIcon from '@material-ui/icons/Email';
 import LockIcon from '@material-ui/icons/Lock';
+import './loginForm.scss';
+import headerLogo from '../../images/header-logo.png';
 
 import { NavLink } from 'react-router-dom';
 import routes from '../../routes';
@@ -41,8 +43,12 @@ export default function LoginForm() {
   });
 
   return (
-    <div>
+    <div className="loginForm">
       <form onSubmit={formik.handleSubmit}>
+        <div className="logo">
+          <img className="img" src={headerLogo} alt="logo" />
+          <h1 className="title">Wallet</h1>
+        </div>
         <div>
           <TextField
             InputProps={{

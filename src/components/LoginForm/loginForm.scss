@@ -1,0 +1,29 @@
+.loginForm {
+  width: 540px;
+  height: 616px;
+  background-color: white;
+  border-radius: 20px;
+
+  .logo {
+    display: flex;
+  }
+  .title {
+    font-family: 'Poppins', sans-serif;
+    display: inline;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 1.5;
+    color: #000000;
+  }
+
+  .img {
+    width: 40px;
+    height: 40px;
+    display: inline;
+    margin-right: 20px;
+  }
+
+  .MuiFormControl-root {
+    border-bottom: 1px solid #e0e0e0;
+  }
+}

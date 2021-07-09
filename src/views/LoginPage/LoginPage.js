@@ -8,7 +8,10 @@ import './loginPage.scss';
 export default function LoginPage() {
   return (
     <div className="loginPage">
-      <img src={img} alt="finance app" className="img" />
+      <div>
+        <img src={img} alt="finance app" className="img" />
+        <h1 className="financeApp">Finance App</h1>
+      </div>
       <LoginForm className="loginForm" />
     </div>
   );

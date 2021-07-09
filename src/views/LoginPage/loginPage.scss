@@ -3,7 +3,18 @@
   padding-top: 136px;
   padding-bottom: 116px;
 
+  .logo {
+    display: block;
+  }
+
   .img {
-    margin-right: 143px;
+    text-align: center;
+  }
+
+  .financeApp {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 400;
+    margin-top: 31px;
   }
 }
