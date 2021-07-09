@@ -72,7 +72,7 @@ export default function HomeTab() {
 
   const transactionsList = useSelector(Selectors.getAllTransactions);
 
-  console.log(transactionsList.payload, 'transactionsList');
+  // console.log(transactionsList.payload, 'transactionsList');
   //const { transactions } = transactionsList.payload;
 
   let rows = [];
