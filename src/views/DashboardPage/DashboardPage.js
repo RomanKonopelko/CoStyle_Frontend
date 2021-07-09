@@ -37,7 +37,6 @@ export default function DashboardPage() {
     <>
       {transactionsList.payload && (
         <>
-          <Header />
           <div className="dashboradPage">
             <div>
               <Navigation />
@@ -57,8 +56,7 @@ export default function DashboardPage() {
                   render={props => (
                     <HomeTab {...props} tableData={transactionsList.payload} />
                   )}
-                ></Route>
-
+                />
                 <Route path={routes.diagram} component={DiagramTab}></Route>
               </Switch>
             )}
