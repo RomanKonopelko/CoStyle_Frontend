@@ -8,7 +8,6 @@ import TextField from '@material-ui/core/TextField';
 import Icon from '@material-ui/core/Icon';
 import EmailIcon from '@material-ui/icons/Email';
 import LockIcon from '@material-ui/icons/Lock';
-import './loginForm.scss';
 import headerLogo from '../../images/header-logo.png';
 
 import { NavLink } from 'react-router-dom';
@@ -43,14 +42,15 @@ export default function LoginForm() {
   });
 
   return (
-    <div className="loginForm">
-      <form onSubmit={formik.handleSubmit}>
+    <div className="formWrapp">
+      <form className="form" onSubmit={formik.handleSubmit}>
         <div className="logo">
           <img className="img" src={headerLogo} alt="logo" />
           <h1 className="title">Wallet</h1>
         </div>
         <div>
           <TextField
+            className="textField"
             InputProps={{
               endAdornment: (
                 <Icon color="action" position="start">
@@ -69,8 +69,8 @@ export default function LoginForm() {
         </div>
 
         <div>
-          {' '}
           <TextField
+            className="textField"
             InputProps={{
               endAdornment: (
                 <Icon color="action" position="start">
@@ -90,15 +90,13 @@ export default function LoginForm() {
         </div>
 
         <div>
-          <Button color="primary" variant="contained" type="submit">
+          <Button className="btn-form" type="submit">
             Вход
           </Button>
         </div>
         <NavLink to={routes.register}>
           <div>
-            <Button color="default" variant="contained">
-              Регистрация
-            </Button>
+            <Button className="btn-form">Регистрация</Button>
           </div>
         </NavLink>
       </form>

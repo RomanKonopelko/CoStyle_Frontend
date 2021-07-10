@@ -1,19 +1,32 @@
-.loginForm {
-  width: 540px;
-  height: 616px;
-  background-color: white;
-  border-radius: 20px;
+.formWrapp {
+  padding-top: 52px;
+  padding-right: 85px;
+  padding-bottom: 52px;
+  padding-left: 95px;
+
+  background-color: rgba(255, 255, 255, 0.4);
+  text-align: center;
+
+  .form {
+    padding: 65px;
+    background-color: white;
+    border-radius: 20px;
+  }
 
   .logo {
     display: flex;
+    align-items: center;
+    justify-content: center;
   }
+
   .title {
-    font-family: 'Poppins', sans-serif;
+    font-family: $primary-font-family;
     display: inline;
     font-weight: 700;
     font-size: 30px;
     line-height: 1.5;
-    color: #000000;
+    color: $title-text-color;
+    text-align: center;
   }
 
   .img {
@@ -23,7 +36,53 @@
     margin-right: 20px;
   }
 
-  .MuiFormControl-root {
-    border-bottom: 1px solid #e0e0e0;
+  .MuiInputBase-input {
+    width: 310px;
+  }
+
+  .MuiInputLabel-root {
+    font-family: $secondary-font-family;
+    font-weight: 400;
+    font-size: 18px;
+    color: $secondary-text-color;
+  }
+
+  .MuiSvgIcon-root {
+    color: $secondary-text-color;
+  }
+
+  .textField {
+    text-align: center;
+    margin-top: 34px;
+    align-items: center;
+    justify-content: center;
+  }
+  .btn-form {
+    font-family: 'Circe', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 26, 53px;
+    // letter-spacing: 22px;
+    margin-top: 34px;
+    padding: 13px 75px;
+    border: 1px solid $accent-color2;
+    border-radius: 20px;
+    color: $accent-color2;
+    background-color: white;
+  }
+
+  .btn-form.MuiButton-root:hover {
+    background-color: $accent-color;
+    border: 1px solid $accent-color;
+    color: white;
+    transition: $timing-function;
+  }
+
+  .MuiFormLabel-root.Mui-focused {
+    color: $accent-color;
+  }
+
+  .MuiInput-underline:after {
+    border-bottom: 2px solid $accent-color;
   }
 }

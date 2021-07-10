@@ -1,7 +1,9 @@
-// order matters // 
+// order matters //
 
 @import './sass/utils/variables';
 @import './sass/utils/mixins';
 @import './sass/base/common';
 @import './sass/base/normalize';
 
+@import './components/loginForm/loginForm.scss';
+@import './components/RegistrationForm/RegistrationForm.scss';

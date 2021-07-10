@@ -29,34 +29,30 @@ export default function App() {
   return (
     <>
       {isAuth && <Header />}
-      <Container>
-        <Suspense fallback={Load()}>
-          <Switch>
-            <PublicRoute
-              path={routes.login}
-              restricted
-              redirectTo={routes.home}
-            >
-              <Login />
-            </PublicRoute>
-            <PublicRoute
-              path={routes.register}
-              restricted
-              redirectTo={routes.home}
-            >
-              <Register />
-            </PublicRoute>
+      {/* <Container> */}
+      <Suspense fallback={Load()}>
+        <Switch>
+          <PublicRoute path={routes.login} restricted redirectTo={routes.home}>
+            <Login />
+          </PublicRoute>
+          <PublicRoute
+            path={routes.register}
+            restricted
+            redirectTo={routes.home}
+          >
+            <Register />
+          </PublicRoute>
 
-            <PrivateRoute path={routes.home} redirectTo={routes.login}>
-              <Dashboard />
-            </PrivateRoute>
-            <PrivateRoute path={routes.diagram} redirectTo={routes.login}>
-              <Dashboard />
-            </PrivateRoute>
-            <Redirect to={routes.login} />
-          </Switch>
-        </Suspense>
-      </Container>
+          <PrivateRoute path={routes.home} redirectTo={routes.login}>
+            <Dashboard />
+          </PrivateRoute>
+          <PrivateRoute path={routes.diagram} redirectTo={routes.login}>
+            <Dashboard />
+          </PrivateRoute>
+          <Redirect to={routes.login} />
+        </Switch>
+      </Suspense>
+      {/* </Container> */}
     </>
   );
 }
