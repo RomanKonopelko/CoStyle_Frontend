@@ -15,8 +15,8 @@ import { createReducer, combineReducers } from '@reduxjs/toolkit';
 const initialState = { email: null, name: null };
 
 const userReducer = createReducer(initialState, {
-  [userRegisterSuccess]: (_, { payload }) => payload.user,
-  [userLoginSuccess]: (_, { payload }) => payload.user,
+  [userRegisterSuccess]: (_, { payload }) => payload,
+  [userLoginSuccess]: (_, { payload }) => payload,
   [getCurrentUserSuccess]: (_, { payload }) => payload,
   [userLogoutSuccess]: (_, __) => initialState,
 });
