@@ -11,6 +11,7 @@ import LockIcon from '@material-ui/icons/Lock';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import { NavLink } from 'react-router-dom';
 import routes from '../../routes';
+import headerLogo from '../../images/header-logo.png';
 
 const validationSchema = yup.object({
   email: yup
@@ -52,10 +53,15 @@ export default function RegistrationForm() {
   });
 
   return (
-    <div>
-      <form onSubmit={formik.handleSubmit}>
+    <div className="formWrapp">
+      <form className="form" onSubmit={formik.handleSubmit}>
+        <div className="logo">
+          <img className="img" src={headerLogo} alt="logo" />
+          <h1 className="title">Wallet</h1>
+        </div>
         <div>
           <TextField
+            className="textField"
             InputProps={{
               endAdornment: (
                 <Icon color="action" position="start">
@@ -74,8 +80,8 @@ export default function RegistrationForm() {
         </div>
 
         <div>
-          {' '}
           <TextField
+            className="textField"
             InputProps={{
               endAdornment: (
                 <Icon color="action" position="start">
@@ -96,6 +102,7 @@ export default function RegistrationForm() {
 
         <div>
           <TextField
+            className="textField"
             InputProps={{
               endAdornment: (
                 <Icon color="action" position="start">
@@ -121,6 +128,7 @@ export default function RegistrationForm() {
 
         <div>
           <TextField
+            className="textField"
             InputProps={{
               endAdornment: (
                 <Icon color="action" position="start">
@@ -140,16 +148,14 @@ export default function RegistrationForm() {
         </div>
 
         <div>
-          <Button color="primary" variant="contained" type="submit">
+          <Button className="btn-form" type="submit">
             Регистрация
           </Button>
         </div>
 
         <NavLink to={routes.login}>
           <div>
-            <Button color="default" variant="contained">
-              Вход
-            </Button>
+            <Button className="btn-form">Вход</Button>
           </div>
         </NavLink>
       </form>

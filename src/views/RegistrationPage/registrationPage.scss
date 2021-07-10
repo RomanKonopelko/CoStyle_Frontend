@@ -1,9 +1,39 @@
 .registrationPage {
-  display: flex;
-  padding-top: 136px;
-  padding-bottom: 116px;
+  .split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    padding-top: 52px;
+  }
 
-  .img {
-    margin-right: 143px;
+  .left {
+    left: 0;
+    background-color: #e5e5e5;
+    background-size: cover;
+    background-image: url('../../images/Ellipse1.png');
+  }
+
+  .right {
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.4);
+
+    background-image: url('../../images/Ellipse2.png');
+  }
+
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .financeApp {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 400;
+    margin-top: 31px;
   }
 }

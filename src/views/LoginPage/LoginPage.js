@@ -9,7 +9,7 @@ export default function LoginPage() {
   return (
     <div className="loginPage">
       <div>
-        <img src={img} alt="finance app" className="img" />
+        <img src={img} alt="finance app" className="imgApp" />
         <h1 className="financeApp">Finance App</h1>
       </div>
       <LoginForm className="loginForm" />

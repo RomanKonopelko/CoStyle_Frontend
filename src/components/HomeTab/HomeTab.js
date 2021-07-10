@@ -35,22 +35,22 @@ function createData(date, type, category, comment, sum, balance) {
   return { date, type, category, comment, sum, balance };
 }
 
-const useStyles = makeStyles({
-  container: {
-    maxHeight: 320,
-    maxWidth: 700,
-  },
-  pagination: {
-    maxWidth: 700,
-  },
-  tableHead: {
-    borderRadius: 30,
-  },
-  tableBody: {},
-});
+// const useStyles = makeStyles({
+//   container: {
+//     maxHeight: 320,
+//     maxWidth: 700,
+//   },
+//   pagination: {
+//     maxWidth: 700,
+//   },
+//   tableHead: {
+//     borderRadius: 30,
+//   },
+//   tableBody: {},
+// });
 
 export default function HomeTab({ tableData }) {
-  const classes = useStyles();
+  // const classes = useStyles();
   // const { transactions } = tableData;
 
   let rows = [];
@@ -69,52 +69,43 @@ export default function HomeTab({ tableData }) {
     return rows;
   });
 
+  console.log(tableData, 'tableData');
   return (
     <>
       <div className="hometab">
-        <Paper>
-          <TableContainer className={classes.container}>
-            <Table stickyHeader aria-label="sticky table">
-              <TableHead className={classes.tableHead}>
-                <TableRow>
-                  {columns.map(column => (
-                    <TableCell
-                      key={column.id}
-                      align={column.align}
-                      style={{ minWidth: column.minWidth }}
-                    >
-                      {column.label}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              </TableHead>
-              <TableBody className={classes.tableBody}>
-                {rows.map(row => {
-                  return (
-                    <TableRow
-                      hover
-                      role="checkbox"
-                      tabIndex={-1}
-                      key={row.code}
-                    >
-                      {columns.map(column => {
-                        const value = row[column.id];
-                        return (
-                          <TableCell key={column.id} align={column.align}>
-                            {column.format && typeof value === 'number'
-                              ? column.format(value)
-                              : value}
-                          </TableCell>
-                        );
-                      })}
-                    </TableRow>
-                  );
-                })}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </Paper>
+        {/* <Paper> */}
+        <table stickyHeader aria-label="sticky table" className="table">
+          <thead className="thead" style={{ borderRadius: '30px' }}>
+            <tr>
+              {columns.map(column => (
+                <td key={column.id} align={column.align}>
+                  {column.label}
+                </td>
+              ))}
+            </tr>
+          </thead>
+
+          <tbody className="tableBody">
+            {rows.map(row => {
+              return (
+                <tr hover role="checkbox" tabIndex={-1} key={row.code}>
+                  {columns.map(column => {
+                    const value = row[column.id];
+                    return (
+                      <td key={column.id} align={column.align}>
+                        {column.format && typeof value === 'number'
+                          ? column.format(value)
+                          : value}
+                      </td>
+                    );
+                  })}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </div>
+      {/* </Paper> */}
     </>
   );
 }
