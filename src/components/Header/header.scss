@@ -1,13 +1,22 @@
 .header {
-  display: flex;
-  align-items: center;
+  width: 100%;
   background-color: white;
   z-index: 2;
 
+  .headerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo,
+  .userInfo {
+    display: flex;
+    align-items: center;
+  }
+
   .title {
     margin-left: 20px;
-    margin-right: 788px;
-
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
     font-size: 30px;
