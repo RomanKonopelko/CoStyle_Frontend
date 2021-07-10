@@ -1,10 +1,10 @@
 import React, { memo } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 
-const Chart = ({ tableData, handleChange }) => {
-  // console.log(tableData, handleChange);
-  const { categoriesSummary } = tableData;
+import './Chart.scss';
 
+const Chart = ({ tableData, handleChange }) => {
+  const { categoriesSummary } = tableData;
   const resultСategoriesSummary = Object.entries(categoriesSummary);
 
   const result = [];
@@ -18,7 +18,7 @@ const Chart = ({ tableData, handleChange }) => {
   );
 
   return (
-    <div style={{ height: '320px', width: '320px' }}>
+    <div className="doughnutSize">
       <Doughnut
         onChange={handleChange}
         data={{
@@ -37,9 +37,6 @@ const Chart = ({ tableData, handleChange }) => {
           plugins: {
             legend: {
               display: false,
-            },
-            title: {
-              display: true,
             },
           },
           responsive: true,
