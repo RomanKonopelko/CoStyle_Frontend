@@ -1,17 +1,10 @@
-.formWrapp {
-  padding-top: 52px;
-  padding-right: 85px;
-  padding-bottom: 52px;
-  padding-left: 95px;
-
-  background-color: rgba(255, 255, 255, 0.4);
-  text-align: center;
-
-  .form {
-    padding: 65px;
-    background-color: white;
-    border-radius: 20px;
-  }
+.form {
+  padding-right: 65px;
+  padding-left: 65px;
+  padding-top: 40px;
+  padding-bottom: 60px;
+  background-color: white;
+  border-radius: 20px;
 
   .logo {
     display: flex;
@@ -26,7 +19,6 @@
     font-size: 30px;
     line-height: 1.5;
     color: $title-text-color;
-    text-align: center;
   }
 
   .img {
@@ -36,8 +28,8 @@
     margin-right: 20px;
   }
 
-  .MuiInputBase-input {
-    width: 310px;
+  .MuiInputBase-input.MuiInputLabel-root {
+    width: 100%;
   }
 
   .MuiInputLabel-root {
@@ -45,6 +37,7 @@
     font-weight: 400;
     font-size: 18px;
     color: $secondary-text-color;
+    width: 100%;
   }
 
   .MuiSvgIcon-root {
@@ -52,23 +45,22 @@
   }
 
   .textField {
-    text-align: center;
     margin-top: 34px;
-    align-items: center;
-    justify-content: center;
   }
   .btn-form {
-    font-family: 'Circe', sans-serif;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 26, 53px;
-    // letter-spacing: 22px;
     margin-top: 34px;
-    padding: 13px 75px;
+    width: 100%;
+    padding: 13px;
     border: 1px solid $accent-color2;
     border-radius: 20px;
     color: $accent-color2;
     background-color: white;
+
+    font-family: 'Circe', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 26, 53px;
+    letter-spacing: 2px;
   }
 
   .btn-form.MuiButton-root:hover {

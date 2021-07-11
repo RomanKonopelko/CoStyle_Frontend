@@ -5,7 +5,7 @@ import img from '../../images/Frame.png';
 
 export default function RegistrationPage() {
   return (
-    <div className="registrationPage">
+    <div className="mainPage">
       <div className="split left">
         <div className="centred">
           <img src={img} alt="finance app" className="imgApp" />
@@ -14,7 +14,7 @@ export default function RegistrationPage() {
       </div>
       <div className="split right">
         <div className="centred">
-          <RegistrationForm className="registrationForm" />
+          <RegistrationForm />
         </div>
       </div>
     </div>
