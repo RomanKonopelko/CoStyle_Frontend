@@ -1,40 +1,94 @@
+.login-page-bcgi {
+  background-color: rgba(255, 255, 255, 0.4);
+  background-size: cover;
+
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    background-image: url('../../images/login-page-bcgi-768.png');
+  }
+
+  @media screen and (min-width: 1280px) {
+    background-image: url('../../images/login-page-bcgi.png');
+  }
+  .container {
+    padding-left: 76px;
+
+    @media screen and (max-width: 1279px) {
+      padding-left: 114px;
+      padding-right: 114px;
+    }
+
+    @media screen and (max-width: 767px) {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+}
+
 .mainPage {
   display: flex;
-  .split {
+
+  height: 100vh;
+
+  @media screen and (max-width: 1279px) {
+    flex-direction: column;
   }
 
   .left {
-    left: 0;
-    background-color: #e5e5e5;
-    background-size: cover;
-    background-image: url('../../images/Ellipse1.png');
+    width: 560px;
+
+    padding-top: 150px;
+    padding-right: 50px;
+
+    @media screen and (max-width: 1279px) {
+      display: flex;
+      align-items: center;
+
+      padding-top: 60px;
+    }
+
+    @media screen and (max-width: 767px) {
+      display: none;
+    }
+
+    .img {
+      width: 450px;
+      height: 410px;
+
+      @media screen and (max-width: 1279px) {
+        width: 274px;
+        height: 250px;
+
+        margin-right: 40px;
+      }
+    }
+
+    .title {
+      margin-top: 30px;
+
+      font-weight: 400;
+      font-size: 30px;
+      line-height: 45px;
+      text-align: center;
+
+      color: $title-text-color;
+    }
   }
 
   .right {
-    right: 0;
-    background: rgba(158, 158, 158, 0.8);
-    background-size: cover;
-    backdrop-filter: blur(50px);
-    background-image: url('../../images/Rectangle4.png');
-
     padding-top: 136px;
-    padding-right: 85px;
-    padding-bottom: 52px;
     padding-left: 95px;
-  }
 
-  .centered {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    //text-align: center;
-  }
+    @media screen and (max-width: 1279px) {
+      padding-top: 50px;
+      padding-left: 0;
+    }
 
-  .financeApp {
-    text-align: center;
-    font-size: 30px;
-    font-weight: 400;
-    margin-top: 31px;
+    @media screen and (max-width: 767px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      padding: 0;
+    }
   }
 }

@@ -48,57 +48,53 @@ export default function LoginForm() {
           <img className="img" src={headerLogo} alt="logo" />
           <h1 className="title">Wallet</h1>
         </div>
-        <div>
-          <TextField
-            className="textField"
-            InputProps={{
-              endAdornment: (
-                <Icon color="action" position="start">
-                  <EmailIcon />
-                </Icon>
-              ),
-            }}
-            id="email"
-            name="email"
-            label="E-mail"
-            value={formik.values.email}
-            onChange={formik.handleChange}
-            error={formik.touched.email && Boolean(formik.errors.email)}
-            helperText={formik.touched.email && formik.errors.email}
-          />
-        </div>
 
-        <div>
-          <TextField
-            className="textField"
-            InputProps={{
-              endAdornment: (
-                <Icon color="action" position="start">
-                  <LockIcon />
-                </Icon>
-              ),
-            }}
-            id="password"
-            name="password"
-            label="Пароль"
-            type="password"
-            value={formik.values.password}
-            onChange={formik.handleChange}
-            error={formik.touched.password && Boolean(formik.errors.password)}
-            helperText={formik.touched.password && formik.errors.password}
-          />
-        </div>
+        <TextField
+          className="textField"
+          InputProps={{
+            endAdornment: (
+              <Icon color="action" position="start">
+                <EmailIcon />
+              </Icon>
+            ),
+          }}
+          id="email"
+          name="email"
+          label="E-mail"
+          value={formik.values.email}
+          onChange={formik.handleChange}
+          error={formik.touched.email && Boolean(formik.errors.email)}
+          helperText={formik.touched.email && formik.errors.email}
+        />
 
-        <div>
+        <TextField
+          className="textField"
+          InputProps={{
+            endAdornment: (
+              <Icon color="action" position="start">
+                <LockIcon />
+              </Icon>
+            ),
+          }}
+          id="password"
+          name="password"
+          label="Пароль"
+          type="password"
+          value={formik.values.password}
+          onChange={formik.handleChange}
+          error={formik.touched.password && Boolean(formik.errors.password)}
+          helperText={formik.touched.password && formik.errors.password}
+        />
+
+        <div className="login-form-btn-container">
           <Button className="btn-form" type="submit">
             Вход
           </Button>
-        </div>
-        <NavLink to={routes.register}>
-          <div>
+
+          <NavLink to={routes.register}>
             <Button className="btn-form">Регистрация</Button>
-          </div>
-        </NavLink>
+          </NavLink>
+        </div>
       </form>
     </div>
   );

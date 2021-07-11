@@ -8,10 +8,20 @@
   background-color: white;
   border-radius: 20px;
 
+  @media screen and (max-width: 767px) {
+    width: 280px;
+
+    padding-top: 110px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
   .logo {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    padding-right: 20px;
   }
 
   .title {
@@ -47,22 +57,44 @@
   }
 
   .textField {
-    margin-top: 34px;
+    width: 100%;
+
+    margin-top: 26px;
   }
+  .login-form-btn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 36px;
+  }
+
   .btn-form {
-    margin-top: 34px;
     width: 300px;
-    padding: 13px;
+    height: 50px;
+
+    margin-top: 20px;
+    padding-top: 16px;
+    padding-bottom: 13px;
+
     border: 1px solid $accent-color2;
     border-radius: 20px;
-    color: $accent-color2;
     background-color: white;
 
-    font-family: 'Circe', sans-serif;
+    color: $accent-color2;
+    font-family: Circe;
+    font-style: normal;
     font-weight: 400;
     font-size: 18px;
-    line-height: 26, 53px;
-    letter-spacing: 2px;
+    line-height: 27px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+
+    @media screen and (max-width: 767px) {
+      width: 280px;
+    }
   }
 
   .btn-form.MuiButton-root:hover {

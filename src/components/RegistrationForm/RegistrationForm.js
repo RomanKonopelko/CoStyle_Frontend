@@ -59,105 +59,98 @@ export default function RegistrationForm() {
           <img className="img" src={headerLogo} alt="logo" />
           <h1 className="title">Wallet</h1>
         </div>
-        <div>
-          <TextField
-            className="textField"
-            InputProps={{
-              endAdornment: (
-                <Icon color="action" position="start">
-                  <EmailIcon />
-                </Icon>
-              ),
-            }}
-            id="email"
-            name="email"
-            label="E-mail"
-            value={formik.values.email}
-            onChange={formik.handleChange}
-            error={formik.touched.email && Boolean(formik.errors.email)}
-            helperText={formik.touched.email && formik.errors.email}
-          />
-        </div>
 
-        <div>
-          <TextField
-            className="textField"
-            InputProps={{
-              endAdornment: (
-                <Icon color="action" position="start">
-                  <LockIcon />
-                </Icon>
-              ),
-            }}
-            id="password"
-            name="password"
-            label="Пароль"
-            type="password"
-            value={formik.values.password}
-            onChange={formik.handleChange}
-            error={formik.touched.password && Boolean(formik.errors.password)}
-            helperText={formik.touched.password && formik.errors.password}
-          />
-        </div>
+        <TextField
+          className="textField"
+          InputProps={{
+            endAdornment: (
+              <Icon color="action" position="start">
+                <EmailIcon />
+              </Icon>
+            ),
+          }}
+          id="email"
+          name="email"
+          label="E-mail"
+          value={formik.values.email}
+          onChange={formik.handleChange}
+          error={formik.touched.email && Boolean(formik.errors.email)}
+          helperText={formik.touched.email && formik.errors.email}
+        />
 
-        <div>
-          <TextField
-            className="textField"
-            InputProps={{
-              endAdornment: (
-                <Icon color="action" position="start">
-                  <LockIcon />
-                </Icon>
-              ),
-            }}
-            id="confirmPassword"
-            name="confirmPassword"
-            label="Подтвердите пароль"
-            type="password"
-            value={formik.values.confirmPassword}
-            onChange={formik.handleChange}
-            error={
-              formik.touched.confirmPassword &&
-              Boolean(formik.errors.confirmPassword)
-            }
-            helperText={
-              formik.touched.confirmPassword && formik.errors.confirmPassword
-            }
-          />
-        </div>
+        <TextField
+          className="textField"
+          InputProps={{
+            endAdornment: (
+              <Icon color="action" position="start">
+                <LockIcon />
+              </Icon>
+            ),
+          }}
+          id="password"
+          name="password"
+          label="Пароль"
+          type="password"
+          value={formik.values.password}
+          onChange={formik.handleChange}
+          error={formik.touched.password && Boolean(formik.errors.password)}
+          helperText={formik.touched.password && formik.errors.password}
+        />
 
-        <div>
-          <TextField
-            className="textField"
-            InputProps={{
-              endAdornment: (
-                <Icon color="action" position="start">
-                  <AccountBoxIcon />
-                </Icon>
-              ),
-            }}
-            id="name"
-            name="name"
-            label="Ваше имя"
-            type="name"
-            value={formik.values.name}
-            onChange={formik.handleChange}
-            error={formik.touched.name && Boolean(formik.errors.name)}
-            helperText={formik.touched.name && formik.errors.name}
-          />
-        </div>
+        <TextField
+          className="textField"
+          InputProps={{
+            endAdornment: (
+              <Icon color="action" position="start">
+                <LockIcon />
+              </Icon>
+            ),
+          }}
+          id="confirmPassword"
+          name="confirmPassword"
+          label="Подтвердите пароль"
+          type="password"
+          value={formik.values.confirmPassword}
+          onChange={formik.handleChange}
+          error={
+            formik.touched.confirmPassword &&
+            Boolean(formik.errors.confirmPassword)
+          }
+          helperText={
+            formik.touched.confirmPassword && formik.errors.confirmPassword
+          }
+        />
 
-        <div>
+        <TextField
+          className="textField"
+          InputProps={{
+            endAdornment: (
+              <Icon color="action" position="start">
+                <AccountBoxIcon />
+              </Icon>
+            ),
+          }}
+          id="name"
+          name="name"
+          label="Ваше имя"
+          type="name"
+          value={formik.values.name}
+          onChange={formik.handleChange}
+          error={formik.touched.name && Boolean(formik.errors.name)}
+          helperText={formik.touched.name && formik.errors.name}
+        />
+
+        <div className="login-form-btn-container">
           <Button className="btn-form" type="submit">
             Регистрация
           </Button>
-        </div>
 
-        <NavLink to={routes.login}>
-          <div>
-            <Button className="btn-form">Вход</Button>
-          </div>
-        </NavLink>
+          <NavLink to={routes.login}>
+            <div>
+              <Button className="btn-form">Вход</Button>
+            </div>
+          </NavLink>
+        </div>
       </form>
     </div>
   );
