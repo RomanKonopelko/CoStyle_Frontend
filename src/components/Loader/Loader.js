@@ -1,10 +1,9 @@
 import Loader from 'react-loader-spinner';
-import s from './loader.module.scss';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 function Load() {
   return (
-    <div className={s.loaderContainer}>
+    <div className="loaderContainer">
       <Loader
         type="MutatingDots"
         color="#24cca7"

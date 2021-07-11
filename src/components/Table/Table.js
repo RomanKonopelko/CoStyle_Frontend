@@ -7,8 +7,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
-import './Table.scss';
-
 function MyTable({ tableData, selected, handleChange }) {
   const { categoriesSummary, incomeValue, consumptionValue } = tableData;
   const result = Object.entries(categoriesSummary);

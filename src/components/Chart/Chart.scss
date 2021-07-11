@@ -1,18 +1,18 @@
 .doughnutSize {
   // для мобилки
-  // height: 280px;
-  // width: 280px;
-  // margin-bottom: 30px;
+  height: 280px;
+  width: 280px;
+  margin-bottom: 30px;
 
-  // @include for-size(tablet) {
-  //   // для планшета
-  height: 320px;
-  width: 320px;
-  //   margin-right: 35px;
-  // }
+  @include for-size(tablet) {
+    //   // для планшета
+    height: 320px;
+    width: 320px;
+    margin-right: 35px;
+  }
 
-  // @include for-size(desktop) {
-  // для  десктоп
-  margin-right: 30px;
-  // }
+  @include for-size(desktop) {
+    // для  десктоп
+    margin-right: 30px;
+  }
 }

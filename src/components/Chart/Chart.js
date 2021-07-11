@@ -1,8 +1,6 @@
 import React, { memo } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 
-import './Chart.scss';
-
 const Chart = ({ tableData, handleChange }) => {
   const { categoriesSummary } = tableData;
   const resultСategoriesSummary = Object.entries(categoriesSummary);

@@ -5,32 +5,32 @@
   line-height: 24px;
   color: #000000;
 
-  // @include for-size(tablet) {
-  //   //   для планшета и для  десктоп
-  width: 350px;
-  // }
+  @include for-size(tablet) {
+    //   //   для планшета и для  десктоп
+    width: 350px;
+  }
 }
 
 .formControl {
   // для мобилки
-  // width: 280px;
+  width: 280px;
   height: 50px;
   border-color: black;
 
-  // @include for-size(tablet) {
-  //   //   для планшета и для  десктоп
-  width: 166px;
-  // }
+  @include for-size(tablet) {
+    //   //   для планшета и для  десктоп
+    width: 166px;
+  }
 }
 
 .formControl:not(:last-child) {
   // для мобилки
-  // margin-bottom: 20px;
+  margin-bottom: 20px;
 
-  // @include for-size(tablet) {
-  //   // для планшета и для  десктоп
-  margin-right: 9px;
-  // }
+  @include for-size(tablet) {
+    //   // для планшета и для  десктоп
+    margin-right: 9px;
+  }
 }
 
 .tableHead {
