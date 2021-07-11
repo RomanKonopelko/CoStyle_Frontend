@@ -9,67 +9,67 @@
     //   //   для планшета и для  десктоп
     width: 350px;
   }
-}
 
-.formControl {
-  // для мобилки
-  width: 280px;
-  height: 50px;
-  border-color: black;
+  .formControl {
+    // для мобилки
+    width: 280px;
+    height: 50px;
+    border-color: black;
 
-  @include for-size(tablet) {
-    //   //   для планшета и для  десктоп
-    width: 166px;
+    @include for-size(tablet) {
+      //   //   для планшета и для  десктоп
+      width: 166px;
+    }
   }
-}
 
-.formControl:not(:last-child) {
-  // для мобилки
-  margin-bottom: 20px;
+  .formControl:not(:last-child) {
+    // для мобилки
+    margin-bottom: 20px;
 
-  @include for-size(tablet) {
-    //   // для планшета и для  десктоп
-    margin-right: 9px;
+    @include for-size(tablet) {
+      //   // для планшета и для  десктоп
+      margin-right: 9px;
+    }
   }
-}
 
-.tableHead {
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 27px;
+  .tableHead {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 27px;
 
-  background-color: #ffffff;
-  color: #000000;
-  border-radius: 30px;
-}
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 30px;
+  }
 
-.tableColorRow {
-  text-align: start;
-  align-items: baseline;
-  justify-content: center;
-}
+  .tableColorRow {
+    text-align: start;
+    align-items: baseline;
+    justify-content: center;
+  }
 
-.tableOption {
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  margin-right: 16px;
-}
+  .tableOption {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-right: 16px;
+  }
 
-.hiddenBorder {
-  border-bottom-style: hidden;
-}
+  .hiddenBorder {
+    border-bottom-style: hidden;
+  }
 
-.tableValue {
-  font-weight: 700;
-}
+  .tableValue {
+    font-weight: 700;
+  }
 
-.tableConsumptionValue {
-  font-weight: 700;
-  color: rgba(255, 101, 150, 1);
-}
+  .tableConsumptionValue {
+    font-weight: 700;
+    color: rgba(255, 101, 150, 1);
+  }
 
-.tableIncomeValue {
-  font-weight: 700;
-  color: rgba(36, 204, 167, 1);
+  .tableIncomeValue {
+    font-weight: 700;
+    color: rgba(36, 204, 167, 1);
+  }
 }
