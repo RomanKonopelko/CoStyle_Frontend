@@ -1,4 +1,4 @@
-.tableForm {
+.tableFormStatistic {
   // для мобилки
   // width: 280px;
   font-size: 16px;
@@ -32,11 +32,26 @@
     }
   }
 
-  .tableHead {
+  .MuiOutlinedInput-root {
+    border-radius: 30px;
+  }
+
+  .MuiInputBase-root {
+    color: black;
+  }
+
+  .MuiTableCell-head {
     font-weight: 700;
     font-size: 18px;
     line-height: 27px;
+    text-align: center;
+  }
 
+  .MuiTableHead-root {
+    display: table-caption;
+  }
+
+  .tableHead {
     background-color: #ffffff;
     color: #000000;
     border-radius: 30px;

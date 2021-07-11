@@ -13,7 +13,7 @@ function MyTable({ tableData, selected, handleChange }) {
 
   return (
     <div>
-      <div className="tableForm">
+      <div className="tableFormStatistic">
         <FormControl variant="outlined" className="formControl">
           <Select
             value={selected}
