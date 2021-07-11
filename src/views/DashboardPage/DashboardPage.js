@@ -39,8 +39,8 @@ export default function DashboardPage() {
           <div className="dashboradPage">
             <div>
               <Navigation />
-              <Balance />
-              <Currency />
+              <Balance className="balance" />
+              <Currency className="currency" />
               {isShowModal && (
                 <Modal>
                   {' '}

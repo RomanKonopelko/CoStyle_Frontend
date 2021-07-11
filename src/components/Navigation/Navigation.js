@@ -1,24 +1,26 @@
 import { NavLink } from 'react-router-dom';
 
 import routes from '../../routes';
+import home from '../../images/home.png';
+import stat from '../../images/stat.png';
 
 import { Typography } from '@material-ui/core';
 // import LockIcon from '@material-ui/icons/Lock';
-import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
-import EqualizerOutlinedIcon from '@material-ui/icons/EqualizerOutlined';
+// import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
+// import EqualizerOutlinedIcon from '@material-ui/icons/EqualizerOutlined';
 
 export default function Navigation() {
   return (
     <div>
-      <nav>
+      <nav className="NavigationDashbord">
         <Typography variant="h6">
           <NavLink
             exact
             to={routes.home}
-            className="Nav-link"
-            activeClassName="NavLink--active"
+            className="NavLink First"
+            activeClassName="NavLinkActive"
           >
-            <HomeRoundedIcon />
+            <img src={home} className="ImageNav" alt="home page" />
             Главная
           </NavLink>
         </Typography>
@@ -26,10 +28,10 @@ export default function Navigation() {
           <NavLink
             exact
             to={routes.diagram}
-            className="Nav-link"
-            activeClassName="NavLink--active"
+            className="NavLink"
+            activeClassName="NavLinkActive"
           >
-            <EqualizerOutlinedIcon />
+            <img src={stat} alt="statistic page" className="ImageNav" />
             Статистика
           </NavLink>
         </Typography>
