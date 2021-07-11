@@ -1,3 +1,20 @@
 .diagrmTab {
+  // @include for-size(tablet) {
+  // для планшета и для  десктоп
   display: flex;
+  // }
+}
+
+.titleStatistic {
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 45px;
+
+  // для мобилки
+  // margin-bottom: 10px;
+
+  // @include for-size(tablet) {
+  // для планшета и для  десктоп
+  margin-bottom: 20px;
+  // }
 }

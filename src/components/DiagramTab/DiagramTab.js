@@ -1,22 +1,20 @@
 import { useEffect, useState, memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import moment from 'moment';
-import Load from '../../components/Loader/Loader';
+import './DiagramTab.scss';
+
 import Loader from 'react-loader-spinner';
+import Chart from '../Chart';
+import Table from '../Table';
 
 import { Operations } from '../../redux/transactions';
 import { Selectors } from '../../redux/transactions';
 import { Action } from '../../redux/transactions';
 
-import Chart from '../Chart';
-import Table from '../Table';
-
 export default function DiagramTab() {
   const dispatch = useDispatch();
 
   const transactionsList = useSelector(Selectors.getTransactionsStatistic);
-  console.log('transactionsList', transactionsList);
-
   const { categoriesSummary, incomeValue, consumptionValue } = transactionsList;
 
   useEffect(() => {
@@ -49,12 +47,26 @@ export default function DiagramTab() {
     <>
       {transactionsList ? (
         <>
-          <Chart tableData={transactionsList} handleChange={handleChange} />
-          <Table
-            tableData={transactionsList}
-            selected={selected}
-            handleChange={handleChange}
-          />
+          <div>
+            <h2 className="titleStatistic">Статистика</h2>
+
+            <div className="diagrmTab">
+              <div>
+                <Chart
+                  tableData={transactionsList}
+                  handleChange={handleChange}
+                />
+              </div>
+
+              <div>
+                <Table
+                  tableData={transactionsList}
+                  selected={selected}
+                  handleChange={handleChange}
+                />
+              </div>
+            </div>
+          </div>
         </>
       ) : (
         <Loader />
