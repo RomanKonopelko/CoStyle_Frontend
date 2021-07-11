@@ -24,7 +24,7 @@ const Chart = ({ tableData, handleChange }) => {
             {
               data: result,
               backgroundColor: resultColor,
-              hoverOffset: 5,
+              hoverOffset: 3,
             },
           ],
         }}
