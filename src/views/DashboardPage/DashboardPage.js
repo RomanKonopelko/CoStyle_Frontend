@@ -24,9 +24,12 @@ const DiagramTab = lazy(() => import('../../components/DiagramTab'));
 export default function DashboardPage() {
   const isShowModal = useSelector(selectorsAuth.getShowModal);
 
+  // Added new logic by Chernyshenko
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(Operations.getTransaction());
+    dispatch(Operations.getTransactionsStatistic());
   }, [dispatch]);
 
   const transactionsList = useSelector(Selectors.getAllTransactions);

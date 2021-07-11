@@ -7,16 +7,19 @@ import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 const CURRENCY_EXCHANGE = ['EUR', 'USD', 'RUR'];
+const TIME_NORMOLIZE = 60000;
 
 const getCurrencyRate = async () => {
   try {
-    const { data } = await axios.get(
-      'https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11',
-    );
-    // console.log(data);
+    // const { data } = await axios.get(
+    //   'https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11',
+
+    const { data } = await axios.get('https://api.monobank.ua/bank/currency');
+    console.log(data);
+    console.log('HELLO');
     return data;
   } catch (e) {
-    // console.log(e.message);
+    console.log(e.message);
   }
 };
 
@@ -28,11 +31,52 @@ const pad = n => {
 export default function Currency() {
   const [currency, setCurrency] = useState([]);
 
-  useEffect(() => {
-    getCurrencyRate().then(data => setCurrency(data));
-    // console.log('say Hello');
-  }, []);
+  const timeOnLocalstorage = Number(localStorage.getItem('time'));
+  const currencyOnLocalstorage = localStorage.getItem('currency');
 
+  console.log(
+    new Date().valueOf() > Number(timeOnLocalstorage) + TIME_NORMOLIZE,
+  );
+
+  useEffect(() => {
+    if (!currencyOnLocalstorage && !timeOnLocalstorage) {
+      getCurrencyRate().then(data => {
+        console.log('Noooo!!!It was ME!!!');
+        setCurrency(data);
+        localStorage.setItem('currency', JSON.stringify(data));
+      });
+      localStorage.setItem('time', JSON.stringify(new Date().valueOf()));
+      return;
+    }
+
+    if (new Date().valueOf() > timeOnLocalstorage + TIME_NORMOLIZE) {
+      getCurrencyRate().then(data => {
+        console.log('It was ME!!!');
+        setCurrency(data);
+        localStorage.setItem('currency', JSON.stringify(data));
+      });
+      localStorage.setItem('time', JSON.stringify(new Date().valueOf()));
+      return;
+    }
+
+    if (currencyOnLocalstorage) {
+      console.log('No, MAN!!!It was ME!!!');
+      const parsedLocalStorage = JSON.parse(currencyOnLocalstorage);
+      setCurrency(parsedLocalStorage);
+      return;
+    }
+
+    if (currency.length === 0) {
+      setTimeout(() => {
+        getCurrencyRate().then(data => {
+          console.log('Xa-XA-XA!!!!Tht is me');
+          setCurrency(data);
+          localStorage.setItem('currency', JSON.stringify(data));
+        });
+        localStorage.setItem('time', JSON.stringify(new Date().valueOf()));
+      }, 2000);
+    }
+  }, []);
   // console.log(currency);
 
   const money = [
