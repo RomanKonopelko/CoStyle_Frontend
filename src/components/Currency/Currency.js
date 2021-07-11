@@ -101,49 +101,46 @@ export default function Currency() {
   ];
   return (
     <>
-      <div>
-        {!money ? (
-          <div className="loaderContainer">
-            <Loader
-              type="MutatingDots"
-              color="#24cca7"
-              secondaryColor="#4a56e2"
-              height={120}
-              width={120}
-              timeout={5000}
-            />
-          </div>
-        ) : (
-          <table className="tableCurrency">
-            <thead className="tableHead">
-              <tr>
-                <th className="tableHeaderTitle">Валюта</th>
-                <th className="tableHeaderTitle">Покупка</th>
-                <th className="tableHeaderTitle">Продажа</th>
-              </tr>
-            </thead>
-            <tbody className="currencyBody">
-              {money.map(item => {
-                const buy = pad(Number(item.buy).toFixed(2));
-                const sale = pad(Number(item.sale).toFixed(2));
+      {!money ? (
+        <div className="loaderContainer">
+          <Loader
+            type="MutatingDots"
+            color="#24cca7"
+            secondaryColor="#4a56e2"
+            height={120}
+            width={120}
+            timeout={5000}
+          />
+        </div>
+      ) : (
+        <table className="tableCurrency">
+          <thead className="tableHead">
+            <tr>
+              <th className="tableHeaderTitle">Валюта</th>
+              <th className="tableHeaderTitle">Покупка</th>
+              <th className="tableHeaderTitle">Продажа</th>
+            </tr>
+          </thead>
+          <tbody className="currencyBody">
+            {money.map(item => {
+              const buy = pad(Number(item.buy).toFixed(2));
+              const sale = pad(Number(item.sale).toFixed(2));
 
-                return CURRENCY_EXCHANGE.map(coint => {
-                  if (coint === item.ccy) {
-                    return (
-                      <tr key={item.ccy}>
-                        <td className="rowTitle">{item.ccy}</td>
-                        <td className="rowTitle">{buy}</td>
-                        <td className="rowTitle">{sale}</td>
-                      </tr>
-                    );
-                  }
-                });
-              })}
-              <div className="tableFooter"></div>
-            </tbody>
-          </table>
-        )}
-      </div>
+              return CURRENCY_EXCHANGE.map(coint => {
+                if (coint === item.ccy) {
+                  return (
+                    <tr key={item.ccy}>
+                      <td className="rowTitle">{item.ccy}</td>
+                      <td className="rowTitle second">{buy}</td>
+                      <td className="rowTitle third">{sale}</td>
+                    </tr>
+                  );
+                }
+              });
+            })}
+          </tbody>
+        </table>
+      )}
     </>
   );
 }
