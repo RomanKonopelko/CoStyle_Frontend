@@ -15,8 +15,8 @@ export default function Balance() {
   return (
     <>
       {balance !== 0 ? (
-        <div className="balance-container">
-          <h3 className="title">Ваш баланс</h3>
+        <div className="balanceContainer">
+          <h3 className="balanceTitle">Ваш баланс</h3>
           <span className="unicode">₴</span>
           <span className="balance">{balance}</span>
         </div>
