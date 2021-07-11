@@ -13,7 +13,7 @@
   }
 
   .title {
-    font-family: $primary-font-family;
+    font-family: $secondary-font-family;
     display: inline;
     font-weight: 700;
     font-size: 30px;
@@ -33,7 +33,7 @@
   }
 
   .MuiInputLabel-root {
-    font-family: $secondary-font-family;
+    font-family: $primary-font-family;
     font-weight: 400;
     font-size: 18px;
     color: $secondary-text-color;
