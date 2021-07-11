@@ -91,6 +91,10 @@
     text-align: center;
     letter-spacing: 0.1em;
     text-transform: uppercase;
+
+    @media screen and (max-width: 767px) {
+      width: 280px;
+    }
   }
 
   .btn-form.MuiButton-root:hover {
