@@ -1,7 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Selectors } from '../../redux/transactions';
 import Loader from 'react-loader-spinner';
-import classes from './Balance.module.scss';
 
 export default function Balance() {
   let balance = 0;
@@ -16,12 +15,10 @@ export default function Balance() {
   return (
     <>
       {balance !== 0 ? (
-        <div className={classes.mainContainer}>
-          <h3 className={classes.title}>ВАШ БАЛАНС</h3>
-          <div className={classes.balanceContainer}>
-            <span className={classes.unicode}>₴</span>
-            <span className={classes.balance}>{balance}</span>
-          </div>
+        <div className="balance-container">
+          <h3 className="title">Ваш баланс</h3>
+          <span className="unicode">₴</span>
+          <span className="balance">{balance}</span>
         </div>
       ) : (
         <Loader />
