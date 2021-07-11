@@ -8,8 +8,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import { makeStyles } from '@material-ui/styles';
 
-import './homeTab.scss';
-
 const columns = [
   { id: 'date', label: 'Дата' },
   { id: 'type', label: 'Тип' },

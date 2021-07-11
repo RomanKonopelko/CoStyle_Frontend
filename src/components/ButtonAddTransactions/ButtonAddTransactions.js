@@ -5,8 +5,6 @@ import Icon from '@material-ui/core/Icon';
 import AddIcon from '@material-ui/icons/Add';
 import grey from '@material-ui/core/colors/grey';
 
-import './ButtonAddTransaction.scss';
-
 export default function ButtonAddTransaction() {
   const dispatch = useDispatch();
   const isShowModal = useSelector(selectorsAuth.getShowModal);

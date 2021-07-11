@@ -5,5 +5,26 @@
 @import './sass/base/common';
 @import './sass/base/normalize';
 
+// LOGIN PAGE
+@import './views/LoginPage/loginPage.scss';
 @import './components/loginForm/loginForm.scss';
+
+// REGISTER PAGE
+@import './views/RegistrationPage/registrationPage.scss';
 @import './components/RegistrationForm/RegistrationForm.scss';
+
+// DASHBOARD PAGE
+@import './views/DashboardPage/dashboardPage.scss';
+@import './components/Header/header.scss';
+@import './components/HomeTab/homeTab.scss';
+@import './components/Navigation/nav.scss';
+@import './components/DiagramTab/diagramTab.scss';
+@import './components/Chart/Chart.scss';
+@import './components/Table/Table.scss';
+@import './components/ButtonAddTransactions/ButtonAddTransaction.scss';
+
+// MINOR COMPONENTS
+@import './components/Loader/loader.scss';
+@import './components/ModalLogout/ModalLogout.scss';
+@import './components/Shared/Button.scss';
+@import './components/Shared/modal.scss';

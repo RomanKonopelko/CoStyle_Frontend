@@ -1,7 +1,6 @@
 import { useEffect, useState, memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import moment from 'moment';
-import './DiagramTab.scss';
 
 import Loader from 'react-loader-spinner';
 import Chart from '../Chart';

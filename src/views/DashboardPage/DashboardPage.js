@@ -16,8 +16,6 @@ import ButtonAddTransaction from '../../components/ButtonAddTransactions/ButtonA
 import { Route, Switch } from 'react-router';
 import ModalAddTransaction from '../../components/ModalAddTransaction/ModalAddTransaction';
 
-import './dashboardPage.scss';
-
 import { lazy } from 'react';
 
 const HomeTab = lazy(() => import('../../components/HomeTab/HomeTab'));

@@ -7,8 +7,6 @@ import { Typography } from '@material-ui/core';
 import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
 import EqualizerOutlinedIcon from '@material-ui/icons/EqualizerOutlined';
 
-import './nav.scss';
-
 export default function Navigation() {
   return (
     <div>

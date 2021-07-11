@@ -2,8 +2,6 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectorsAuth, ActionAuth } from '../../redux/auth';
 
-import './modal.scss';
-
 export default function Modal({ children }) {
   const dispatch = useDispatch();
   const isShowModal = useSelector(selectorsAuth.getShowModal);

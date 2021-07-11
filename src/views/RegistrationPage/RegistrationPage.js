@@ -1,6 +1,5 @@
 import React from 'react';
 import RegistrationForm from '../../components/RegistrationForm/';
-import './registrationPage.scss';
 
 import img from '../../images/Frame.png';
 

@@ -4,7 +4,6 @@ import headerLogo from './header-logo.png';
 import { selectorsAuth } from '../../redux/auth';
 import Avatar from '@material-ui/core/Avatar';
 import Container from '../Container/Container';
-import './header.scss';
 
 export default function Header() {
   const name = useSelector(selectorsAuth.getUsername);
