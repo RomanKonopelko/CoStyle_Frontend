@@ -10,7 +10,7 @@ export default function ModalLogout() {
   };
 
   return (
-    <button type="button" className="btn" onClick={onLogout}>
+    <button type="button" className="btnLogout" onClick={onLogout}>
       <ExitToAppIcon className="icon" />
       <p className="text">Выйти</p>
     </button>

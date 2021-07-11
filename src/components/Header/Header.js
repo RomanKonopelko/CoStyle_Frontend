@@ -17,21 +17,9 @@ export default function Header() {
             <h1 className="title">Wallet</h1>
           </div>
           <div className="userInfo">
-            <Avatar
-              style={{
-                width: '30px',
-                height: '30px',
-                fontSize: '16px',
-                backgroundColor: '#4a56e2',
-                fontWeight: 'normal',
-                fontStyle: 'italic',
-              }}
-            >
-              {name.substr(0, 1)}
-            </Avatar>
+            <Avatar className="avatarUser">{name.substr(0, 1)}</Avatar>
             <p className="name">{name}</p>
             <span className="decor"></span>
-
             <ModalLogout />
           </div>
         </div>
