@@ -1,9 +1,9 @@
 // order matters //
 
 @import './sass/utils/variables';
+@import './sass/utils/fonts';
 @import './sass/utils/mixins';
 @import './sass/base/common';
-@import './sass/base/normalize';
 
 // LOGIN PAGE
 @import './views/LoginPage/loginPage.scss';
