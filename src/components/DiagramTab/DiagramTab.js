@@ -16,12 +16,12 @@ export default function DiagramTab() {
   const transactionsList = useSelector(Selectors.getTransactionsStatistic);
   const { categoriesSummary, incomeValue, consumptionValue } = transactionsList;
 
-  useEffect(() => {
-    categoriesSummary === 0 &&
-      consumptionValue === 0 &&
-      incomeValue === 0 &&
-      dispatch(Operations.getTransactionsStatistic());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   categoriesSummary === 0 &&
+  //     consumptionValue === 0 &&
+  //     incomeValue === 0 &&
+  //     dispatch(Operations.getTransactionsStatistic());
+  // }, [dispatch]);
 
   const selected = useSelector(Selectors.getFilterValue);
 

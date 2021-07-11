@@ -67,7 +67,7 @@ export default function ModalAddTransaction() {
   const classes = useStyles();
 
   const [transaction, setTransaction] = React.useState({
-    category: 'profit',
+    category: 'Другое',
     time: '',
     amount: 0,
     type: false,
@@ -77,7 +77,7 @@ export default function ModalAddTransaction() {
 
   console.log(transaction);
   // Switch for State
-  const disputch = useDispatch();
+  const dispatch = useDispatch();
 
   const handleChange = e => {
     const { name, value } = e.currentTarget;
@@ -110,7 +110,7 @@ export default function ModalAddTransaction() {
   const handleSubmit = e => {
     e.preventDefault();
     // console.log({ category, time, amount, sort, commentary });
-    disputch(
+    dispatch(
       Operations.addTransaction({
         category,
         time,
@@ -119,6 +119,10 @@ export default function ModalAddTransaction() {
         commentary,
       }),
     );
+    setTimeout(() => {
+      dispatch(Operations.getTransaction());
+      dispatch(Operations.getTransactionsStatistic());
+    }, [3000]);
     reset();
   };
 
