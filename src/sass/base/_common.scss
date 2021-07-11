@@ -1,18 +1,10 @@
-html {
-  box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
 body {
   font-family: $primary-font-family;
   color: $primary-text-color;
   overflow-x: hidden;
   font-family: $secondary-font-family;
+  font-style: normal;
+  font-weight: 400;
   //backdrop-filter: blur(50px);
   //background-size: cover;
   //background-image: url('../../images/Rectangle3.png');
@@ -27,6 +19,7 @@ img {
 a {
   text-decoration: none;
 }
+
 ul,
 h1,
 h2,
@@ -74,14 +67,14 @@ li {
   display: none;
 }
 
-// .hidden {
-//   position: absolute !important;
-//   clip: rect(1px 1px 1px 1px);
-//   /* IE6, IE7 */
-//   clip: rect(1px 1px 1px 1px);
-//   padding: 0 !important;
-//   border: 0 !important;
-//   height: 0 !important;
-//   width: 0 !important;
-//   overflow: hidden;
-// }
+.hidden {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px);
+  /* IE6, IE7 */
+  clip: rect(1px 1px 1px 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 0 !important;
+  width: 0 !important;
+  overflow: hidden;
+}
