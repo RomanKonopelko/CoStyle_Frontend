@@ -1,11 +1,10 @@
-.registrationPage {
+.mainPage {
   .split {
     height: 100%;
     width: 50%;
     position: fixed;
     z-index: 1;
     top: 0;
-    padding-top: 52px;
   }
 
   .left {
@@ -17,9 +16,15 @@
 
   .right {
     right: 0;
-    background-color: rgba(255, 255, 255, 0.4);
+    background: rgba(158, 158, 158, 0.8);
+    background-size: cover;
+    backdrop-filter: blur(50px);
+    background-image: url('../../images/Rectangle4.png');
 
-    background-image: url('../../images/Ellipse2.png');
+    padding-top: 52px;
+    padding-right: 85px;
+    padding-bottom: 52px;
+    padding-left: 95px;
   }
 
   .centered {
@@ -27,7 +32,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    text-align: center;
+    //text-align: center;
   }
 
   .financeApp {
