@@ -1,4 +1,4 @@
-.btn {
+.btnLogout {
   display: flex;
   align-items: center;
   padding: 0;
@@ -7,13 +7,23 @@
   border: none;
 
   cursor: pointer;
-}
 
-// TODO fix duplicate
-.text {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 1.5;
-  color: #bdbdbd;
+  .icon {
+    fill: $secondary-text-color;
+  }
+
+  .text {
+    display: none;
+
+    @include for-size(tablet) {
+      display: block;
+      font-family: $primary-font-family;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 1.5;
+      color: $secondary-text-color;
+      margin-left: 10px;
+    }
+  }
 }
