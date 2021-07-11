@@ -1,7 +1,9 @@
 .titleStatistic {
+  font-family: $secondary-font-family;
   font-weight: normal;
   font-size: 30px;
-  line-height: 45px;
+  line-height: 1.5;
+  color: $title-text-color;
 
   // для мобилки
   margin-bottom: 10px;

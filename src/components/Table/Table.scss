@@ -1,23 +1,66 @@
 .tableFormStatistic {
   // для мобилки
   width: 280px;
-  font-size: 16px;
-  line-height: 24px;
-  color: #000000;
 
   @include for-size(tablet) {
-    //   //   для планшета и для  десктоп
+    // для планшета и для  десктоп
     width: 350px;
+  }
+
+  .MuiTableCell-root {
+    font-family: $primary-font-family;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    color: $title-text-color;
+
+    align-items: baseline;
+    justify-content: center;
+    vertical-align: middle;
+
+    padding-top: 15px;
+    padding-right: 24px;
+    padding-bottom: 15px;
+    padding-left: 24px;
+  }
+
+  .tableColorSpan {
+    display: flex;
+
+    align-items: center;
+  }
+
+  .tableHeadCell {
+    border-bottom: none;
+  }
+
+  .MuiTableHead-root {
+    display: table-caption;
+    background-color: #ffffff;
+
+    border-radius: 30px;
+  }
+
+  .MuiTableCell-head {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.5;
+    text-align: start;
+    width: 75%;
+    padding-top: 16px;
+    padding-right: 30px;
+    padding-bottom: 15px;
+    padding-left: 30px;
+    text-shadow: (0px 4px 4px rgba(0, 0, 0, 0.25));
   }
 
   .formControl {
     // для мобилки
     width: 280px;
     height: 50px;
-    border-color: black;
 
     @include for-size(tablet) {
-      //   //   для планшета и для  десктоп
+      // для планшета и для  десктоп
       width: 166px;
     }
   }
@@ -27,7 +70,7 @@
     margin-bottom: 20px;
 
     @include for-size(tablet) {
-      //   // для планшета и для  десктоп
+      // для планшета и для  десктоп
       margin-right: 9px;
     }
   }
@@ -36,25 +79,23 @@
     border-radius: 30px;
   }
 
+  .MuiOutlinedInput-input {
+    padding-top: 12px;
+    padding-right: 21px;
+    padding-bottom: 14px;
+    padding-left: 21px;
+  }
+
   .MuiInputBase-root {
-    color: black;
+    font-family: $primary-font-family;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    color: $title-text-color;
   }
 
-  .MuiTableCell-head {
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 27px;
-    text-align: center;
-  }
-
-  .MuiTableHead-root {
-    display: table-caption;
-  }
-
-  .tableHead {
-    background-color: #ffffff;
-    color: #000000;
-    border-radius: 30px;
+  .formControlEm {
+    font-style: normal;
   }
 
   .tableColorRow {
