@@ -1,27 +1,36 @@
-.container {
-  width: 280px;
-  height: 174px;
-  text-align: center;
-  background-color: #4a56e2;
+.tableCurrency {
+  display: block;
+  width: 350px;
+  background-color: $accent-color4;
   border-radius: 30px;
 }
 
-.table {
-  display: block;
+@include for-size(tablet) {
+  width: 334px;
+  height: 334px;
 }
 
-.tableContainer {
+@include for-size(desktop) {
+  width: 350px;
+  height: 350px;
+}
+
+.tableHead {
   display: flex;
+  font-family: $primary-font-family;
+  padding-left: 30px;
   justify-content: space-evenly;
 }
 
 .tableHeaderTitle {
+  padding-top: 17px;
+  padding-bottom: 16px;
+  margin-right: 49px;
+
   color: white;
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 700;
   line-height: 27px;
-  padding-top: 11px;
-  padding-bottom: 22px;
 }
 
 .rowTitle {

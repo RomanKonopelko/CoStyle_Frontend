@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import s from './Currency.module.scss';
+// import s from './Currency.module.scss';
 
 import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
@@ -57,9 +57,9 @@ export default function Currency() {
   ];
   return (
     <>
-      <div className={s.container}>
+      <div>
         {!money ? (
-          <div className={s.loaderContainer}>
+          <div className="loaderContainer">
             <Loader
               type="MutatingDots"
               color="#24cca7"
@@ -70,12 +70,12 @@ export default function Currency() {
             />
           </div>
         ) : (
-          <table className={s.table}>
+          <table className="tableCurrency">
             <thead>
-              <tr className={s.tableContainer}>
-                <th className={s.tableHeaderTitle}>Валюта</th>
-                <th className={s.tableHeaderTitle}>Покупка</th>
-                <th className={s.tableHeaderTitle}>Продажа</th>
+              <tr className="tableHead">
+                <th className="tableHeaderTitle">Валюта</th>
+                <th className="tableHeaderTitle">Покупка</th>
+                <th className="tableHeaderTitle">Продажа</th>
               </tr>
             </thead>
             <tbody>
@@ -86,10 +86,10 @@ export default function Currency() {
                 return CURRENCY_EXCHANGE.map(coint => {
                   if (coint === item.ccy) {
                     return (
-                      <tr key={item.ccy} className={s.tableContainer}>
-                        <td className={s.rowTitle}>{item.ccy}</td>
-                        <td className={s.rowTitle}>{buy}</td>
-                        <td className={s.rowTitle}>{sale}</td>
+                      <tr key={item.ccy} className="tableContainer">
+                        <td className="rowTitle">{item.ccy}</td>
+                        <td className="rowTitle">{buy}</td>
+                        <td className="rowTitle">{sale}</td>
                       </tr>
                     );
                   }
