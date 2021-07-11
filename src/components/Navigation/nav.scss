@@ -1,9 +1,26 @@
-.Nav-link {
-  font-size: 20px;
-  color: blue;
-}
+.NavigationDashbord {
+  margin-bottom: 39px;
 
-.NavLink--active {
-  font-size: 20px;
-  color: tomato;
+  .NavLink {
+    display: flex;
+    align-items: center;
+
+    font-family: $primary-font-family;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.5;
+
+    .NavLink.First {
+      margin-bottom: 10px;
+    }
+
+    .ImageNav {
+      width: 18px;
+      margin-right: 23px;
+    }
+  }
+
+  .NavLinkActive {
+    font-weight: 700;
+  }
 }

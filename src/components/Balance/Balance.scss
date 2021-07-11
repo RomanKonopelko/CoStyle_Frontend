@@ -3,6 +3,7 @@
   padding-top: 8px;
   padding-bottom: 13px;
   padding-left: 30px;
+  margin-bottom: 30px;
 
   @include for-size(tablet) {
     width: 340px;
@@ -15,6 +16,8 @@
     padding-top: 8px;
     padding-bottom: 14px;
     padding-left: 40px;
+
+    margin-bottom: 30px;
   }
 
   border-radius: 30px;

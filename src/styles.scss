@@ -18,15 +18,15 @@
 @import './components/Header/header.scss';
 @import './components/HomeTab/homeTab.scss';
 @import './components/Navigation/nav.scss';
-@import './components/Balance/Balance.scss';
+@import './components/Balance/balance.scss';
 @import './components/DiagramTab/diagramTab.scss';
-@import './components/Chart/Chart.scss';
-@import './components/Table/Table.scss';
-@import './components/ButtonAddTransactions/ButtonAddTransaction.scss';
+@import './components/Chart/chart.scss';
+@import './components/Table/table.scss';
+@import './components/ButtonAddTransactions/buttonAddTransaction.scss';
 @import './components/Currency/currency.scss';
 
 // MINOR COMPONENTS
 @import './components/Loader/loader.scss';
-@import './components/ModalLogout/ModalLogout.scss';
-@import './components/Shared/Button.scss';
+@import './components/ModalLogout/modalLogout.scss';
+@import './components/Shared/button.scss';
 @import './components/Shared/modal.scss';

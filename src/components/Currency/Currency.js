@@ -115,14 +115,14 @@ export default function Currency() {
           </div>
         ) : (
           <table className="tableCurrency">
-            <thead>
-              <tr className="tableHead">
+            <thead className="tableHead">
+              <tr>
                 <th className="tableHeaderTitle">Валюта</th>
                 <th className="tableHeaderTitle">Покупка</th>
                 <th className="tableHeaderTitle">Продажа</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="currencyBody">
               {money.map(item => {
                 const buy = pad(Number(item.buy).toFixed(2));
                 const sale = pad(Number(item.sale).toFixed(2));
@@ -130,7 +130,7 @@ export default function Currency() {
                 return CURRENCY_EXCHANGE.map(coint => {
                   if (coint === item.ccy) {
                     return (
-                      <tr key={item.ccy} className="tableContainer">
+                      <tr key={item.ccy}>
                         <td className="rowTitle">{item.ccy}</td>
                         <td className="rowTitle">{buy}</td>
                         <td className="rowTitle">{sale}</td>
@@ -139,6 +139,7 @@ export default function Currency() {
                   }
                 });
               })}
+              <div className="tableFooter"></div>
             </tbody>
           </table>
         )}
