@@ -21,7 +21,16 @@ const addTransactionError = createAction('transactions/addTransactionError');
 // const deleteTransactionSuccess = createAction('transactions/deleteTransactionSuccess');
 // const deleteTransactionError = createAction('transactions/deleteTransactionError');
 
-const filterTransactions = createAction('transaction/filter');
+// for Filter Transactions Statistic
+const getFilterTransactionsStatisticRequest = createAction(
+  'transaction/getFilterTransactionsStatisticRequest',
+);
+const getFilterTransactionsStatisticSuccess = createAction(
+  'transaction/getFilterTransactionsStatisticSuccess',
+);
+const getFilterTransactionsStatisticError = createAction(
+  'transaction/getFilterTransactionsStatisticError',
+);
 
 // for Transactions Statistic
 const getTransactionsStatisticRequest = createAction(
@@ -44,7 +53,9 @@ export {
   // deleteTransactionRequest,
   // deleteTransactionSuccess,
   // deleteTransactionError,
-  filterTransactions,
+  getFilterTransactionsStatisticRequest,
+  getFilterTransactionsStatisticSuccess,
+  getFilterTransactionsStatisticError,
   getTransactionsStatisticRequest,
   getTransactionsStatisticSuccess,
   getTransactionsStatisticError,

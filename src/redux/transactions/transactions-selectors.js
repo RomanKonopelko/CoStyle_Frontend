@@ -3,7 +3,7 @@
 const getAllTransactions = state => {
   return state.transactions.items;
 };
-const getFilterValue = state => state.transactions.filter;
+// const getFilterValue = state => state.transactions.filter;
 
 // const getSearchedContacts = createSelector(
 //   [getAllTransactions, getFilterValue],
@@ -21,7 +21,7 @@ const getTransactionsStatistic = state => {
 
 export {
   getAllTransactions,
-  getFilterValue,
+  // getFilterValue,
   // getSearchedContacts
   getTransactionsStatistic,
 };

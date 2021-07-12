@@ -1,6 +1,6 @@
-import { useEffect, useState, memo } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import moment from 'moment';
+import moment from 'moment';
 
 import Loader from 'react-loader-spinner';
 import Chart from '../Chart';
@@ -8,40 +8,68 @@ import Table from '../Table';
 
 import { Operations } from '../../redux/transactions';
 import { Selectors } from '../../redux/transactions';
-import { Action } from '../../redux/transactions';
 
 export default function DiagramTab() {
   const dispatch = useDispatch();
 
   const transactionsList = useSelector(Selectors.getTransactionsStatistic);
-  const { categoriesSummary, incomeValue, consumptionValue } = transactionsList;
 
-  // useEffect(() => {
-  //   categoriesSummary === 0 &&
-  //     consumptionValue === 0 &&
-  //     incomeValue === 0 &&
-  //     dispatch(Operations.getTransactionsStatistic());
-  // }, [dispatch]);
+  const [selected, setSelected] = useState({});
 
-  const selected = useSelector(Selectors.getFilterValue);
+  // function handleChange(event) {
+  //   dispatch(Action.filterTransactions(event.target.value));
+  //   const filteredData = payload.filter(el => {
+  //     const myMonth = moment(el.time, 'DD.MM.YYYY').locale('ru').format('MMMM');
+  //     const target = event.target.value;
+  //     return myMonth === target;
+  //   });
+  //   const tableYearFilter = payload.filter(el => {
+  //     const myYear = moment(el.time, 'DD.MM.YYYY').locale('ru').format('YYYY');
+  //     const target = event.target.value;
+  //     return myYear === target;
+  //   });
+  // }
 
-  // const { payload } = transactionsList;
-  // console.log('payload', payload);
+  const reset = () => {
+    setSelected({});
+  };
 
-  function handleChange(event) {
-    // dispatch(Action.filterTransactions(event.target.value));
-    // const filteredData = payload.filter(el => {
-    //   const myMonth = moment(el.time, 'DD.MM.YYYY').locale('ru').format('MMMM');
-    //   const target = event.target.value;
-    //   return myMonth === target;
-    // });
-    // const tableYearFilter = payload.filter(el => {
-    //   const myYear = moment(el.time, 'DD.MM.YYYY').locale('ru').format('YYYY');
-    //   const target = event.target.value;
-    //   return myYear === target;
-    // });
+  if (selected.month && selected.year) {
+    dispatch(
+      Operations.getFilterTransactionsStatistic(selected.month, selected.year),
+    );
+
+    reset();
   }
 
+  // if (selected.month === undefined && selected.year === undefined) {
+  //   dispatch(Operations.getTransactionsStatistic());
+
+  //   reset();
+  // }
+
+  const handleChange = e => {
+    const { name, value } = e.target;
+    console.log(`name`, name);
+    console.log(`value`, value);
+
+    switch (name) {
+      case 'month':
+        setSelected(prevState => ({ ...prevState, [name]: value }));
+        break;
+      case 'year':
+        setSelected(prevState => ({ ...prevState, [name]: value }));
+        break;
+
+      default:
+        console.log("There aren't such data");
+    }
+
+    // const ggg = moment('July', 'MMMM').locale('ru').format('DD.MM.YYYY');
+    // console.log(`ggg`, ggg);
+  };
+
+  console.log(`selected`, selected);
   return (
     <>
       {transactionsList ? (
