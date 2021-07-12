@@ -92,7 +92,7 @@ function MyTable({ tableData, selected, handleChange }) {
                 Расходы:
               </TableCell>
               <TableCell align="right" className="tableConsumptionValue">
-                {consumptionValue}
+                {new Intl.NumberFormat('ru-RU').format(consumptionValue)}
               </TableCell>
             </TableRow>
 
@@ -101,7 +101,7 @@ function MyTable({ tableData, selected, handleChange }) {
                 Доходы:
               </TableCell>
               <TableCell align="right" className="tableIncomeValue">
-                {incomeValue}
+                {new Intl.NumberFormat('ru-RU').format(incomeValue)}
               </TableCell>
             </TableRow>
           </TableBody>
