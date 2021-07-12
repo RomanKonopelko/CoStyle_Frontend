@@ -1,0 +1,134 @@
+.modalContainer {
+  position: absolute;
+  background-color: #ffffff;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 540px;
+  height: 540px;
+  border-radius: 20px;
+  padding-top: 20px;
+}
+h2.title {
+  text-align: center;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 45px;
+  color: #000000;
+  // margin-bottom: 40px;
+}
+
+.radioBtn {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.green {
+  color: #24cca7;
+}
+
+.red {
+  color: #ff6596;
+}
+
+.grey {
+  color: #e0e0e0;
+}
+
+.cetegory {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+}
+.input-comments {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+}
+.addBtn {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+.cancelBtn {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+.data-money-form {
+  padding: 0 30px;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-around;
+  align-content: flex-start;
+}
+
+.money-input {
+  border: 1px solid #e0e0e0;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-left-color: transparent;
+  align-content: flex-start;
+}
+.money-input[placeholder] {
+  text-align: center;
+}
+
+.date-input {
+  border: 1px solid #e0e0e0;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-left-color: transparent;
+}
+
+.modal-form-btn-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 36px;
+}
+
+.btn-form {
+  width: 300px;
+  height: 50px;
+
+  margin-top: 20px;
+  padding-top: 16px;
+  padding-bottom: 13px;
+
+  border: 1px solid $accent-color2;
+  border-radius: 20px;
+  background-color: white;
+
+  color: $accent-color2;
+  font-family: Circe;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  @media screen and (max-width: 767px) {
+    width: 280px;
+  }
+}
+
+.btn-form.MuiButton-root:hover {
+  background-color: $accent-color;
+  border: 1px solid $accent-color;
+  color: white;
+  transition: $timing-function;
+}
