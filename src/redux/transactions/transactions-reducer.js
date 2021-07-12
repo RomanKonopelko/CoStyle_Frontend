@@ -8,7 +8,9 @@ import {
   // deleteTransactionRequest,
   // deleteTransactionSuccess,
   // deleteTransactionError,
-  filterTransactions,
+  getFilterTransactionsStatisticRequest,
+  getFilterTransactionsStatisticSuccess,
+  getFilterTransactionsStatisticError,
   getTransactionsStatisticRequest,
   getTransactionsStatisticSuccess,
   getTransactionsStatisticError,
@@ -23,7 +25,7 @@ const initialStatistic = {
   consumptionValue: 0,
 };
 
-const initialFilter = '';
+// const initialFilter = '';
 
 // ========ToolKit =======
 const itemsReducers = createReducer(initialState, {
@@ -35,7 +37,12 @@ const itemsReducers = createReducer(initialState, {
 
 const itemsReducersStatistic = createReducer(initialStatistic, {
   [getTransactionsStatisticSuccess]: (_, { payload }) => payload,
+  [getFilterTransactionsStatisticSuccess]: (_, { payload }) => payload,
 });
+
+// const filterReducer = createReducer(initialFilter, {
+//   [getFilterTransactionsStatisticSuccess]: (_, { payload }) => payload,
+// });
 
 const loading = createReducer(false, {
   [getTransactionsRequest]: () => true,
@@ -47,19 +54,18 @@ const loading = createReducer(false, {
   // [deleteTransactionRequest]: () => true,
   // [deleteTransactionSuccess]: () => false,
   // [deleteTransactionError]: () => false,
+  [getFilterTransactionsStatisticRequest]: () => true,
+  [getFilterTransactionsStatisticSuccess]: () => false,
+  [getFilterTransactionsStatisticError]: () => false,
   [getTransactionsStatisticRequest]: () => true,
   [getTransactionsStatisticSuccess]: () => false,
   [getTransactionsStatisticError]: () => false,
 });
 
-const filterReducer = createReducer(initialFilter, {
-  [filterTransactions]: (_, { payload }) => payload,
-});
-
 const reducers = {
   itemsReducers,
   itemsReducersStatistic,
-  filterReducer,
+  // filterReducer,
   loading,
 };
 

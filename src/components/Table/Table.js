@@ -16,12 +16,12 @@ function MyTable({ tableData, selected, handleChange }) {
       <div className="tableFormStatistic">
         <FormControl variant="outlined" className="formControl">
           <Select
-            value={selected}
+            value={selected.month}
             name="month"
             displayEmpty
             onChange={handleChange}
           >
-            <MenuItem value={selected}>
+            <MenuItem value={selected.month}>
               <em className="formControlEm">Месяц</em>
             </MenuItem>
             <MenuItem value="January">Январь</MenuItem>
@@ -41,12 +41,12 @@ function MyTable({ tableData, selected, handleChange }) {
 
         <FormControl variant="outlined" className="formControl">
           <Select
-            value={selected}
+            value={selected.year}
             name="year"
             displayEmpty
             onChange={handleChange}
           >
-            <MenuItem value={selected}>
+            <MenuItem value={selected.year}>
               <em className="formControlEm">Год</em>
             </MenuItem>
             <MenuItem value="2020">2020</MenuItem>
