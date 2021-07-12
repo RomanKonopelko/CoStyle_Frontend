@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import moment from 'moment';
+import moment from 'moment';
 
 import Loader from 'react-loader-spinner';
 import Chart from '../Chart';
@@ -36,13 +36,16 @@ export default function DiagramTab() {
 
   if (selected.month && selected.year) {
     dispatch(
-      Operations.getFilterTransactionsStatistic(selected.month, selected.year),
+      Operations.getFilterTransactionsStatistic(
+        Number(selected.month),
+        Number(selected.year),
+      ),
     );
 
     reset();
   }
 
-  // if (selected.month === undefined && selected.year === undefined) {
+  // if (selected.month === 'undefined' && selected.year === 'undefined') {
   //   dispatch(Operations.getTransactionsStatistic());
 
   //   reset();
@@ -55,7 +58,10 @@ export default function DiagramTab() {
 
     switch (name) {
       case 'month':
-        setSelected(prevState => ({ ...prevState, [name]: value }));
+        setSelected(prevState => ({
+          ...prevState,
+          [name]: moment(value, 'MMMM').locale('ru').format('MM'),
+        }));
         break;
       case 'year':
         setSelected(prevState => ({ ...prevState, [name]: value }));
@@ -64,9 +70,6 @@ export default function DiagramTab() {
       default:
         console.log("There aren't such data");
     }
-
-    // const ggg = moment('July', 'MMMM').locale('ru').format('DD.MM.YYYY');
-    // console.log(`ggg`, ggg);
   };
 
   console.log(`selected`, selected);
