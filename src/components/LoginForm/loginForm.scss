@@ -92,6 +92,8 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
 
+    transition: all $timing-function $transition-duration;
+
     @media screen and (max-width: 767px) {
       width: 280px;
     }
@@ -101,7 +103,6 @@
     background-color: $accent-color;
     border: 1px solid $accent-color;
     color: white;
-    transition: $timing-function;
   }
 
   .MuiFormLabel-root.Mui-focused {
@@ -110,5 +111,11 @@
 
   .MuiInput-underline:after {
     border-bottom: 2px solid $accent-color;
+  }
+
+  .current {
+    background-color: $accent-color;
+    border: 1px solid $accent-color;
+    color: white;
   }
 }

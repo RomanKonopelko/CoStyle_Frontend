@@ -141,7 +141,7 @@ export default function RegistrationForm() {
         />
 
         <div className="login-form-btn-container">
-          <Button className="btn-form" type="submit">
+          <Button className="btn-form current" type="submit">
             Регистрация
           </Button>
 
