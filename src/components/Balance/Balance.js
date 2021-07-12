@@ -6,11 +6,9 @@ export default function Balance() {
   let balance = 0;
   const transactions = useSelector(Selectors.getAllTransactions);
 
-  if (transactions) {
-    transactions.map(el =>
-      el.sort === 'Доход' ? (balance += el.amount) : (balance -= el.amount),
-    );
-  }
+  transactions.map(el =>
+    el.sort === 'Доход' ? (balance += el.amount) : (balance -= el.amount),
+  );
 
   return (
     <>
