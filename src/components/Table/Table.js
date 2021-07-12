@@ -22,7 +22,7 @@ function MyTable({ tableData, selected, handleChange }) {
             onChange={handleChange}
           >
             <MenuItem value={selected}>
-              <em>Месяц</em>
+              <em className="formControlEm">Месяц</em>
             </MenuItem>
             <MenuItem value="January">Январь</MenuItem>
             <MenuItem value="February">Февраль</MenuItem>
@@ -47,7 +47,7 @@ function MyTable({ tableData, selected, handleChange }) {
             onChange={handleChange}
           >
             <MenuItem value={selected}>
-              <em>Год</em>
+              <em className="formControlEm">Год</em>
             </MenuItem>
             <MenuItem value="2020">2020</MenuItem>
             <MenuItem value="2021">2021</MenuItem>
@@ -57,10 +57,14 @@ function MyTable({ tableData, selected, handleChange }) {
         </FormControl>
 
         <Table>
-          <TableHead className="tableHead">
+          <TableHead>
             <TableRow>
-              <TableCell align="center">Категория</TableCell>
-              <TableCell align="center">Сумма</TableCell>
+              <TableCell align="center" className="tableHeadCell">
+                Категория
+              </TableCell>
+              <TableCell align="center" className="tableHeadCell">
+                Сумма
+              </TableCell>
             </TableRow>
           </TableHead>
 
@@ -68,14 +72,18 @@ function MyTable({ tableData, selected, handleChange }) {
             {result.map(row => (
               <TableRow key={row[0]} className="tableColorRow">
                 <TableCell>
-                  <span
-                    className="tableOption"
-                    style={{ backgroundColor: row[1].color }}
-                  ></span>
+                  <div className="tableColorSpan">
+                    <span
+                      className="tableOption"
+                      style={{ backgroundColor: row[1].color }}
+                    ></span>
 
-                  {row[0]}
+                    {row[0]}
+                  </div>
                 </TableCell>
-                <TableCell align="right">{row[1].value}</TableCell>
+                <TableCell align="right">
+                  {new Intl.NumberFormat('ru-RU').format(row[1].value)}
+                </TableCell>
               </TableRow>
             ))}
 
