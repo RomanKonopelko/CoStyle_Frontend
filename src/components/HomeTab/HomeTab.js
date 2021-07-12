@@ -54,14 +54,16 @@ export default function HomeTab({ tableData }) {
   let rows = [];
 
   tableData.map(t => {
+    const time = t.time.substr(0, 10);
+    const sort = t.sort === 'Расход' ? '-' : '+';
     rows.push(
       createData(
-        t.time,
-        t.sort,
+        time,
+        sort,
         t.category,
         t.commentary || 'Без комментариев',
         t.amount,
-        '6900',
+        t.balance,
       ),
     );
     return rows;
@@ -70,15 +72,16 @@ export default function HomeTab({ tableData }) {
   console.log(tableData, 'tableData');
   return (
     <>
+      {' '}
+      {/* <Paper> */}
       <div className="hometab">
-        {/* <Paper> */}
         <table stickyHeader aria-label="sticky table" className="table">
-          <thead className="thead" style={{ borderRadius: '30px' }}>
-            <tr>
+          <thead className="thead">
+            <tr className="tableHeader">
               {columns.map(column => (
-                <td key={column.id} align={column.align}>
+                <th key={column.id} align={column.align} className="rowHeader">
                   {column.label}
-                </td>
+                </th>
               ))}
             </tr>
           </thead>
@@ -86,11 +89,21 @@ export default function HomeTab({ tableData }) {
           <tbody className="tableBody">
             {rows.map(row => {
               return (
-                <tr hover role="checkbox" tabIndex={-1} key={row.code}>
+                <tr
+                  hover
+                  role="checkbox"
+                  tabIndex={-1}
+                  key={row.code}
+                  className={row.type === '-' ? 'row expenses' : 'row income'}
+                >
                   {columns.map(column => {
                     const value = row[column.id];
                     return (
-                      <td key={column.id} align={column.align}>
+                      <td
+                        key={column.id}
+                        align={column.align}
+                        className={`cellBody ${column.id}`}
+                      >
                         {column.format && typeof value === 'number'
                           ? column.format(value)
                           : value}
@@ -101,6 +114,52 @@ export default function HomeTab({ tableData }) {
               );
             })}
           </tbody>
+        </table>
+
+        {/* Mobile */}
+
+        <table stickyHeader aria-label="sticky table" className="tableMobile">
+          {rows.map(row => {
+            return (
+              <>
+                <tbody
+                  key={row.code}
+                  className={
+                    row.type === '-'
+                      ? 'sectionMobile expensesM'
+                      : 'sectionMobile incomeM'
+                  }
+                >
+                  {columns.map(column => {
+                    const value = row[column.id];
+                    return (
+                      <>
+                        <tr className="rowMobile">
+                          <th
+                            key={column.id}
+                            align={column.align}
+                            className="cellHeader "
+                          >
+                            {column.label}
+                          </th>
+
+                          <td
+                            key={column.id}
+                            align={column.align}
+                            className={`cellValue ${column.id}`}
+                          >
+                            {column.format && typeof value === 'number'
+                              ? column.format(value)
+                              : value}
+                          </td>
+                        </tr>
+                      </>
+                    );
+                  })}
+                </tbody>
+              </>
+            );
+          })}
         </table>
       </div>
       {/* </Paper> */}
