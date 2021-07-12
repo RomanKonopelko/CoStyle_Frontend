@@ -54,7 +54,7 @@ export default function HomeTab({ tableData }) {
   let rows = [];
 
   tableData.map(t => {
-    const time = t.time.substr(0, 10);
+    const time = t.time;
     const sort = t.sort === 'Расход' ? '-' : '+';
     rows.push(
       createData(
@@ -136,7 +136,7 @@ export default function HomeTab({ tableData }) {
                       <>
                         <tr className="rowMobile">
                           <th
-                            key={column.id}
+                            key={`${column.id}mobile`}
                             align={column.align}
                             className="cellHeader "
                           >
