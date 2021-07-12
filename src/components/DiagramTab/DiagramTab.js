@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import moment from 'moment';
+// import moment from 'moment';
 
 import Loader from 'react-loader-spinner';
 import Chart from '../Chart';
