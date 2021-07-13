@@ -45,26 +45,26 @@ export default function DiagramTab() {
   //   reset();
   // }
 
-  const handleChange = e => {
-    const { name, value } = e.target;
-    console.log(`name`, name);
-    console.log(`value`, value);
+  // const handleChange = e => {
+  //   const { name, value } = e.target;
+  //   console.log(`name`, name);
+  //   console.log(`value`, value);
 
-    switch (name) {
-      case 'month':
-        setSelected(prevState => ({
-          ...prevState,
-          [name]: moment(value, 'MMMM').locale('ru').format('MM'),
-        }));
-        break;
-      case 'year':
-        setSelected(prevState => ({ ...prevState, [name]: value }));
-        break;
+  //   switch (name) {
+  //     case 'month':
+  //       setSelected(prevState => ({
+  //         ...prevState,
+  //         [name]: moment(value, 'MMMM').locale('ru').format('MM'),
+  //       }));
+  //       break;
+  //     case 'year':
+  //       setSelected(prevState => ({ ...prevState, [name]: value }));
+  //       break;
 
-      default:
-        console.log("There aren't such data");
-    }
-  };
+  //     default:
+  //       console.log("There aren't such data");
+  //   }
+  // };
 
   const lengthOfObject = Object.keys(transactionsList.categoriesSummary).length;
   //console.log(`selected`, selected);
