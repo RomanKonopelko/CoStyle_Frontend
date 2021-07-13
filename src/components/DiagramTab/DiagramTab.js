@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
+import AlpacaStat from '../Alpaca/AlpacaStat';
 
-import Loader from 'react-loader-spinner';
 import Chart from '../Chart';
 import Table from '../Table';
 
@@ -72,14 +72,15 @@ export default function DiagramTab() {
     }
   };
 
-  console.log(`selected`, selected);
+  const lengthOfObject = Object.keys(transactionsList.categoriesSummary).length;
+  //console.log(`selected`, selected);
+
   return (
     <>
-      {transactionsList ? (
+      {lengthOfObject !== 0 ? (
         <>
           <div>
             <h2 className="titleStatistic">Статистика</h2>
-
             <div className="diagrmTab">
               <div>
                 <Chart
@@ -99,7 +100,7 @@ export default function DiagramTab() {
           </div>
         </>
       ) : (
-        <Loader />
+        <AlpacaStat />
       )}
     </>
   );

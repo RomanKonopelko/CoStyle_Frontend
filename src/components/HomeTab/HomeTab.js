@@ -8,6 +8,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import { makeStyles } from '@material-ui/styles';
 
+import Alpaca from '../Alpaca/Alpaca';
+
 const columns = [
   { id: 'date', label: 'Дата' },
   { id: 'type', label: 'Тип' },
@@ -72,96 +74,103 @@ export default function HomeTab({ tableData }) {
   console.log(tableData, 'tableData');
   return (
     <>
-      {' '}
       {/* <Paper> */}
-      <div className="hometab">
-        <table stickyHeader aria-label="sticky table" className="table">
-          <thead className="thead">
-            <tr className="tableHeader">
-              {columns.map(column => (
-                <th key={column.id} align={column.align} className="rowHeader">
-                  {column.label}
-                </th>
-              ))}
-            </tr>
-          </thead>
+      {tableData.length === 0 ? (
+        <Alpaca />
+      ) : (
+        <div className="hometab">
+          <table stickyHeader aria-label="sticky table" className="table">
+            <thead className="thead">
+              <tr className="tableHeader">
+                {columns.map(column => (
+                  <th
+                    key={column.id}
+                    align={column.align}
+                    className="rowHeader"
+                  >
+                    {column.label}
+                  </th>
+                ))}
+              </tr>
+            </thead>
 
-          <tbody className="tableBody">
+            <tbody className="tableBody">
+              {rows.map(row => {
+                return (
+                  <tr
+                    hover
+                    role="checkbox"
+                    tabIndex={-1}
+                    key={row.code}
+                    className={row.type === '-' ? 'row expenses' : 'row income'}
+                  >
+                    {columns.map(column => {
+                      const value = row[column.id];
+                      return (
+                        <td
+                          key={column.id}
+                          align={column.align}
+                          className={`cellBody ${column.id}`}
+                        >
+                          {column.format && typeof value === 'number'
+                            ? column.format(value)
+                            : value}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+
+          {/* Mobile */}
+
+          <table stickyHeader aria-label="sticky table" className="tableMobile">
             {rows.map(row => {
               return (
-                <tr
-                  hover
-                  role="checkbox"
-                  tabIndex={-1}
-                  key={row.code}
-                  className={row.type === '-' ? 'row expenses' : 'row income'}
-                >
-                  {columns.map(column => {
-                    const value = row[column.id];
-                    return (
-                      <td
-                        key={column.id}
-                        align={column.align}
-                        className={`cellBody ${column.id}`}
-                      >
-                        {column.format && typeof value === 'number'
-                          ? column.format(value)
-                          : value}
-                      </td>
-                    );
-                  })}
-                </tr>
+                <>
+                  <tbody
+                    key={row.code}
+                    className={
+                      row.type === '-'
+                        ? 'sectionMobile expensesM'
+                        : 'sectionMobile incomeM'
+                    }
+                  >
+                    {columns.map(column => {
+                      const value = row[column.id];
+                      return (
+                        <>
+                          <tr className="rowMobile">
+                            <th
+                              key={`${column.id}mobile`}
+                              align={column.align}
+                              className="cellHeader "
+                            >
+                              {column.label}
+                            </th>
+
+                            <td
+                              key={column.id}
+                              align={column.align}
+                              className={`cellValue ${column.id}`}
+                            >
+                              {column.format && typeof value === 'number'
+                                ? column.format(value)
+                                : value}
+                            </td>
+                          </tr>
+                        </>
+                      );
+                    })}
+                  </tbody>
+                </>
               );
             })}
-          </tbody>
-        </table>
-
-        {/* Mobile */}
-
-        <table stickyHeader aria-label="sticky table" className="tableMobile">
-          {rows.map(row => {
-            return (
-              <>
-                <tbody
-                  key={row.code}
-                  className={
-                    row.type === '-'
-                      ? 'sectionMobile expensesM'
-                      : 'sectionMobile incomeM'
-                  }
-                >
-                  {columns.map(column => {
-                    const value = row[column.id];
-                    return (
-                      <>
-                        <tr className="rowMobile">
-                          <th
-                            key={`${column.id}mobile`}
-                            align={column.align}
-                            className="cellHeader "
-                          >
-                            {column.label}
-                          </th>
-
-                          <td
-                            key={column.id}
-                            align={column.align}
-                            className={`cellValue ${column.id}`}
-                          >
-                            {column.format && typeof value === 'number'
-                              ? column.format(value)
-                              : value}
-                          </td>
-                        </tr>
-                      </>
-                    );
-                  })}
-                </tbody>
-              </>
-            );
-          })}
-        </table>
-      </div>
+          </table>
+        </div>
+      )}
       {/* </Paper> */}
     </>
   );
