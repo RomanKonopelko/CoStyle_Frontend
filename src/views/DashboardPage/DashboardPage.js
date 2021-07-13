@@ -54,12 +54,14 @@ export default function DashboardPage() {
             </div>
 
             <Switch>
-              <Route
-                path={routes.home}
-                render={props => (
-                  <HomeTab {...props} tableData={transactionsList} />
-                )}
-              />
+              {transactionsList.length > 0 && (
+                <Route
+                  path={routes.home}
+                  render={props => (
+                    <HomeTab {...props} tableData={transactionsList} />
+                  )}
+                />
+              )}
 
               <Route path={routes.diagram} component={DiagramTab} />
             </Switch>
