@@ -7,9 +7,67 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
-function MyTable({ tableData, selected, handleChange }) {
+import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { Operations } from '../../redux/transactions';
+
+function MyTable({ tableData }) {
   const { categoriesSummary, incomeValue, consumptionValue } = tableData;
   const result = Object.entries(categoriesSummary);
+
+  const dispatch = useDispatch();
+  const [selected, setSelected] = useState({ month: '', year: '' });
+
+  console.log(`selected`, selected);
+
+  // if (selected.month === 'undefined' && selected.year === 'undefined') {
+  //   dispatch(Operations.getTransactionsStatistic());
+
+  //   reset();
+  // }
+
+  const handleChange = e => {
+    const { name, value } = e.target;
+    // console.log(`name`, name);
+    // console.log(`value`, value);
+
+    switch (name) {
+      case 'month':
+        setSelected(prevState => ({
+          ...prevState,
+          [name]: value,
+        }));
+        break;
+      case 'year':
+        setSelected(prevState => ({ ...prevState, [name]: value }));
+        break;
+
+      default:
+        console.log("There aren't such data");
+    }
+  };
+
+  const reset = () => {
+    setSelected(prevState => ({ ...prevState, month: '', year: '' }));
+  };
+
+  useEffect(() => {
+    if (selected.month && selected.year) {
+      dispatch(
+        Operations.getFilterTransactionsStatistic(
+          Number(selected.month),
+          Number(selected.year),
+        ),
+      );
+
+      reset();
+    }
+    if (selected.month === 'All' && selected.year === 'All') {
+      dispatch(Operations.getTransactionsStatistic());
+
+      reset();
+    }
+  }, [selected]);
 
   return (
     <div>
@@ -24,18 +82,19 @@ function MyTable({ tableData, selected, handleChange }) {
             <MenuItem value={selected.month}>
               <em className="formControlEm">Месяц</em>
             </MenuItem>
-            <MenuItem value="January">Январь</MenuItem>
-            <MenuItem value="February">Февраль</MenuItem>
-            <MenuItem value="March">Март</MenuItem>
-            <MenuItem value="April">Апрель</MenuItem>
-            <MenuItem value="May">Май</MenuItem>
-            <MenuItem value="June">Июнь</MenuItem>
-            <MenuItem value="July">Июль</MenuItem>
-            <MenuItem value="August">Август</MenuItem>
-            <MenuItem value="September">Сентябрь</MenuItem>
-            <MenuItem value="October">Октябрь</MenuItem>
-            <MenuItem value="November">Ноябрь</MenuItem>
-            <MenuItem value="December">Декабрь</MenuItem>
+            <MenuItem value="All">All Period</MenuItem>
+            <MenuItem value="01">Январь</MenuItem>
+            <MenuItem value="02">Февраль</MenuItem>
+            <MenuItem value="03">Март</MenuItem>
+            <MenuItem value="04">Апрель</MenuItem>
+            <MenuItem value="05">Май</MenuItem>
+            <MenuItem value="06">Июнь</MenuItem>
+            <MenuItem value="7">Июль</MenuItem>
+            <MenuItem value="08">Август</MenuItem>
+            <MenuItem value="09">Сентябрь</MenuItem>
+            <MenuItem value="10">Октябрь</MenuItem>
+            <MenuItem value="11">Ноябрь</MenuItem>
+            <MenuItem value="12">Декабрь</MenuItem>
           </Select>
         </FormControl>
 
@@ -49,6 +108,7 @@ function MyTable({ tableData, selected, handleChange }) {
             <MenuItem value={selected.year}>
               <em className="formControlEm">Год</em>
             </MenuItem>
+            <MenuItem value="All">All Period</MenuItem>
             <MenuItem value="2020">2020</MenuItem>
             <MenuItem value="2021">2021</MenuItem>
             <MenuItem value="2022">2022</MenuItem>

@@ -18,7 +18,7 @@ const Chart = ({ tableData, handleChange }) => {
   return (
     <div className="doughnutSize">
       <Doughnut
-        onChange={handleChange}
+        // onChange={handleChange}
         data={{
           datasets: [
             {

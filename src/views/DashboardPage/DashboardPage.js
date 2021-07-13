@@ -30,6 +30,7 @@ export default function DashboardPage() {
   useEffect(() => {
     dispatch(Operations.getTransaction());
     dispatch(Operations.getTransactionsStatistic());
+    // dispatch(Operations.getFilterTransactionsStatistic(7, 2021));
   }, [dispatch]);
 
   const transactionsList = useSelector(Selectors.getAllTransactions);
