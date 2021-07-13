@@ -127,3 +127,23 @@
     display: none;
   }
 }
+
+// for first visit
+
+.alpacaText > p {
+  font-family: $secondary-font-family;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: black;
+  text-align: center;
+}
+
+.alpacatImg {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-right: auto;
+  margin-left: auto;
+
+  width: 150px;
+}

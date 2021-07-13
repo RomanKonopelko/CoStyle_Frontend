@@ -4,6 +4,7 @@ import headerLogo from './header-logo.png';
 import { selectorsAuth } from '../../redux/auth';
 import Avatar from '@material-ui/core/Avatar';
 import Container from '../Container/Container';
+import lamaAvatar from '../../images/lamaAvatars.png';
 
 export default function Header() {
   const name = useSelector(selectorsAuth.getUsername);
@@ -17,7 +18,9 @@ export default function Header() {
             <h1 className="title">Wallet</h1>
           </div>
           <div className="userInfo">
-            <Avatar className="avatarUser">{name.substr(0, 1)}</Avatar>
+            <Avatar className="avatarUser">
+              <img src={lamaAvatar} />
+            </Avatar>
             <p className="name">{name}</p>
             <span className="decor"></span>
             <ModalLogout />

@@ -5,10 +5,11 @@
     display: flex;
     align-items: center;
 
-    font-family: $primary-font-family;
+    font-family: $secondary-font-family;
     font-size: 18px;
     font-weight: 400;
     line-height: 1.5;
+    color: black;
 
     .NavLink.First {
       margin-bottom: 10px;

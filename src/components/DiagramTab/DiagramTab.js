@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
+import AlpacaStat from '../Alpaca/AlpacaStat';
 
-import Loader from 'react-loader-spinner';
 import Chart from '../Chart';
 import Table from '../Table';
 
@@ -45,41 +45,36 @@ export default function DiagramTab() {
   //   reset();
   // }
 
-  // // if (selected.month === 'undefined' && selected.year === 'undefined') {
-  // //   dispatch(Operations.getTransactionsStatistic());
+  const handleChange = e => {
+    const { name, value } = e.target;
+    console.log(`name`, name);
+    console.log(`value`, value);
 
-  // //   reset();
-  // // }
+    switch (name) {
+      case 'month':
+        setSelected(prevState => ({
+          ...prevState,
+          [name]: moment(value, 'MMMM').locale('ru').format('MM'),
+        }));
+        break;
+      case 'year':
+        setSelected(prevState => ({ ...prevState, [name]: value }));
+        break;
 
-  // const handleChange = e => {
-  //   const { name, value } = e.target;
-  //   console.log(`name`, name);
-  //   console.log(`value`, value);
+      default:
+        console.log("There aren't such data");
+    }
+  };
 
-  //   switch (name) {
-  //     case 'month':
-  //       setSelected(prevState => ({
-  //         ...prevState,
-  //         [name]: moment(value, 'MMMM').locale('ru').format('MM'),
-  //       }));
-  //       break;
-  //     case 'year':
-  //       setSelected(prevState => ({ ...prevState, [name]: value }));
-  //       break;
+  const lengthOfObject = Object.keys(transactionsList.categoriesSummary).length;
+  //console.log(`selected`, selected);
 
-  //     default:
-  //       console.log("There aren't such data");
-  //   }
-  // };
-
-  // console.log(`selected`, selected);
   return (
     <>
-      {transactionsList ? (
+      {lengthOfObject !== 0 ? (
         <>
           <div>
             <h2 className="titleStatistic">Статистика</h2>
-
             <div className="diagrmTab">
               <div>
                 <Chart
@@ -99,7 +94,7 @@ export default function DiagramTab() {
           </div>
         </>
       ) : (
-        <Loader />
+        <AlpacaStat />
       )}
     </>
   );
