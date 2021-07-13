@@ -23,7 +23,7 @@ const getTransaction = () => async dispatch => {
   dispatch(getTransactionsRequest());
 
   try {
-    const { data } = await axios.get('/api/transactions');
+    const { data } = await axios.get('/api/transactions/?limit=20');
     // console.log(`data`, data);
     dispatch(getTransactionsSuccess(data.payload));
   } catch (error) {

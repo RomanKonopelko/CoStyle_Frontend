@@ -1,14 +1,16 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
+import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import { makeStyles } from '@material-ui/styles';
 
 import Alpaca from '../Alpaca/Alpaca';
+import { SignalWifi1BarLockSharp } from '@material-ui/icons';
 
 const columns = [
   { id: 'date', label: 'Дата' },
@@ -35,30 +37,22 @@ function createData(date, type, category, comment, sum, balance) {
   return { date, type, category, comment, sum, balance };
 }
 
-// const useStyles = makeStyles({
-//   container: {
-//     maxHeight: 320,
-//     maxWidth: 700,
-//   },
-//   pagination: {
-//     maxWidth: 700,
-//   },
-//   tableHead: {
-//     borderRadius: 30,
-//   },
-//   tableBody: {},
-// });
+const useStyles = makeStyles({
+  container: {
+    maxWidth: 700,
+    maxHeight: 320,
+  },
+});
 
-export default function HomeTab({ tableData }) {
-  // const classes = useStyles();
-  // const { transactions } = tableData;
+export default function StickyHeadTable({ tableData }) {
+  const classes = useStyles();
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   let rows = [];
 
   tableData.map(t => {
     const time = t.time.date;
-    console.log('t.time', t.time);
-    console.log('t.time.date', t.time.date);
     const sort = t.sort === 'Расход' ? '-' : '+';
     rows.push(
       createData(
@@ -74,58 +68,98 @@ export default function HomeTab({ tableData }) {
   });
 
   console.log(tableData, 'tableData');
+  console.log(rows, 'rows');
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = event => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
+
   return (
     <>
-      {/* <Paper> */}
       {tableData.length === 0 ? (
         <Alpaca />
       ) : (
-        <div className="hometab">
-          <table stickyHeader aria-label="sticky table" className="table">
-            <thead className="thead">
-              <tr className="tableHeader">
-                {columns.map(column => (
-                  <th
-                    key={column.id}
-                    align={column.align}
-                    className="rowHeader"
-                  >
-                    {column.label}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-
-            <tbody className="tableBody">
-              {rows.map(row => {
-                return (
-                  <tr
-                    hover
-                    role="checkbox"
-                    tabIndex={-1}
-                    key={row.code}
-                    className={row.type === '-' ? 'row expenses' : 'row income'}
-                  >
-                    {columns.map(column => {
-                      const value = row[column.id];
-                      return (
-                        <td
+        <>
+          <div className="homeTab">
+            <Paper
+              className={classes.root}
+              style={{
+                backgroundColor: '#11ffee00',
+                borderCollapse: 'collapse',
+                Shadow: '0px',
+              }}
+            >
+              <TableContainer className={classes.container}>
+                <Table stickyHeader aria-label="sticky table" className="table">
+                  <TableHead className="thead">
+                    <TableRow className="tableHeader">
+                      {columns.map(column => (
+                        <TableCell
                           key={column.id}
                           align={column.align}
-                          className={`cellBody ${column.id}`}
+                          className="rowHeader"
                         >
-                          {column.format && typeof value === 'number'
-                            ? column.format(value)
-                            : value}
-                        </td>
-                      );
-                    })}
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-
+                          {column.label}
+                        </TableCell>
+                      ))}
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {rows
+                      .slice(
+                        page * rowsPerPage,
+                        page * rowsPerPage + rowsPerPage,
+                      )
+                      .map(row => {
+                        return (
+                          <TableRow
+                            hover
+                            role="checkbox"
+                            tabIndex={-1}
+                            key={row.code}
+                            className={
+                              row.type === '-' ? 'row expenses' : 'row income'
+                            }
+                          >
+                            {columns.map(column => {
+                              const value = row[column.id];
+                              return (
+                                <TableCell
+                                  key={column.id}
+                                  align={column.align}
+                                  className={`cellBody ${column.id}`}
+                                  style={{
+                                    padding: '8px',
+                                  }}
+                                >
+                                  {column.format && typeof value === 'number'
+                                    ? column.format(value)
+                                    : value}
+                                </TableCell>
+                              );
+                            })}
+                          </TableRow>
+                        );
+                      })}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+              <TablePagination
+                rowsPerPageOptions={[10, 20, 100]}
+                component="div"
+                count={rows.length}
+                rowsPerPage={rowsPerPage}
+                page={page}
+                onPageChange={handleChangePage}
+                onRowsPerPageChange={handleChangeRowsPerPage}
+              />
+            </Paper>
+          </div>
           {/* Mobile */}
 
           <table stickyHeader aria-label="sticky table" className="tableMobile">
@@ -171,9 +205,8 @@ export default function HomeTab({ tableData }) {
               );
             })}
           </table>
-        </div>
+        </>
       )}
-      {/* </Paper> */}
     </>
   );
 }
