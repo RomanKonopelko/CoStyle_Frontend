@@ -56,7 +56,9 @@ export default function HomeTab({ tableData }) {
   let rows = [];
 
   tableData.map(t => {
-    const time = t.time;
+    const time = t.time.date;
+    console.log('t.time', t.time);
+    console.log('t.time.date', t.time.date);
     const sort = t.sort === 'Расход' ? '-' : '+';
     rows.push(
       createData(

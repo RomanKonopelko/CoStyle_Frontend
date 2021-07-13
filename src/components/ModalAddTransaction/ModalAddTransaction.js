@@ -231,7 +231,7 @@ export default function ModalAddTransaction() {
           </div>
         )}
         <div className="data-money-form">
-          <form action="">
+          <div action="">
             <input
               className="money-input"
               type="number"
@@ -241,8 +241,8 @@ export default function ModalAddTransaction() {
               placeholder="0.00"
               autoComplete="off"
             />
-          </form>
-          <form>
+          </div>
+          <div>
             <input
               className="date-input"
               type="date"
@@ -253,11 +253,11 @@ export default function ModalAddTransaction() {
               max="2025-12-31"
               onChange={handleChange}
             />
-          </form>
+          </div>
         </div>
 
         <div className="input-comments">
-          <form className={classes.root} noValidate autoComplete="off">
+          <div className={classes.root} noValidate autoComplete="off">
             <TextField
               style={{ width: 300 }}
               id="standard-basic"
@@ -266,7 +266,7 @@ export default function ModalAddTransaction() {
               value={commentary}
               onChange={handleChange}
             />
-          </form>
+          </div>
         </div>
 
         <div className="modal-form-btn-container">
