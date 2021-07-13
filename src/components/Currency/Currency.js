@@ -15,8 +15,8 @@ const getCurrencyRate = async () => {
     //   'https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11',
 
     const { data } = await axios.get('https://api.monobank.ua/bank/currency');
-    console.log(data);
-    console.log('HELLO');
+    // console.log(data);
+    // console.log('HELLO');
     return data;
   } catch (e) {
     console.log(e.message);
@@ -41,7 +41,7 @@ export default function Currency() {
   useEffect(() => {
     if (!currencyOnLocalstorage && !timeOnLocalstorage) {
       getCurrencyRate().then(data => {
-        console.log('Noooo!!!It was ME!!!');
+        // console.log('Noooo!!!It was ME!!!');
         setCurrency(data);
         localStorage.setItem('currency', JSON.stringify(data));
       });
@@ -51,7 +51,7 @@ export default function Currency() {
 
     if (new Date().valueOf() > timeOnLocalstorage + TIME_NORMOLIZE) {
       getCurrencyRate().then(data => {
-        console.log('It was ME!!!');
+        // console.log('It was ME!!!');
         setCurrency(data);
         localStorage.setItem('currency', JSON.stringify(data));
       });
@@ -60,7 +60,7 @@ export default function Currency() {
     }
 
     if (currencyOnLocalstorage) {
-      console.log('No, MAN!!!It was ME!!!');
+      // console.log('No, MAN!!!It was ME!!!');
       const parsedLocalStorage = JSON.parse(currencyOnLocalstorage);
       setCurrency(parsedLocalStorage);
       return;
@@ -69,7 +69,7 @@ export default function Currency() {
     if (currency.length === 0) {
       setTimeout(() => {
         getCurrencyRate().then(data => {
-          console.log('Xa-XA-XA!!!!Tht is me');
+          // console.log('Xa-XA-XA!!!!Tht is me');
           setCurrency(data);
           localStorage.setItem('currency', JSON.stringify(data));
         });
