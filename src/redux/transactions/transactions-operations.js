@@ -71,6 +71,7 @@ const getTransactionsStatistic = () => async dispatch => {
 
 const getFilterTransactionsStatistic = (month, year) => async dispatch => {
   dispatch(getFilterTransactionsStatisticRequest());
+  // console.log('OPERATION', month, year);
 
   try {
     const { data } = await axios.get(

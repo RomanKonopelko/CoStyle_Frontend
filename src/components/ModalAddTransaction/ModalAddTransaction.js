@@ -198,14 +198,13 @@ export default function ModalAddTransaction() {
                 }}
               >
                 <option aria-label="None" value="" />
-                <option value={'Основной'}>Основной</option>
                 <option value={'Еда'}>Еда</option>
-                <option value={'Авто'}>Авто</option>
+                <option value={'Машина'}>Авто</option>
                 <option value={'Развитие'}>Развитие</option>
                 <option value={'Дети'}>Дети</option>
                 <option value={'Дом'}>Дом</option>
                 <option value={'Образование'}>Образование</option>
-                <option value={'Другое'}>Другое</option>
+                <option value={'Другое'}>Остальные</option>
               </Select>
             </FormControl>
           </div>
