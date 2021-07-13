@@ -1,16 +1,27 @@
+.homeTab {
+  @include for-size(max-tablet) {
+    display: none;
+  }
+  @include for-size(tablet) {
+    padding: 40px 40px 0 40px;
+  }
+  @include for-size(desktop) {
+    padding: 46px 85px 0 30px;
+  }
+}
 .table {
   @include for-size(max-tablet) {
     display: none;
   }
   @include for-size(tablet) {
     width: 688px;
-    margin: 40px 40px 0 40px;
+    // margin: 40px 40px 0 40px;
     border-collapse: collapse;
     text-align: left;
   }
   @include for-size(desktop) {
     width: 700px;
-    margin: 46px 85px 0 30px;
+    // margin: 46px 85px 0 30px;
   }
 
   .tableHeader {
@@ -38,7 +49,9 @@
     }
   }
 }
-
+::-webkit-scrollbar {
+  display: none;
+}
 .cellBody {
   padding-top: 20px;
   padding-bottom: 20px;
