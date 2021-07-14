@@ -48,12 +48,10 @@ export default function DashboardPage() {
               <Currency className="currency" />
               {isShowModal && (
                 <Modal>
-                  {' '}
                   <ModalAddTransaction />
                 </Modal>
               )}
             </div>
-
             <Switch>
               <Route
                 path={routes.home}
@@ -61,7 +59,6 @@ export default function DashboardPage() {
                   <HomeTab {...props} tableData={transactionsList} />
                 )}
               />
-
               <Route path={routes.diagram} component={DiagramTab} />
             </Switch>
           </div>
