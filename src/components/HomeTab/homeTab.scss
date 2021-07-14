@@ -1,14 +1,31 @@
 .homeTab {
+  transition: 1.5s;
+  animation: homeTab 1s 1;
+  animation-fill-mode: forwards;
+  animation-delay: 0s;
+
+  @keyframes homeTab {
+    0% {
+      opacity: 0;
+      transform: translateX(2%);
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
   @include for-size(max-tablet) {
     display: none;
   }
   @include for-size(tablet) {
-    padding: 40px 40px 0 40px;
+    // padding: 40px 40px 0 40px;
   }
   @include for-size(desktop) {
-    padding: 46px 85px 0 30px;
+    // padding: 46px 85px 0 30px;
+    padding-left: 30px;
   }
 }
+
 .table {
   @include for-size(max-tablet) {
     display: none;

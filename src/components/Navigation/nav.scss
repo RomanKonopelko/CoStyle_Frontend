@@ -1,5 +1,9 @@
 .NavigationDashbord {
-  margin-bottom: 39px;
+  margin-bottom: 28px;
+
+  @media screen and (max-width: 1279px) {
+    margin-bottom: 20px;
+  }
 
   .NavLink {
     display: flex;
@@ -11,17 +15,23 @@
     line-height: 1.5;
     color: black;
 
+    & + .NavLink {
+      margin-top: 10px;
+    }
+
     .NavLink.First {
       margin-bottom: 10px;
     }
 
     .ImageNav {
       width: 18px;
-      margin-right: 23px;
+      margin-right: 26px;
     }
   }
 
   .NavLinkActive {
     font-weight: 700;
+
+    filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
   }
 }
