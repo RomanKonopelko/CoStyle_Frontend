@@ -52,7 +52,7 @@ export default function StickyHeadTable({ tableData }) {
   let rows = [];
 
   tableData.map(t => {
-    const time = t.time.date;
+    const time = t.time ? t.time.date.substr(0, 10) : '';
     const sort = t.sort === 'Расход' ? '-' : '+';
     rows.push(
       createData(
@@ -91,11 +91,18 @@ export default function StickyHeadTable({ tableData }) {
               style={{
                 backgroundColor: '#11ffee00',
                 borderCollapse: 'collapse',
-                Shadow: '0px',
+                boxShadow: '0px 0px 0px 0px',
               }}
             >
               <TableContainer className={classes.container}>
-                <Table stickyHeader aria-label="sticky table" className="table">
+                <Table
+                  stickyHeader
+                  aria-label="sticky table"
+                  className="table"
+                  style={{
+                    width: 'none',
+                  }}
+                >
                   <TableHead className="thead">
                     <TableRow className="tableHeader">
                       {columns.map(column => (
@@ -133,9 +140,6 @@ export default function StickyHeadTable({ tableData }) {
                                   key={column.id}
                                   align={column.align}
                                   className={`cellBody ${column.id}`}
-                                  style={{
-                                    padding: '8px',
-                                  }}
                                 >
                                   {column.format && typeof value === 'number'
                                     ? column.format(value)
@@ -149,7 +153,7 @@ export default function StickyHeadTable({ tableData }) {
                   </TableBody>
                 </Table>
               </TableContainer>
-              <TablePagination
+              {/* <TablePagination
                 rowsPerPageOptions={[10, 20, 100]}
                 component="div"
                 count={rows.length}
@@ -157,7 +161,7 @@ export default function StickyHeadTable({ tableData }) {
                 page={page}
                 onPageChange={handleChangePage}
                 onRowsPerPageChange={handleChangeRowsPerPage}
-              />
+              /> */}
             </Paper>
           </div>
           {/* Mobile */}
