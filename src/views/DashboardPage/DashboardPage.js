@@ -11,6 +11,8 @@ import Navigation from '../../components/Navigation/Navigation';
 import Balance from '../../components/Balance';
 import Currency from '../../components/Currency';
 
+import Loader from '../../components/Loader/Loader';
+
 import Modal from '../../components/Shared/Modal';
 import ButtonAddTransaction from '../../components/ButtonAddTransactions/ButtonAddTransactions';
 import { Route, Switch } from 'react-router';
@@ -30,7 +32,6 @@ export default function DashboardPage() {
   useEffect(() => {
     dispatch(Operations.getTransaction());
     dispatch(Operations.getTransactionsStatistic());
-    // dispatch(Operations.getFilterTransactionsStatistic(7, 2021));
   }, [dispatch]);
 
   const transactionsList = useSelector(Selectors.getAllTransactions);
@@ -38,7 +39,7 @@ export default function DashboardPage() {
 
   return (
     <>
-      {transactionsList && (
+      {transactionsList ? (
         <>
           <div className="dashboradPage">
             <div>
@@ -54,20 +55,20 @@ export default function DashboardPage() {
             </div>
 
             <Switch>
-              {transactionsList.length > 0 && (
-                <Route
-                  path={routes.home}
-                  render={props => (
-                    <HomeTab {...props} tableData={transactionsList} />
-                  )}
-                />
-              )}
+              <Route
+                path={routes.home}
+                render={props => (
+                  <HomeTab {...props} tableData={transactionsList} />
+                )}
+              />
 
               <Route path={routes.diagram} component={DiagramTab} />
             </Switch>
           </div>
           <ButtonAddTransaction />
         </>
+      ) : (
+        <Loader />
       )}
     </>
   );

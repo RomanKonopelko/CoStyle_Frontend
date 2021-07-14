@@ -50,6 +50,7 @@ export default function StickyHeadTable({ tableData }) {
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   let rows = [];
+  console.log('TABLE_DATA', tableData);
 
   tableData.map(t => {
     const time = t.time.date;

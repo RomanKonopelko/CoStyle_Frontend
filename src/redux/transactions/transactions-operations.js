@@ -23,8 +23,8 @@ const getTransaction = () => async dispatch => {
   dispatch(getTransactionsRequest());
 
   try {
-    const { data } = await axios.get('/api/transactions/?limit=20');
-    // console.log(`data`, data);
+    const { data } = await axios.get('/api/transactions/?limit=30');
+    console.log(`GET_TRANSACTION`, data);
     dispatch(getTransactionsSuccess(data.payload));
   } catch (error) {
     dispatch(getTransactionsError(error.message));
@@ -32,16 +32,12 @@ const getTransaction = () => async dispatch => {
 };
 
 const addTransaction = Transaction => async dispatch => {
-  // const Transaction = {
-  //   name,
-  //   number,
-  // };
-  console.log(Transaction);
   dispatch(addTransactionRequest());
 
   try {
     const { data } = await axios.post('/api/transactions', Transaction);
-    dispatch(addTransactionSuccess(data));
+    console.log('ADD_TRANSACTION', data.payload.transaction);
+    dispatch(addTransactionSuccess(data.payload));
   } catch (error) {
     dispatch(addTransactionError(error.message));
   }

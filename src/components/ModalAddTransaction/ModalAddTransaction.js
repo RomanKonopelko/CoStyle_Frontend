@@ -119,10 +119,10 @@ export default function ModalAddTransaction() {
         commentary,
       }),
     );
-    setTimeout(() => {
-      dispatch(Operations.getTransaction());
-      dispatch(Operations.getTransactionsStatistic());
-    }, [3000]);
+
+    // dispatch(Operations.getTransaction());
+    dispatch(Operations.getTransactionsStatistic());
+
     reset();
   };
 
