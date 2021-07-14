@@ -1,4 +1,5 @@
 import React, { useEffect, Suspense, lazy } from 'react';
+import axios from 'axios';
 
 import routes from './routes';
 import Container from './components/Container/Container';

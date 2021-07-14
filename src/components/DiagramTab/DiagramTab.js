@@ -14,31 +14,31 @@ export default function DiagramTab() {
 
   const lengthOfObject = Object.keys(transactionsList.categoriesSummary).length;
 
+  console.log(lengthOfObject, 'length');
   return (
     <>
-      {lengthOfObject !== 0 ? (
-        <div className="diagram-tab-container">
-          <h2 className="titleStatistic">Статистика</h2>
-          <div className="diagrmTab">
+      <div className="diagram-tab-container">
+        <h2 className="titleStatistic">Статистика</h2>
+        <div className="diagrmTab">
+          {lengthOfObject !== 0 ? (
             <div>
               <Chart
                 tableData={transactionsList}
                 // handleChange={handleChange}
               />
             </div>
-
-            <div>
-              <Table
-                tableData={transactionsList}
-                // selected={selected}
-                // handleChange={handleChange}
-              />
-            </div>
+          ) : (
+            <AlpacaStat />
+          )}
+          <div>
+            <Table
+              tableData={transactionsList}
+              // selected={selected}
+              // handleChange={handleChange}
+            />
           </div>
         </div>
-      ) : (
-        <AlpacaStat />
-      )}
+      </div>
     </>
   );
 }

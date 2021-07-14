@@ -81,12 +81,6 @@ export default function ModalAddTransaction() {
   // Switch for State
   const dispatch = useDispatch();
 
-  // test //
-  const isShowModal = useSelector(selectorsAuth.getShowModal);
-  const toggleModal = () => {
-    dispatch(ActionAuth.showModal(!isShowModal));
-  };
-
   const handleChange = e => {
     const { name, value } = e.currentTarget;
     switch (name) {
@@ -115,10 +109,10 @@ export default function ModalAddTransaction() {
 
   const sort = !type ? 'Доход' : 'Расход';
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     // console.log({ category, time, amount, sort, commentary });
-    dispatch(
+    await dispatch(
       Operations.addTransaction({
         category,
         time,
@@ -129,7 +123,7 @@ export default function ModalAddTransaction() {
     );
 
     // dispatch(Operations.getTransaction());
-    dispatch(Operations.getTransactionsStatistic());
+    await dispatch(Operations.getTransactionsStatistic());
 
     reset();
   };
@@ -283,7 +277,7 @@ export default function ModalAddTransaction() {
             type="submit"
             disabled={activateSubmitBtn}
             //test
-            // onClick={toggleModal}
+            //onClick={toggleModal}
           >
             Добавить
           </Button>
