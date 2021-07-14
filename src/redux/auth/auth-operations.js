@@ -1,6 +1,5 @@
 import axios from 'axios';
-
-import { store } from 'react-notifications-component';
+import Notify from '../../components/Notify/Notify';
 
 import {
   getCurrentUserRequest,
@@ -16,18 +15,6 @@ import {
   userLogoutSuccess,
   userLogoutError,
 } from './auth-actions';
-
-const notificationError = {
-  title: `Hello Guest!Try again!`,
-  type: 'danger',
-  container: 'top-right',
-  animationIn: ['animate__animated animate__fadeIn'],
-  animationOut: ['animate__animated animate__fadeOut'],
-  dismiss: {
-    duration: 3000,
-    onScreen: true,
-  },
-};
 
 axios.defaults.baseURL = 'https://costyle-wallet-app.herokuapp.com/';
 
@@ -67,12 +54,8 @@ const registerUser = credentials => async dispatch => {
     token.set(data.token);
     dispatch(userRegisterSuccess(data));
   } catch (error) {
-    store.addNotification({
-      ...notificationError,
-      message: error.message,
-      title: `Hello ${credentials.name}!Try again!`,
-    });
     dispatch(userRegisterError(error.message));
+    Notify(error.response.data.message, credentials.name);
   }
 };
 
@@ -84,15 +67,11 @@ const LoginUser = credentials => async dispatch => {
     token.set(data.payload.token);
     dispatch(userLoginSuccess(data.payload));
   } catch (error) {
-    store.addNotification({
-      ...notificationError,
-      message: error.message,
-    });
+    console.log(credentials, 'name');
     dispatch(userLoginError(error.message));
+    Notify(error.response.data.message);
   }
-
   // const { data } = await axios.get('/api/transactions');
-
   // console.log(data);
 };
 
@@ -104,11 +83,8 @@ const LogoutUser = () => async dispatch => {
     dispatch(userLogoutSuccess());
     token.unset();
   } catch (error) {
-    store.addNotification({
-      ...notificationError,
-      message: error.message,
-    });
     dispatch(userLogoutError(error.message));
+    Notify(error.response.data.message);
   }
 };
 
