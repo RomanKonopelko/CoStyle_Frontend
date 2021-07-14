@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import { store } from 'react-notifications-component';
+
 import {
   getCurrentUserRequest,
   getCurrentUserSuccess,
@@ -14,6 +16,18 @@ import {
   userLogoutSuccess,
   userLogoutError,
 } from './auth-actions';
+
+const notificationError = {
+  title: `Hello Guest!Try again!`,
+  type: 'danger',
+  container: 'top-right',
+  animationIn: ['animate__animated animate__fadeIn'],
+  animationOut: ['animate__animated animate__fadeOut'],
+  dismiss: {
+    duration: 3000,
+    onScreen: true,
+  },
+};
 
 axios.defaults.baseURL = 'https://costyle-wallet-app.herokuapp.com/';
 
@@ -53,6 +67,11 @@ const registerUser = credentials => async dispatch => {
     token.set(data.token);
     dispatch(userRegisterSuccess(data));
   } catch (error) {
+    store.addNotification({
+      ...notificationError,
+      message: error.message,
+      title: `Hello ${credentials.name}!Try again!`,
+    });
     dispatch(userRegisterError(error.message));
   }
 };
@@ -65,6 +84,10 @@ const LoginUser = credentials => async dispatch => {
     token.set(data.payload.token);
     dispatch(userLoginSuccess(data.payload));
   } catch (error) {
+    store.addNotification({
+      ...notificationError,
+      message: error.message,
+    });
     dispatch(userLoginError(error.message));
   }
 
@@ -81,8 +104,33 @@ const LogoutUser = () => async dispatch => {
     dispatch(userLogoutSuccess());
     token.unset();
   } catch (error) {
+    store.addNotification({
+      ...notificationError,
+      message: error.message,
+    });
     dispatch(userLogoutError(error.message));
   }
 };
+
+// Will be Operation for REFRESH TOKEN
+
+// const RefreshToken = callbackFunction => async (dispatch, getState) => {
+//   const {
+//     auth: { token: persistedToken },
+//   } = getState();
+
+//   if (!persistedToken) {
+//     return;
+//   }
+//   token.set(persistedToken);
+//   dispatch(endRefreshTokenRequest());
+
+//   try {
+//     const { data } = await axios.get('');
+//     dispatch(sendRefreshTokenSuccess(data.payload));
+//   } catch (error) {
+//     dispatch(sendRefreshTokenError(error.message));
+//   }
+// };
 
 export { registerUser, LoginUser, LogoutUser, getCurrentUser };
