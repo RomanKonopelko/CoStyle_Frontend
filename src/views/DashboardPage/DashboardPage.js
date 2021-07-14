@@ -7,6 +7,7 @@ import { Selectors } from '../../redux/transactions';
 
 import routes from '../../routes';
 
+import Container from '../../components/Container/Container';
 import Navigation from '../../components/Navigation/Navigation';
 import Balance from '../../components/Balance';
 import Currency from '../../components/Currency';
@@ -40,30 +41,36 @@ export default function DashboardPage() {
   return (
     <>
       {transactionsList ? (
-        <>
-          <div className="dashboradPage">
-            <div>
-              <Navigation />
-              <Balance className="balance" />
-              <Currency className="currency" />
-              {isShowModal && (
-                <Modal>
-                  <ModalAddTransaction />
-                </Modal>
-              )}
-            </div>
-            <Switch>
-              <Route
-                path={routes.home}
-                render={props => (
-                  <HomeTab {...props} tableData={transactionsList} />
+        <div className="dashboard-bcgi">
+          <Container>
+            <div className="dashboradPage">
+              <div className="nav-container">
+                <div className="nav-tablet-container">
+                  <Navigation />
+                  <Balance className="balance" />
+                </div>
+                <Currency className="currency" />
+                {isShowModal && (
+                  <Modal>
+                    <ModalAddTransaction />
+                  </Modal>
                 )}
-              />
-              <Route path={routes.diagram} component={DiagramTab} />
-            </Switch>
-          </div>
+              </div>
+              <span className="splitter"></span>
+              <Switch>
+                <Route
+                  path={routes.home}
+                  render={props => (
+                    <HomeTab {...props} tableData={transactionsList} />
+                  )}
+                />
+                <Route path={routes.diagram} component={DiagramTab} />
+              </Switch>
+            </div>
+          </Container>
+
           <ButtonAddTransaction />
-        </>
+        </div>
       ) : (
         <Loader />
       )}

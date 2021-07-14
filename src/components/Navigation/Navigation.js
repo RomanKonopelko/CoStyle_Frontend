@@ -13,28 +13,24 @@ export default function Navigation() {
   return (
     <div>
       <nav className="NavigationDashbord">
-        <Typography variant="h6">
-          <NavLink
-            exact
-            to={routes.home}
-            className="NavLink First"
-            activeClassName="NavLinkActive"
-          >
-            <img src={home} className="ImageNav" alt="home page" />
-            Главная
-          </NavLink>
-        </Typography>
-        <Typography variant="h6">
-          <NavLink
-            exact
-            to={routes.diagram}
-            className="NavLink"
-            activeClassName="NavLinkActive"
-          >
-            <img src={stat} alt="statistic page" className="ImageNav" />
-            Статистика
-          </NavLink>
-        </Typography>
+        <NavLink
+          exact
+          to={routes.home}
+          className="NavLink First"
+          activeClassName="NavLinkActive"
+        >
+          <img src={home} className="ImageNav" alt="home page" />
+          Главная
+        </NavLink>
+        <NavLink
+          exact
+          to={routes.diagram}
+          className="NavLink"
+          activeClassName="NavLinkActive"
+        >
+          <img src={stat} alt="statistic page" className="ImageNav" />
+          Статистика
+        </NavLink>
       </nav>
     </div>
   );

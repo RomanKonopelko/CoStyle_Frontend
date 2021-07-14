@@ -93,11 +93,11 @@
     padding-left: 95px;
 
     transition: 1.5s;
-    animation: show 1s 1;
+    animation: right 1s 1;
     animation-fill-mode: forwards;
     animation-delay: 0s;
 
-    @keyframes show {
+    @keyframes right {
       0% {
         opacity: 0;
         transform: translateX(2%);
