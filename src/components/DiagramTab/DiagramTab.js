@@ -17,27 +17,25 @@ export default function DiagramTab() {
   return (
     <>
       {lengthOfObject !== 0 ? (
-        <>
-          <div>
-            <h2 className="titleStatistic">Статистика</h2>
-            <div className="diagrmTab">
-              <div>
-                <Chart
-                  tableData={transactionsList}
-                  // handleChange={handleChange}
-                />
-              </div>
+        <div className="diagram-tab-container">
+          <h2 className="titleStatistic">Статистика</h2>
+          <div className="diagrmTab">
+            <div>
+              <Chart
+                tableData={transactionsList}
+                // handleChange={handleChange}
+              />
+            </div>
 
-              <div>
-                <Table
-                  tableData={transactionsList}
-                  // selected={selected}
-                  // handleChange={handleChange}
-                />
-              </div>
+            <div>
+              <Table
+                tableData={transactionsList}
+                // selected={selected}
+                // handleChange={handleChange}
+              />
             </div>
           </div>
-        </>
+        </div>
       ) : (
         <AlpacaStat />
       )}
