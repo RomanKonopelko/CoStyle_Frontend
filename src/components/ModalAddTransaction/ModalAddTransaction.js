@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 // import s from './ModalAddTransaction.module.scss';
 // Radio button
 import { withStyles } from '@material-ui/core/styles';
@@ -17,6 +17,8 @@ import Select from '@material-ui/core/Select';
 import NativeSelect from '@material-ui/core/NativeSelect';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+
+import { selectorsAuth, ActionAuth } from '../../redux/auth';
 
 import { Operations } from '../../redux/transactions';
 
@@ -78,6 +80,12 @@ export default function ModalAddTransaction() {
   console.log(transaction);
   // Switch for State
   const dispatch = useDispatch();
+
+  // test //
+  const isShowModal = useSelector(selectorsAuth.getShowModal);
+  const toggleModal = () => {
+    dispatch(ActionAuth.showModal(!isShowModal));
+  };
 
   const handleChange = e => {
     const { name, value } = e.currentTarget;
@@ -150,7 +158,7 @@ export default function ModalAddTransaction() {
   if (category && time && amount && commentary) {
     activateSubmitBtn = false;
   }
-  console.log(activateSubmitBtn);
+  //console.log(activateSubmitBtn);
 
   let classNameProfit = 'grey';
   if (!type) {
@@ -274,6 +282,8 @@ export default function ModalAddTransaction() {
             className="btn-form"
             type="submit"
             disabled={activateSubmitBtn}
+            //test
+            // onClick={toggleModal}
           >
             Добавить
           </Button>

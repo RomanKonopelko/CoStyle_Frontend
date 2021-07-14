@@ -36,7 +36,7 @@ export default function DashboardPage() {
   }, [dispatch]);
 
   const transactionsList = useSelector(Selectors.getAllTransactions);
-  console.log(`transactionsList.payload`, transactionsList);
+  //console.log(`transactionsList.payload`, transactionsList);
 
   return (
     <>
