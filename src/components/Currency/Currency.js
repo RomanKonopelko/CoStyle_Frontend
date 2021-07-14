@@ -34,9 +34,9 @@ export default function Currency() {
   const timeOnLocalstorage = Number(localStorage.getItem('time'));
   const currencyOnLocalstorage = localStorage.getItem('currency');
 
-  console.log(
-    new Date().valueOf() > Number(timeOnLocalstorage) + TIME_NORMOLIZE,
-  );
+  // console.log(
+  //   new Date().valueOf() > Number(timeOnLocalstorage) + TIME_NORMOLIZE,
+  // );
 
   useEffect(() => {
     if (!currencyOnLocalstorage && !timeOnLocalstorage) {

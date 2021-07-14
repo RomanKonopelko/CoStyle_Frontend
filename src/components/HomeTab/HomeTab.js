@@ -50,7 +50,7 @@ export default function StickyHeadTable({ tableData }) {
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   let rows = [];
-  console.log('TABLE_DATA', tableData);
+  //console.log('TABLE_DATA', tableData);
 
   tableData.map(t => {
     const time = t.time ? t.time.date.substr(0, 10) : '';
@@ -68,8 +68,8 @@ export default function StickyHeadTable({ tableData }) {
     return rows;
   });
 
-  console.log(tableData, 'tableData');
-  console.log(rows, 'rows');
+  //console.log(tableData, 'tableData');
+  //console.log(rows, 'rows');
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);

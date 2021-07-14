@@ -67,7 +67,6 @@ const LoginUser = credentials => async dispatch => {
     token.set(data.payload.token);
     dispatch(userLoginSuccess(data.payload));
   } catch (error) {
-    console.log(credentials, 'name');
     dispatch(userLoginError(error.message));
     Notify(error.response.data.message);
   }
@@ -84,7 +83,7 @@ const LogoutUser = () => async dispatch => {
     token.unset();
   } catch (error) {
     dispatch(userLogoutError(error.message));
-    Notify(error.response.data.message);
+    // Notify(error.response.data.message);
   }
 };
 
