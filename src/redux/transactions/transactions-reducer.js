@@ -30,7 +30,10 @@ const initialStatistic = {
 // ========ToolKit =======
 const itemsReducers = createReducer(initialState, {
   [getTransactionsSuccess]: (_, { payload }) => payload.transactions,
-  [addTransactionSuccess]: (state, { payload }) => [...state, payload],
+  [addTransactionSuccess]: (state, { payload }) => [
+    payload.transaction,
+    ...state,
+  ],
   // [deleteTransactionSuccess]: (state, { payload }) =>
   //   state.filter(contact => contact.id !== payload),
 });
