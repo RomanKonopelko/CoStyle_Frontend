@@ -16,7 +16,9 @@ export default function Balance() {
         <div className="balanceContainer">
           <h3 className="balanceTitle">Ваш баланс</h3>
           <span className="unicode">₴</span>
-          <span className="balance">{balance}</span>
+          <span className="balance">
+            {new Intl.NumberFormat('ru-RU').format(balance)}
+          </span>
         </div>
       ) : (
         <Loader />

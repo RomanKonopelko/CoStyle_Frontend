@@ -9,10 +9,13 @@ export default function Alpaca() {
     <>
       <div className="table alpacaText">
         <p>Привет, {name}!</p>
-        <img className="alpacatImg" src={img} alt="alpaca" />
+        <img
+          className="alpacatImg"
+          src="https://media1.giphy.com/media/ORjeGbJQP8bSKO9ZrQ/giphy.gif?cid=6c09b952acb22b31766abb3d50bb216699cf2517a7a53b11&rid=giphy.gif&ct=s"
+          alt="alpaca"
+        />
         <p> Я твой персональний финасовый менеджер.</p>
         <p>
-          {' '}
           Вместе мы проконтролируем твои расходы, чтобы ты смог собрать деньги
           на мечту!
         </p>

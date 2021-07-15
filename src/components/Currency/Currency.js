@@ -9,18 +9,24 @@ import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 const CURRENCY_EXCHANGE = ['EUR', 'USD', 'RUR'];
 const TIME_NORMOLIZE = 60000;
 
-const getCurrencyRate = async () => {
-  try {
-    // const { data } = await axios.get(
-    //   'https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11',
+const getCurrencyRate = () => {
+  // try {
+  // const { data } = await axios.get(
+  //   'https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11',
 
-    const { data } = await axios.get('https://api.monobank.ua/bank/currency');
-    // console.log(data);
-    // console.log('HELLO');
-    return data;
-  } catch (e) {
-    console.log(e.message);
-  }
+  // const { data } =
+  // axios.get('https://api.monobank.ua/bank/currency');
+  return axios
+    .get('https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11')
+    .then(res => res.data)
+    .catch(e => e.message);
+
+  // console.log(data);
+  // console.log('HELLO');
+  //return data;
+  //   } catch (e) {
+  //     console.log(e.message);
+  //   }
 };
 
 const pad = n => {
@@ -30,6 +36,7 @@ const pad = n => {
 
 export default function Currency() {
   const [currency, setCurrency] = useState([]);
+  console.log(currency);
 
   const timeOnLocalstorage = Number(localStorage.getItem('time'));
   const currencyOnLocalstorage = localStorage.getItem('currency');

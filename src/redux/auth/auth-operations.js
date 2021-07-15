@@ -51,8 +51,8 @@ const registerUser = credentials => async dispatch => {
 
   try {
     const { data } = await axios.post('/api/users/register', credentials);
-    token.set(data.token);
-    dispatch(userRegisterSuccess(data));
+    token.set(data.payload.token);
+    dispatch(userRegisterSuccess(data.payload));
   } catch (error) {
     dispatch(userRegisterError(error.message));
     Notify(error.response.data.message, credentials.name);
