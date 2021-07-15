@@ -87,14 +87,18 @@
   line-height: 24px;
   color: $title-text-color;
 }
+
 .row .cellBody:first-child {
   padding-left: 20px;
+  width: 116px;
 }
 .row .cellBody:last-child {
   padding-right: 20px;
   text-align: right;
 }
-
+.row .type {
+  text-align: center;
+}
 .expenses .sum {
   font-weight: bold;
   color: $accent-color5;
@@ -105,6 +109,11 @@
   color: $accent-color;
   text-align: center;
 }
+
+// .expenses .balance,
+// .income .balance {
+//   font-weight: bold;
+// }
 
 /* Mobile */
 
@@ -161,6 +170,11 @@
   @include for-size(tablet) {
     display: none;
   }
+}
+
+.expensesM .balance,
+.incomeM .balance {
+  font-weight: bold;
 }
 
 // for first visit
