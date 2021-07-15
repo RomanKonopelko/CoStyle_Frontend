@@ -142,8 +142,10 @@ export default function StickyHeadTable({ tableData }) {
                                   align={column.align}
                                   className={`cellBody ${column.id}`}
                                 >
-                                  {column.format && typeof value === 'number'
-                                    ? column.format(value)
+                                  {typeof value === 'number'
+                                    ? new Intl.NumberFormat('ru-RU').format(
+                                        value,
+                                      )
                                     : value}
                                 </TableCell>
                               );
@@ -197,8 +199,8 @@ export default function StickyHeadTable({ tableData }) {
                               align={column.align}
                               className={`cellValue ${column.id}`}
                             >
-                              {column.format && typeof value === 'number'
-                                ? column.format(value)
+                              {typeof value === 'number'
+                                ? new Intl.NumberFormat('ru-RU').format(value)
                                 : value}
                             </td>
                           </tr>
