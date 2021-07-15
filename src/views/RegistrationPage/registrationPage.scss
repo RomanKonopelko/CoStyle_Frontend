@@ -93,19 +93,9 @@
     padding-left: 95px;
 
     transition: 1.5s;
-    animation: right 1s 1;
+    animation: mainAnimation 1s 1;
     animation-fill-mode: forwards;
     animation-delay: 0s;
-
-    @keyframes right {
-      0% {
-        opacity: 0;
-        transform: translateX(2%);
-      }
-      100% {
-        opacity: 1;
-      }
-    }
 
     @media screen and (max-width: 1279px) {
       padding-top: 50px;

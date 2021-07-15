@@ -10,6 +10,15 @@
     margin-bottom: 0;
   }
 
+  @media screen and (max-width: 767px) {
+    padding-bottom: 9px;
+
+    transition: 1.5s;
+    animation: mobileAnimation 1s 1;
+    animation-fill-mode: forwards;
+    animation-delay: 0s;
+  }
+
   @include for-size(tablet) {
     width: 340px;
     padding-top: 8px;
