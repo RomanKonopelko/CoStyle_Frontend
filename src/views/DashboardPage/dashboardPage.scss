@@ -1,10 +1,14 @@
 .dashboard-bcgi {
-  background-image: url('../../images/dashboard-bcgi-1280.png');
+  background-color: #e7eaf2;
   background-size: cover;
   background-position: center;
 
-  @media screen and (max-width: 1279px) {
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
     background-image: url('../../images/dashboard-bcgi-768.png');
+  }
+
+  @media screen and (min-width: 1280px) {
+    background-image: url('../../images/dashboard-bcgi-1280.png');
   }
 }
 
@@ -19,6 +23,10 @@
     display: block;
 
     padding-top: 26px;
+  }
+
+  @media screen and (max-width: 767px) {
+    padding-top: 14px;
   }
 
   transition: 1.5s;
@@ -43,6 +51,10 @@
 
       padding: 0;
       margin-bottom: 26px;
+    }
+
+    @media screen and (max-width: 1279px) {
+      margin-bottom: 28px;
     }
   }
 

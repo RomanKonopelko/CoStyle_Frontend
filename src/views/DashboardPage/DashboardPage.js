@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
 
 import { Operations } from '../../redux/transactions';
 import { selectorsAuth } from '../../redux/auth';
@@ -27,6 +28,12 @@ const DiagramTab = lazy(() => import('../../components/DiagramTab'));
 export default function DashboardPage() {
   const isShowModal = useSelector(selectorsAuth.getShowModal);
 
+  const location = window.location.pathname;
+
+  const isMobile = useMediaQuery({
+    query: '(max-device-width: 767px)',
+  });
+
   // Added new logic by Chernyshenko
 
   const dispatch = useDispatch();
@@ -47,9 +54,12 @@ export default function DashboardPage() {
               <div className="nav-container">
                 <div className="nav-tablet-container">
                   <Navigation />
-                  <Balance className="balance" />
+                  {location === '/home' && isMobile && (
+                    <Balance className="balance" />
+                  )}
+                  {!isMobile && <Balance className="balance" />}
                 </div>
-                <Currency className="currency" />
+                {!isMobile && <Currency className="currency" />}
                 {isShowModal && (
                   <Modal>
                     <ModalAddTransaction />
@@ -65,6 +75,7 @@ export default function DashboardPage() {
                   )}
                 />
                 <Route path={routes.diagram} component={DiagramTab} />
+                <Route path={routes.currency} component={Currency} />
               </Switch>
             </div>
           </Container>

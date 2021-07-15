@@ -45,7 +45,7 @@ li {
   margin-right: auto;
   padding-left: 20px;
   padding-right: 20px;
-  width: 100%;
+  width: 320px;
 
   @include for-size(tablet) {
     padding-left: 40px;
@@ -76,4 +76,24 @@ li {
   height: 0 !important;
   width: 0 !important;
   overflow: hidden;
+}
+
+@keyframes mainAnimation {
+  0% {
+    opacity: 0;
+    transform: translateX(2%);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes mobileAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(2%);
+  }
+  100% {
+    opacity: 1;
+  }
 }

@@ -3,4 +3,5 @@ export default {
   login: '/login',
   home: '/home',
   diagram: '/diagram',
+  currency: '/currency',
 };
