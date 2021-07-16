@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import s from './ModalAddTransaction.module.scss';
+
 // Radio button
 import { withStyles } from '@material-ui/core/styles';
 import { purple } from '@material-ui/core/colors';
@@ -148,9 +148,11 @@ export default function ModalAddTransaction() {
     });
   };
 
+  let classNameActiveBtn = `btn-form Mui-disabled`;
   let activateSubmitBtn = true;
   if (category && time && amount && commentary) {
     activateSubmitBtn = false;
+    classNameActiveBtn = `btn-form-active-root`;
   }
   //console.log(activateSubmitBtn);
 
@@ -167,7 +169,11 @@ export default function ModalAddTransaction() {
   return (
     <div className="modalContainer">
       <h2 className="title">Добавить транзакцию</h2>
-      <form onSubmit={handleSubmit} className="form" autoComplete="off">
+      <form
+        onSubmit={handleSubmit}
+        className="form addTransactionForm"
+        autoComplete="off"
+      >
         <div className="radioBtn">
           <Typography component="div">
             <Grid component="label" container alignItems="center" spacing={1}>

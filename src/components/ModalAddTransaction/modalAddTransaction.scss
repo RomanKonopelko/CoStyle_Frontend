@@ -4,27 +4,59 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 540px;
-  height: 540px;
+  width: 320px;
+  // height: 600px;
   border-radius: 20px;
   padding-top: 20px;
+
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    width: 540px;
+    height: 540px;
+  }
 }
 
 h2.title {
   text-align: center;
   font-weight: normal;
-  font-size: 30px;
-  line-height: 45px;
+  font-size: 24px;
+  line-height: 36px;
   color: #000000;
+
+  @media screen and (min-width: 768px) {
+    font-size: 30px;
+    line-height: 45px;
+  }
   // margin-bottom: 40px;
 }
 
+form.addTransactionForm {
+  width: 280px;
+  padding-top: 40px;
+  padding-left: 0;
+  padding-right: 0;
+  margin: 0 auto;
+
+  @media screen and (min-width: 768px) {
+    width: 540px;
+    padding-right: 65px;
+    padding-left: 65px;
+    padding-top: 40px;
+    padding-bottom: 60px;
+    background-color: white;
+    border-radius: 20px;
+  }
+}
+
 .radioBtn {
-  width: 300px;
+  width: 220px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
   margin-bottom: 40px;
+
+  @media screen and (min-width: 768px) {
+    width: 300px;
+  }
 }
 
 .green {
@@ -40,22 +72,25 @@ h2.title {
 }
 
 .cetegory {
-  width: 300px;
+  width: 280px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 40px;
+
+  @media screen and (min-width: 768px) {
+    width: 300px;
+  }
 }
+
 .input-comments {
-  width: 300px;
+  width: 280px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 50px;
-}
-.addBtn {
-  width: 300px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 20px;
+  // margin-bottom: 50px;
+
+  @media screen and (min-width: 768px) {
+    width: 300px;
+  }
 }
 
 .cancelBtn {
@@ -66,29 +101,55 @@ h2.title {
 }
 
 .data-money-form {
-  padding: 0 30px;
-  margin-bottom: 40px;
-  display: flex;
-  justify-content: space-around;
-  align-content: flex-start;
+  // padding: 0 30px;
+  // margin-bottom: 40px;
+
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    display: flex;
+    justify-content: space-around;
+    align-content: flex-start;
+    margin-bottom: 40px;
+  }
 }
 
 .money-input {
+  display: block;
+  width: 280px;
   border: 1px solid #e0e0e0;
   border-top-color: transparent;
   border-right-color: transparent;
   border-left-color: transparent;
   align-content: flex-start;
+  margin-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 0px;
+    width: 190px;
+    margin-right: 30px;
+  }
 }
 .money-input[placeholder] {
   text-align: center;
 }
 
 .date-input {
+  display: block;
+  width: 280px;
+  background-color: transparent;
   border: 1px solid #e0e0e0;
   border-top-color: transparent;
   border-right-color: transparent;
   border-left-color: transparent;
+  margin-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 0px;
+    width: 190px;
+  }
 }
 
 .modal-form-btn-container {
@@ -97,11 +158,11 @@ h2.title {
   align-items: center;
   justify-content: center;
 
-  margin-top: 36px;
+  margin-top: 40px;
 }
 
 .btn-form {
-  width: 300px;
+  width: 700px;
   height: 50px;
 
   margin-top: 20px;
