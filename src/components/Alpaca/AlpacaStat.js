@@ -4,14 +4,12 @@ export default function AlpacaStat() {
 
   return (
     <>
-      <div className="table alpacaText">
+      <div className="alpacaStat">
         <img
           className="alpacatImg"
           src="https://media2.giphy.com/media/5nh30ByowIC9jVH1b6/source.gif"
           alt="alpaca"
         />
-        <p>C помощью графика контролируй на что потратил больше всего денег.</p>
-        <p>Но сначала добавь свои первые рассходы!</p>
       </div>
     </>
   );
