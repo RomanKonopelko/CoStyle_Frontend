@@ -18,10 +18,10 @@ export default function DiagramTab() {
   return (
     <>
       <div className="diagram-tab-container">
-        <h2 className="titleStatistic">Статистика</h2>
         <div className="diagrmTab">
           {lengthOfObject !== 0 ? (
             <div>
+              <h2 className="titleStatistic">Статистика</h2>
               <Chart
                 tableData={transactionsList}
                 // handleChange={handleChange}

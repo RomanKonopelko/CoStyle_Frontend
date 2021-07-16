@@ -1,6 +1,7 @@
 .tableFormStatistic {
   // для мобилки
   width: 280px;
+  padding-bottom: 20px;
 
   @include for-size(tablet) {
     // для планшета и для  десктоп
