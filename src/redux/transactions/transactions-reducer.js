@@ -5,9 +5,9 @@ import {
   addTransactionRequest,
   addTransactionSuccess,
   addTransactionError,
-  // deleteTransactionRequest,
-  // deleteTransactionSuccess,
-  // deleteTransactionError,
+  deleteTransactionRequest,
+  deleteTransactionSuccess,
+  deleteTransactionError,
   getFilterTransactionsStatisticRequest,
   getFilterTransactionsStatisticSuccess,
   getFilterTransactionsStatisticError,
@@ -34,8 +34,8 @@ const itemsReducers = createReducer(initialState, {
     payload.transaction,
     ...state,
   ],
-  // [deleteTransactionSuccess]: (state, { payload }) =>
-  //   state.filter(contact => contact.id !== payload),
+  [deleteTransactionSuccess]: (state, { payload }) =>
+    state.filter(({ id }) => id !== payload),
 });
 
 const itemsReducersStatistic = createReducer(initialStatistic, {
@@ -54,9 +54,9 @@ const loading = createReducer(false, {
   [addTransactionRequest]: () => true,
   [addTransactionSuccess]: () => false,
   [addTransactionError]: () => false,
-  // [deleteTransactionRequest]: () => true,
-  // [deleteTransactionSuccess]: () => false,
-  // [deleteTransactionError]: () => false,
+  [deleteTransactionRequest]: () => true,
+  [deleteTransactionSuccess]: () => false,
+  [deleteTransactionError]: () => false,
   [getFilterTransactionsStatisticRequest]: () => true,
   [getFilterTransactionsStatisticSuccess]: () => false,
   [getFilterTransactionsStatisticError]: () => false,

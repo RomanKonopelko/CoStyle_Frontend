@@ -6,9 +6,9 @@ import {
   addTransactionRequest,
   addTransactionSuccess,
   addTransactionError,
-  // deleteTransactionRequest,
-  // deleteTransactionSuccess,
-  // deleteTransactionError,
+  deleteTransactionRequest,
+  deleteTransactionSuccess,
+  deleteTransactionError,
   getFilterTransactionsStatisticRequest,
   getFilterTransactionsStatisticSuccess,
   getFilterTransactionsStatisticError,
@@ -44,16 +44,16 @@ const addTransaction = Transaction => async dispatch => {
   }
 };
 
-// const deleteTransaction = id => async dispatch => {
-//   dispatch(deleteTransactionRequest());
-
-//   try {
-//     await axios.delete(`/transactions/${id}`);
-//     dispatch(deleteTransactionSuccess(id));
-//   } catch (error) {
-//     dispatch(deleteTransactionError(error.message));
-//   }
-// };
+const deleteTransaction = id => async dispatch => {
+  dispatch(deleteTransactionRequest());
+  console.log('deleteTransaction', id);
+  try {
+    // await axios.delete(`/api/transactions/${id}`);
+    dispatch(deleteTransactionSuccess(id));
+  } catch (error) {
+    dispatch(deleteTransactionError(error.message));
+  }
+};
 
 const getTransactionsStatistic = () => async dispatch => {
   dispatch(getTransactionsStatisticRequest());
@@ -85,7 +85,7 @@ const getFilterTransactionsStatistic = (month, year) => async dispatch => {
 export {
   getTransaction,
   addTransaction,
-  // deleteTransaction,
+  deleteTransaction,
   getFilterTransactionsStatistic,
   getTransactionsStatistic,
 };
