@@ -2,6 +2,8 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Operations } from '../../redux/transactions';
 import { makeStyles } from '@material-ui/core/styles';
+
+import ButtonAddTransaction from '../ButtonAddTransactions/ButtonAddTransactions';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -231,6 +233,8 @@ export default function StickyHeadTable({ tableData }) {
               );
             })}
           </table>
+
+          <ButtonAddTransaction />
         </>
       )}
     </>

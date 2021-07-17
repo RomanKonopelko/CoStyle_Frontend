@@ -16,7 +16,7 @@ import Currency from '../../components/Currency';
 import Loader from '../../components/Loader/Loader';
 
 import Modal from '../../components/Shared/Modal';
-import ButtonAddTransaction from '../../components/ButtonAddTransactions/ButtonAddTransactions';
+
 import { Route, Switch } from 'react-router';
 import ModalAddTransaction from '../../components/ModalAddTransaction/ModalAddTransaction';
 
@@ -79,8 +79,6 @@ export default function DashboardPage() {
               </Switch>
             </div>
           </Container>
-
-          <ButtonAddTransaction />
         </div>
       ) : (
         <Loader />
