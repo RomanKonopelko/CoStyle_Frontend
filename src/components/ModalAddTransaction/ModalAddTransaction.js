@@ -1,24 +1,25 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { selectorsAuth, ActionAuth } from '../../redux/auth';
 
 // Radio button
 import { withStyles } from '@material-ui/core/styles';
-import { purple } from '@material-ui/core/colors';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+
 import Switch from '@material-ui/core/Switch';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
+
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import NativeSelect from '@material-ui/core/NativeSelect';
+
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
-import { selectorsAuth, ActionAuth } from '../../redux/auth';
+import Icon from '@material-ui/core/Icon';
+
+import CloseIcon from '@material-ui/icons/Close';
 
 import { Operations } from '../../redux/transactions';
 
@@ -71,7 +72,7 @@ export default function ModalAddTransaction() {
   const [transaction, setTransaction] = React.useState({
     category: '',
     time: '',
-    amount: 0,
+    amount: 0.0,
     type: false,
     commentary: '',
   });
@@ -80,6 +81,12 @@ export default function ModalAddTransaction() {
   console.log(transaction);
   // Switch for State
   const dispatch = useDispatch();
+
+  const isShowModal = useSelector(selectorsAuth.getShowModal);
+
+  const toggleModal = () => {
+    dispatch(ActionAuth.showModal(!isShowModal));
+  };
 
   const handleChange = e => {
     const { name, value } = e.currentTarget;
@@ -111,7 +118,7 @@ export default function ModalAddTransaction() {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    // console.log({ category, time, amount, sort, commentary });
+
     await dispatch(
       Operations.addTransaction({
         category,
@@ -156,24 +163,24 @@ export default function ModalAddTransaction() {
   }
   //console.log(activateSubmitBtn);
 
-  let classNameProfit = 'grey';
+  let classNameProfit = 'grey2';
   if (!type) {
     classNameProfit = 'green';
   }
 
-  let classNameExpencess = 'grey';
+  let classNameExpencess = 'grey1';
   if (type) {
     classNameExpencess = 'red';
   }
 
   return (
     <div className="modalContainer">
-      <h2 className="title">Добавить транзакцию</h2>
       <form
         onSubmit={handleSubmit}
-        className="form addTransactionForm"
+        className="addTransactionForm"
         autoComplete="off"
       >
+        <h2 className="title">Добавить транзакцию</h2>
         <div className="radioBtn">
           <Typography component="div">
             <Grid component="label" container alignItems="center" spacing={1}>
@@ -184,7 +191,7 @@ export default function ModalAddTransaction() {
                 <AntSwitch checked={type} onChange={handleChange} name="type" />
               </Grid>
               <Grid item>
-                <span className={classNameExpencess}>Рассход</span>
+                <span className={classNameExpencess}>Расход</span>
               </Grid>
             </Grid>
           </Typography>
@@ -240,9 +247,8 @@ export default function ModalAddTransaction() {
         )}
         <div className="data-money-form">
           <div action="">
-            <input
+            <TextField
               className="money-input"
-              type="number"
               name="amount"
               value={amount}
               onChange={handleChange}
@@ -251,7 +257,7 @@ export default function ModalAddTransaction() {
             />
           </div>
           <div>
-            <input
+            <TextField
               className="date-input"
               type="date"
               id="start"
@@ -267,7 +273,7 @@ export default function ModalAddTransaction() {
         <div className="input-comments">
           <div className={classes.root} noValidate autoComplete="off">
             <TextField
-              style={{ width: 300 }}
+              className="input-comments"
               id="standard-basic"
               label="Комментарий"
               name="commentary"
@@ -282,8 +288,6 @@ export default function ModalAddTransaction() {
             className="btn-form"
             type="submit"
             disabled={activateSubmitBtn}
-            //test
-            //onClick={toggleModal}
           >
             Добавить
           </Button>
@@ -293,16 +297,17 @@ export default function ModalAddTransaction() {
           </Button>
         </div>
 
-        {/* <div className={s.addBtn}>
-          <Button className="btn-form" variant="contained" type="submit">
-            Добавить
-          </Button>
+        <div>
+          <button
+            type="button"
+            className="BtnCloseTransaction"
+            onClick={toggleModal}
+          >
+            <Icon>
+              <CloseIcon />
+            </Icon>
+          </button>
         </div>
-        <div className={s.cancelBtn}>
-          <Button className="btn-form" variant="contained">
-            Отменить
-          </Button>
-        </div> */}
       </form>
     </div>
   );
