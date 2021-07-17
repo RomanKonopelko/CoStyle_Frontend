@@ -15,7 +15,13 @@
 .modal {
   max-width: calc(100vw - 48px);
   max-height: calc(100vh - 24px);
+
+  transition: 1.5s;
+  animation: dashboard 1s 1;
+  animation-fill-mode: forwards;
+  animation-delay: 0s;
 }
+
 .modalBtn {
   position: absolute;
   top: 10px;
