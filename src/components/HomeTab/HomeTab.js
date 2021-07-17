@@ -1,4 +1,6 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { Operations } from '../../redux/transactions';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
@@ -8,6 +10,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 import Alpaca from '../Alpaca/Alpaca';
 import { SignalWifi1BarLockSharp } from '@material-ui/icons';
@@ -33,8 +36,8 @@ const columns = [
   },
 ];
 
-function createData(date, type, category, comment, sum, balance) {
-  return { date, type, category, comment, sum, balance };
+function createData(id, date, type, category, comment, sum, balance) {
+  return { id, date, type, category, comment, sum, balance };
 }
 
 const useStyles = makeStyles({
@@ -46,8 +49,13 @@ const useStyles = makeStyles({
 
 export default function StickyHeadTable({ tableData }) {
   const classes = useStyles();
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const dispatch = useDispatch();
+  const deleteTransaction = id => {
+    dispatch(Operations.deleteTransaction(id));
+  };
+
+  // const [page, setPage] = React.useState(0);
+  // const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   let rows = [];
   //console.log('TABLE_DATA', tableData);
@@ -57,6 +65,7 @@ export default function StickyHeadTable({ tableData }) {
     const sort = t.sort === 'Расход' ? '-' : '+';
     rows.push(
       createData(
+        t.id,
         time,
         sort,
         t.category,
@@ -68,17 +77,17 @@ export default function StickyHeadTable({ tableData }) {
     return rows;
   });
 
-  //console.log(tableData, 'tableData');
-  //console.log(rows, 'rows');
+  // console.log(tableData, 'tableData');
+  // console.log(rows, 'rows');
 
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
+  // const handleChangePage = (event, newPage) => {
+  //   setPage(newPage);
+  // };
 
-  const handleChangeRowsPerPage = event => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
-  };
+  // const handleChangeRowsPerPage = event => {
+  //   setRowsPerPage(+event.target.value);
+  //   setPage(0);
+  // };
 
   return (
     <>
@@ -119,38 +128,44 @@ export default function StickyHeadTable({ tableData }) {
                   </TableHead>
                   <TableBody>
                     {rows
-                      .slice(
-                        page * rowsPerPage,
-                        page * rowsPerPage + rowsPerPage,
-                      )
+                      // .slice(
+                      //   page * rowsPerPage,
+                      //   page * rowsPerPage + rowsPerPage,
+                      // )
                       .map(row => {
                         return (
-                          <TableRow
-                            hover
-                            role="checkbox"
-                            tabIndex={-1}
-                            key={row.code}
-                            className={
-                              row.type === '-' ? 'row expenses' : 'row income'
-                            }
-                          >
-                            {columns.map(column => {
-                              const value = row[column.id];
-                              return (
-                                <TableCell
-                                  key={column.id}
-                                  align={column.align}
-                                  className={`cellBody ${column.id}`}
-                                >
-                                  {typeof value === 'number'
-                                    ? new Intl.NumberFormat('ru-RU').format(
-                                        value,
-                                      )
-                                    : value}
-                                </TableCell>
-                              );
-                            })}
-                          </TableRow>
+                          <>
+                            <TableRow
+                              hover
+                              role="checkbox"
+                              tabIndex={-1}
+                              key={row.id}
+                              className={
+                                row.type === '-' ? 'row expenses' : 'row income'
+                              }
+                            >
+                              {columns.map(column => {
+                                const value = row[column.id];
+                                return (
+                                  <TableCell
+                                    key={column.id}
+                                    align={column.align}
+                                    className={`cellBody ${column.id}`}
+                                  >
+                                    {typeof value === 'number'
+                                      ? new Intl.NumberFormat('ru-RU').format(
+                                          value,
+                                        )
+                                      : value}
+                                  </TableCell>
+                                );
+                              })}
+                              <DeleteForeverIcon
+                                className="deleteIcon"
+                                onClick={() => deleteTransaction(row.id)}
+                              />
+                            </TableRow>
+                          </>
                         );
                       })}
                   </TableBody>
@@ -207,6 +222,10 @@ export default function StickyHeadTable({ tableData }) {
                         </>
                       );
                     })}
+                    <DeleteForeverIcon
+                      className="deleteIconM"
+                      onClick={() => deleteTransaction(row.id)}
+                    />
                   </tbody>
                 </>
               );

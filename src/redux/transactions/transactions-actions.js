@@ -17,9 +17,15 @@ const addTransactionSuccess = createAction(
 );
 const addTransactionError = createAction('transactions/addTransactionError');
 
-// const deleteTransactionRequest = createAction('transactions/deleteTransactionRequest');
-// const deleteTransactionSuccess = createAction('transactions/deleteTransactionSuccess');
-// const deleteTransactionError = createAction('transactions/deleteTransactionError');
+const deleteTransactionRequest = createAction(
+  'transactions/deleteTransactionRequest',
+);
+const deleteTransactionSuccess = createAction(
+  'transactions/deleteTransactionSuccess',
+);
+const deleteTransactionError = createAction(
+  'transactions/deleteTransactionError',
+);
 
 // for Filter Transactions Statistic
 const getFilterTransactionsStatisticRequest = createAction(
@@ -50,9 +56,9 @@ export {
   addTransactionRequest,
   addTransactionSuccess,
   addTransactionError,
-  // deleteTransactionRequest,
-  // deleteTransactionSuccess,
-  // deleteTransactionError,
+  deleteTransactionRequest,
+  deleteTransactionSuccess,
+  deleteTransactionError,
   getFilterTransactionsStatisticRequest,
   getFilterTransactionsStatisticSuccess,
   getFilterTransactionsStatisticError,

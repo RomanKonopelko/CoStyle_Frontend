@@ -151,28 +151,25 @@
     .rowMobile:first-child {
       border-radius: 10px 10px 0px 0px;
     }
-    .rowMobile:last-child {
+    .rowMobile:nth-last-child(-n + 2) {
       border-radius: 0px 0px 10px 10px;
       margin-bottom: 10px;
     }
   }
   .expensesM {
-    .sum {
-      font-weight: bold;
-      color: $accent-color5;
-    }
     .rowMobile {
       border-left: 5px solid $accent-color5;
+      .sum {
+        color: $accent-color5;
+      }
     }
   }
   .incomeM {
-    .sum {
-      font-weight: bold;
-      color: $accent-color;
-    }
-
     .rowMobile {
       border-left: 5px solid $accent-color;
+      .sum {
+        color: $accent-color;
+      }
     }
   }
   @include for-size(tablet) {
@@ -180,9 +177,27 @@
   }
 }
 
-.expensesM .balance,
-.incomeM .balance {
-  font-weight: bold;
+/*delete button*/
+
+.row {
+  position: relative;
+  .deleteIcon {
+    position: absolute;
+    display: block;
+    top: -2px;
+    right: 7px;
+    color: $secondary-text-color;
+  }
+}
+
+.sectionMobile {
+  position: relative;
+  .deleteIconM {
+    position: absolute;
+    display: block;
+    top: 0px;
+    right: -20px;
+  }
 }
 
 // for first visit
