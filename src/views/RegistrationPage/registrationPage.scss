@@ -4,6 +4,7 @@
 
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     background-image: url('../../images/login-page-bcgi-768.png');
+    background-size: cover;
   }
 
   @media screen and (min-width: 1280px) {
@@ -11,10 +12,12 @@
   }
   .container {
     padding-left: 76px;
+    //padding-bottom: 20px;
 
     @media screen and (max-width: 1279px) {
       padding-left: 114px;
       padding-right: 114px;
+      padding-bottom: 192px;
     }
 
     @media screen and (max-width: 767px) {
@@ -31,6 +34,7 @@
 
   @media screen and (max-width: 1279px) {
     flex-direction: column;
+    background-size: cover;
   }
 
   .left {
