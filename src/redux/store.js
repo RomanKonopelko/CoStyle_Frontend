@@ -24,7 +24,7 @@ import authReducers from '../redux/auth/auth-reducer';
 const persistConfig = {
   key: 'token',
   storage,
-  whitelist: ['token'],
+  whitelist: ['token', 'refreshToken'],
 };
 
 const middleware = [
