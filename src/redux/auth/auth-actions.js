@@ -16,6 +16,10 @@ const userLogoutRequest = createAction('auth/userLogoutRequest');
 const userLogoutSuccess = createAction('auth/userLogoutSuccess');
 const userLogoutError = createAction('auth/userLogoutError');
 
+const getUpdatedTokenRqueest = createAction('auth/getUpdatedTokenRequest');
+const getUpdatedTokenSuccess = createAction('auth/getUpdatedTokenSuccess');
+const getUpdatedTokenError = createAction('auth/getUpdatedTokenError');
+
 const showModal = createAction('auth/Modal');
 
 export {
@@ -32,4 +36,7 @@ export {
   userLogoutSuccess,
   userLogoutError,
   showModal,
+  getUpdatedTokenRqueest,
+  getUpdatedTokenSuccess,
+  getUpdatedTokenError,
 };

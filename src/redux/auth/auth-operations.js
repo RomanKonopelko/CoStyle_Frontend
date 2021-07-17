@@ -14,7 +14,12 @@ import {
   userLogoutRequest,
   userLogoutSuccess,
   userLogoutError,
+  getUpdatedTokenRqueest,
+  getUpdatedTokenSuccess,
+  getUpdatedTokenError,
 } from './auth-actions';
+
+import { GetError } from '../../components/HandleErrors/HandleErrors';
 
 axios.defaults.baseURL = 'https://costyle-wallet-app.herokuapp.com/';
 
@@ -42,6 +47,13 @@ const getCurrentUser = () => async (dispatch, getState) => {
     const { data } = await axios.get('/api/users/current');
     dispatch(getCurrentUserSuccess(data.payload));
   } catch (error) {
+    console.log('ERRORE', error.response.data.code);
+    dispatch(
+      GetError({
+        error: error.response.data.code,
+        requestedCallback: getCurrentUser,
+      }),
+    );
     dispatch(gentCurrentUserError(error.message));
   }
 };
@@ -70,8 +82,6 @@ const LoginUser = credentials => async dispatch => {
     dispatch(userLoginError(error.message));
     Notify(error.response.data.message);
   }
-  // const { data } = await axios.get('/api/transactions');
-  // console.log(data);
 };
 
 const LogoutUser = () => async dispatch => {
@@ -89,23 +99,25 @@ const LogoutUser = () => async dispatch => {
 
 // Will be Operation for REFRESH TOKEN
 
-// const RefreshToken = callbackFunction => async (dispatch, getState) => {
-//   const {
-//     auth: { token: persistedToken },
-//   } = getState();
+const RefreshToken = callbackFunction => async (dispatch, getState) => {
+  const {
+    auth: { refreshToken: refresh },
+  } = getState();
 
-//   if (!persistedToken) {
-//     return;
-//   }
-//   token.set(persistedToken);
-//   dispatch(endRefreshTokenRequest());
+  if (!refresh) {
+    return;
+  }
+  token.set(refresh);
+  dispatch(getUpdatedTokenRqueest());
 
-//   try {
-//     const { data } = await axios.get('');
-//     dispatch(sendRefreshTokenSuccess(data.payload));
-//   } catch (error) {
-//     dispatch(sendRefreshTokenError(error.message));
-//   }
-// };
+  try {
+    const { data } = await axios.get('/api/users/token');
+    dispatch(getUpdatedTokenSuccess(data.payload));
+    // console.log(getCurrentUser());
+    dispatch(getCurrentUser());
+  } catch (error) {
+    dispatch(getUpdatedTokenError(error.message));
+  }
+};
 
-export { registerUser, LoginUser, LogoutUser, getCurrentUser };
+export { registerUser, LoginUser, LogoutUser, getCurrentUser, RefreshToken };

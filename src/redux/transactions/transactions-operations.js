@@ -16,6 +16,7 @@ import {
   getTransactionsStatisticSuccess,
   getTransactionsStatisticError,
 } from './transactions-actions';
+import { GetError } from '../../components/HandleErrors/HandleErrors';
 
 axios.defaults.baseURL = 'https://costyle-wallet-app.herokuapp.com/';
 
