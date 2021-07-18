@@ -72,7 +72,7 @@ export default function ModalAddTransaction() {
   const [transaction, setTransaction] = React.useState({
     category: '',
     time: '',
-    amount: 0.0,
+    amount: '',
     type: false,
     commentary: '',
   });
@@ -98,7 +98,10 @@ export default function ModalAddTransaction() {
         setTransaction(prevState => ({ ...prevState, [name]: value }));
         break;
       case 'amount':
-        setTransaction(prevState => ({ ...prevState, [name]: +value }));
+        setTransaction(prevState => ({
+          ...prevState,
+          [name]: Number(value.replace(/[^0-9]/gi, '')),
+        }));
         break;
       case 'type':
         setTransaction(prevState => ({
@@ -248,12 +251,16 @@ export default function ModalAddTransaction() {
         <div className="data-money-form">
           <div action="">
             <TextField
+              required
               className="money-input"
               name="amount"
               value={amount}
               onChange={handleChange}
-              placeholder="0.00"
+              placeholder="Введите сумму"
               autoComplete="off"
+              inputProps={{
+                maxLength: '8',
+              }}
             />
           </div>
           <div>
@@ -279,6 +286,9 @@ export default function ModalAddTransaction() {
               name="commentary"
               value={commentary}
               onChange={handleChange}
+              inputProps={{
+                maxLength: '40',
+              }}
             />
           </div>
         </div>

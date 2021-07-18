@@ -1,5 +1,7 @@
 .modalContainer {
   .addTransactionForm {
+    position: relative;
+
     font-family: $secondary-font-family;
     text-align: center;
     background-color: white;
@@ -243,8 +245,8 @@
     position: absolute;
     display: inline-flex;
 
-    top: 140px;
-    right: 400px;
+    top: 16px;
+    right: 30px;
     width: 16px;
     height: 16px;
     border: 0;
@@ -255,5 +257,10 @@
     transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
     outline: none;
+
+    @media screen and (max-width: 767px) {
+      top: 6px;
+      right: 20px;
+    }
   }
 }
