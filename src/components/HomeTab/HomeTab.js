@@ -1,6 +1,6 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { Operations } from '../../redux/transactions';
+import { useSelector, useDispatch } from 'react-redux';
+import { Operations, Selectors } from '../../redux/transactions';
 import { makeStyles } from '@material-ui/core/styles';
 
 import ButtonAddTransaction from '../ButtonAddTransactions/ButtonAddTransactions';
@@ -45,7 +45,7 @@ function createData(id, date, type, category, comment, sum, balance) {
 const useStyles = makeStyles({
   container: {
     maxWidth: 700,
-    maxHeight: 320,
+    maxHeight: 555,
   },
 });
 
@@ -55,6 +55,7 @@ export default function StickyHeadTable({ tableData }) {
   const deleteTransaction = id => {
     dispatch(Operations.deleteTransaction(id));
   };
+  const isLoading = useSelector(Selectors.getLoading);
 
   // const [page, setPage] = React.useState(0);
   // const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -93,21 +94,26 @@ export default function StickyHeadTable({ tableData }) {
 
   return (
     <>
-      {tableData.length === 0 ? (
+      {!isLoading && tableData.length === 0 ? (
         <Alpaca />
       ) : (
         <>
-          <div className="homeTab">
+          <div key="homeTab" className="homeTab">
             <Paper
-              className={classes.root}
+              key="Paper"
+              className={`${classes.root} paper`}
               style={{
                 backgroundColor: '#11ffee00',
                 borderCollapse: 'collapse',
                 boxShadow: '0px 0px 0px 0px',
               }}
             >
-              <TableContainer className={classes.container}>
+              <TableContainer
+                key="container"
+                className={`${classes.container} tableContainer`}
+              >
                 <Table
+                  key="table"
                   stickyHeader
                   aria-label="sticky table"
                   className="table"
@@ -115,8 +121,8 @@ export default function StickyHeadTable({ tableData }) {
                     width: 'none',
                   }}
                 >
-                  <TableHead className="thead">
-                    <TableRow className="tableHeader">
+                  <TableHead key="thead" className="thead">
+                    <TableRow key="TableRow" className="tableHeader">
                       {columns.map(column => (
                         <TableCell
                           key={column.id}
@@ -150,7 +156,7 @@ export default function StickyHeadTable({ tableData }) {
                                 const value = row[column.id];
                                 return (
                                   <TableCell
-                                    key={column.id}
+                                    key={`${row.id}${column.id}`}
                                     align={column.align}
                                     className={`cellBody ${column.id}`}
                                   >
@@ -162,10 +168,13 @@ export default function StickyHeadTable({ tableData }) {
                                   </TableCell>
                                 );
                               })}
-                              <DeleteForeverIcon
-                                className="deleteIcon"
-                                onClick={() => deleteTransaction(row.id)}
-                              />
+                              <td className="deleteBtn">
+                                <DeleteForeverIcon
+                                  key="deleteIcon"
+                                  onClick={() => deleteTransaction(row.id)}
+                                  className="deleteIcon"
+                                />
+                              </td>
                             </TableRow>
                           </>
                         );
@@ -186,12 +195,16 @@ export default function StickyHeadTable({ tableData }) {
           </div>
           {/* Mobile */}
 
-          <table stickyHeader aria-label="sticky table" className="tableMobile">
+          <table
+            key="tableMobile"
+            aria-label="sticky table"
+            className="tableMobile"
+          >
             {rows.map(row => {
               return (
                 <>
                   <tbody
-                    key={row.code}
+                    key={row.id}
                     className={
                       row.type === '-'
                         ? 'sectionMobile expensesM'
@@ -204,7 +217,7 @@ export default function StickyHeadTable({ tableData }) {
                         <>
                           <tr className="rowMobile">
                             <th
-                              key={`${column.id}mobile`}
+                              key={`${row.id}${column.id}mobile`}
                               align={column.align}
                               className="cellHeader "
                             >
@@ -212,7 +225,7 @@ export default function StickyHeadTable({ tableData }) {
                             </th>
 
                             <td
-                              key={column.id}
+                              key={`${column.id}tdmobile`}
                               align={column.align}
                               className={`cellValue ${column.id}`}
                             >
@@ -224,19 +237,22 @@ export default function StickyHeadTable({ tableData }) {
                         </>
                       );
                     })}
-                    <DeleteForeverIcon
-                      className="deleteIconM"
-                      onClick={() => deleteTransaction(row.id)}
-                    />
+                    <tr>
+                      <td className="deleteIconM">
+                        <DeleteForeverIcon
+                          key="deleteIconM"
+                          onClick={() => deleteTransaction(row.id)}
+                        />
+                      </td>
+                    </tr>
                   </tbody>
                 </>
               );
             })}
           </table>
-
-          <ButtonAddTransaction />
         </>
       )}
+      <ButtonAddTransaction />
     </>
   );
 }

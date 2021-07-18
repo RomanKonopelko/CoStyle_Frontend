@@ -42,12 +42,13 @@ export default function DashboardPage() {
     dispatch(Operations.getTransactionsStatistic());
   }, [dispatch]);
 
+  const isLoading = useSelector(Selectors.getLoading);
   const transactionsList = useSelector(Selectors.getAllTransactions);
   //console.log(`transactionsList.payload`, transactionsList);
 
   return (
     <>
-      {transactionsList ? (
+      {!isLoading ? (
         <div className="dashboard-bcgi">
           <Container>
             <div className="dashboradPage">
