@@ -19,8 +19,13 @@ const getTransactionsStatistic = state => {
   return state.transactions.statistic;
 };
 
+const getLoading = state => {
+  return state.transactions.loading;
+};
+
 export {
   getAllTransactions,
+  getLoading,
   // getFilterValue,
   // getSearchedContacts
   getTransactionsStatistic,
