@@ -13,8 +13,6 @@ import Navigation from '../../components/Navigation/Navigation';
 import Balance from '../../components/Balance';
 import Currency from '../../components/Currency';
 
-import Loader from '../../components/Loader/Loader';
-
 import Modal from '../../components/Shared/Modal';
 
 import { Route, Switch } from 'react-router';
@@ -42,48 +40,43 @@ export default function DashboardPage() {
     dispatch(Operations.getTransactionsStatistic());
   }, [dispatch]);
 
-  const isLoading = useSelector(Selectors.getLoading);
   const transactionsList = useSelector(Selectors.getAllTransactions);
   //console.log(`transactionsList.payload`, transactionsList);
 
   return (
     <>
-      {!isLoading ? (
-        <div className="dashboard-bcgi">
-          <Container>
-            <div className="dashboradPage">
-              <div className="nav-container">
-                <div className="nav-tablet-container">
-                  <Navigation />
-                  {location === '/home' && isMobile && (
-                    <Balance className="balance" />
-                  )}
-                  {!isMobile && <Balance className="balance" />}
-                </div>
-                {!isMobile && <Currency className="currency" />}
-                {isShowModal && (
-                  <Modal>
-                    <ModalAddTransaction />
-                  </Modal>
+      <div className="dashboard-bcgi">
+        <Container>
+          <div className="dashboradPage">
+            <div className="nav-container">
+              <div className="nav-tablet-container">
+                <Navigation />
+                {location === '/home' && isMobile && (
+                  <Balance className="balance" />
                 )}
+                {!isMobile && <Balance className="balance" />}
               </div>
-              <span className="splitter"></span>
-              <Switch>
-                <Route
-                  path={routes.home}
-                  render={props => (
-                    <HomeTab {...props} tableData={transactionsList} />
-                  )}
-                />
-                <Route path={routes.diagram} component={DiagramTab} />
-                <Route path={routes.currency} component={Currency} />
-              </Switch>
+              {!isMobile && <Currency className="currency" />}
+              {isShowModal && (
+                <Modal>
+                  <ModalAddTransaction />
+                </Modal>
+              )}
             </div>
-          </Container>
-        </div>
-      ) : (
-        <Loader />
-      )}
+            <span className="splitter"></span>
+            <Switch>
+              <Route
+                path={routes.home}
+                render={props => (
+                  <HomeTab {...props} tableData={transactionsList} />
+                )}
+              />
+              <Route path={routes.diagram} component={DiagramTab} />
+              <Route path={routes.currency} component={Currency} />
+            </Switch>
+          </div>
+        </Container>
+      </div>
     </>
   );
 }
