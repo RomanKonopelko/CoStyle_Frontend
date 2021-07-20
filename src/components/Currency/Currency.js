@@ -1,7 +1,9 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 
 import GetCurrencyRate from '../../PrivatApi/PrivatApi';
+import img from '../../images/lama2.png';
 
 import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
@@ -16,19 +18,16 @@ const pad = n => {
 
 export default function Currency() {
   const [currency, setCurrency] = useState([]);
-  console.log(currency);
-
   const timeOnLocalstorage = Number(localStorage.getItem('time'));
   const currencyOnLocalstorage = localStorage.getItem('currency');
 
-  console.log(
-    new Date().valueOf() > Number(timeOnLocalstorage) + TIME_NORMOLIZE,
-  );
+  const isMobile = useMediaQuery({
+    query: '(max-device-width: 767px)',
+  });
 
   useEffect(() => {
     if (!currencyOnLocalstorage && !timeOnLocalstorage) {
       GetCurrencyRate.fetchRates().then(data => {
-        // console.log('Yeahoo!!!It was ME!!!');
         setCurrency(data);
         localStorage.setItem('currency', JSON.stringify(data));
       });
@@ -38,7 +37,6 @@ export default function Currency() {
 
     if (new Date().valueOf() > timeOnLocalstorage + TIME_NORMOLIZE) {
       GetCurrencyRate.fetchRates().then(data => {
-        // console.log('It was ME!!!');
         setCurrency(data);
         localStorage.setItem('currency', JSON.stringify(data));
       });
@@ -47,7 +45,6 @@ export default function Currency() {
     }
 
     if (currencyOnLocalstorage) {
-      // console.log('No, MAN!!!It was ME!!!');
       const parsedLocalStorage = JSON.parse(currencyOnLocalstorage);
       setCurrency(parsedLocalStorage);
       return;
@@ -56,7 +53,6 @@ export default function Currency() {
     if (currency.length === 0) {
       setTimeout(() => {
         GetCurrencyRate.fetchRates().then(data => {
-          // console.log('Xa-XA-XA!!!!Tht is me');
           setCurrency(data);
           localStorage.setItem('currency', JSON.stringify(data));
         });
@@ -106,6 +102,16 @@ export default function Currency() {
             })}
           </tbody>
         </table>
+      )}
+      {isMobile && (
+        <>
+          <p className="textCurrency">А вот и курс валют!</p>
+          <img
+            className="alpacaImg"
+            src="https://media1.giphy.com/media/ORjeGbJQP8bSKO9ZrQ/giphy.gif?cid=6c09b952acb22b31766abb3d50bb216699cf2517a7a53b11&rid=giphy.gif&ct=s"
+            alt="alpaca"
+          />
+        </>
       )}
     </>
   );

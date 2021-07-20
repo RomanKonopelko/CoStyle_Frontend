@@ -15,7 +15,7 @@ export default function Header() {
         <div className="headerContainer">
           <div className="logo">
             <img className="img" src={headerLogo} alt="logo" />
-            <h1 className="title">Wallet</h1>
+            <h1 className="title">Lama-Wallet</h1>
           </div>
           <div className="userInfo">
             <Avatar className="avatarUser">

@@ -158,13 +158,10 @@ export default function ModalAddTransaction() {
     });
   };
 
-  let classNameActiveBtn = `btn-form Mui-disabled`;
   let activateSubmitBtn = true;
   if (category && time && amount && commentary) {
     activateSubmitBtn = false;
-    classNameActiveBtn = `btn-form-active-root`;
   }
-  //console.log(activateSubmitBtn);
 
   let classNameProfit = 'grey2';
   if (!type) {
@@ -295,7 +292,7 @@ export default function ModalAddTransaction() {
 
         <div className="modal-form-btn-container">
           <Button
-            className="btn-form"
+            className="btn-form active"
             type="submit"
             disabled={activateSubmitBtn}
           >

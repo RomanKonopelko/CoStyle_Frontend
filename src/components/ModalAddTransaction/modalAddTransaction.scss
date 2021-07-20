@@ -107,6 +107,10 @@
     margin-bottom: 30px;
   }
 
+  .jss2 {
+    width: 100%;
+  }
+
   .cetegoryInput {
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(50px);
@@ -232,6 +236,20 @@
       // для планшета и для  десктоп
       width: 280px;
     }
+  }
+
+  .MuiButton-root.Mui-disabled {
+    color: rgba(0, 0, 0, 0.26);
+    border: 1px solid $accent-color2;
+    border-radius: 20px;
+    background-color: white;
+  }
+
+  .active {
+    background-color: $accent-color;
+    border: 1px solid $accent-color;
+    color: white;
+    transition: $timing-function;
   }
 
   .btn-form.MuiButton-root:hover {

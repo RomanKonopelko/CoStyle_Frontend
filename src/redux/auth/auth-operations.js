@@ -63,11 +63,11 @@ const registerUser = credentials => async dispatch => {
 
   try {
     const { data } = await axios.post('/api/users/register', credentials);
-    token.set(data.payload.token);
     dispatch(userRegisterSuccess(data.payload));
+    Notify(data, credentials.name);
   } catch (error) {
     dispatch(userRegisterError(error.message));
-    Notify(error.response.data.message, credentials.name);
+    Notify(error.message, credentials.name);
   }
 };
 
@@ -80,7 +80,7 @@ const loginUser = credentials => async dispatch => {
     dispatch(userLoginSuccess(data.payload));
   } catch (error) {
     dispatch(userLoginError(error.message));
-    Notify(error.response.data.message);
+    Notify(error.message);
   }
 };
 
