@@ -131,11 +131,11 @@ export default function ModalAddTransaction() {
         commentary,
       }),
     );
-
-    // dispatch(Operations.getTransaction());
-    await dispatch(Operations.getTransactionsStatistic());
-
     reset();
+    // if (!getError) {
+    //   await dispatch(Operations.getTransactionsStatistic());
+    //   reset();
+    // }
   };
 
   const cancelInput = () => {

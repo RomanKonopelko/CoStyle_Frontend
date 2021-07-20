@@ -52,18 +52,19 @@ function MyTable({ tableData }) {
   };
 
   useEffect(() => {
-    if (selected.month && selected.year) {
-      dispatch(
-        Operations.getFilterTransactionsStatistic(
-          Number(selected.month),
-          Number(selected.year),
-        ),
-      );
-
-      reset();
-    }
     if (selected.month === 'All' && selected.year === 'All') {
       dispatch(Operations.getTransactionsStatistic());
+
+      reset();
+      return;
+    }
+    if (selected.month && selected.year) {
+      dispatch(
+        Operations.getFilterTransactionsStatistic({
+          month: Number(selected.month),
+          year: Number(selected.year),
+        }),
+      );
 
       reset();
     }

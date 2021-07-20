@@ -40,6 +40,7 @@ const transactionsReducer = combineReducers({
   items: reducers.itemsReducers,
   statistic: reducers.itemsReducersStatistic,
   // filter: reducers.filterReducer,
+  errorStat: reducers.errorTransactionsReducers,
   loading: reducers.loading,
 });
 

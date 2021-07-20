@@ -28,18 +28,32 @@ const getTransaction = () => async dispatch => {
     console.log(`GET_TRANSACTION`, data);
     dispatch(getTransactionsSuccess(data.payload));
   } catch (error) {
+    dispatch(
+      GetError({
+        error: error.response.data.code,
+        requestedCallback: getTransaction,
+      }),
+    );
     dispatch(getTransactionsError(error.message));
   }
 };
 
-const addTransaction = Transaction => async dispatch => {
+const addTransaction = transaction => async dispatch => {
   dispatch(addTransactionRequest());
 
   try {
-    const { data } = await axios.post('/api/transactions', Transaction);
+    const { data } = await axios.post('/api/transactions', transaction);
     console.log('ADD_TRANSACTION', data.payload.transaction);
     dispatch(addTransactionSuccess(data.payload));
+    dispatch(getTransactionsStatistic());
   } catch (error) {
+    dispatch(
+      GetError({
+        error: error.response.data.code,
+        requestedCallback: addTransaction,
+        requestData: transaction,
+      }),
+    );
     dispatch(addTransactionError(error.message));
   }
 };
@@ -51,6 +65,13 @@ const deleteTransaction = id => async dispatch => {
     // await axios.delete(`/api/transactions/${id}`);
     dispatch(deleteTransactionSuccess(id));
   } catch (error) {
+    dispatch(
+      GetError({
+        error: error.response.data.code,
+        requestedCallback: deleteTransaction,
+        requestData: id,
+      }),
+    );
     dispatch(deleteTransactionError(error.message));
   }
 };
@@ -62,13 +83,20 @@ const getTransactionsStatistic = () => async dispatch => {
     const { data } = await axios.get('/api/transactions/statistic');
     dispatch(getTransactionsStatisticSuccess(data.payload));
   } catch (error) {
+    dispatch(
+      GetError({
+        error: error.response.data.code,
+        requestedCallback: getTransactionsStatistic,
+      }),
+    );
     dispatch(getTransactionsStatisticError(error.message));
   }
 };
 
-const getFilterTransactionsStatistic = (month, year) => async dispatch => {
+const getFilterTransactionsStatistic = date => async dispatch => {
   dispatch(getFilterTransactionsStatisticRequest());
   // console.log('OPERATION', month, year);
+  const { month, year } = date;
 
   try {
     const { data } = await axios.get(
@@ -78,6 +106,13 @@ const getFilterTransactionsStatistic = (month, year) => async dispatch => {
     console.log(`data`, data);
     console.log(`data.payload`, data.payload);
   } catch (error) {
+    dispatch(
+      GetError({
+        error: error.response.data.code,
+        requestedCallback: getFilterTransactionsStatistic,
+        requestData: date,
+      }),
+    );
     dispatch(getFilterTransactionsStatisticError(error.message));
   }
 };

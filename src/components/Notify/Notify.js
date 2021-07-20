@@ -12,11 +12,25 @@ const notificationError = {
 };
 
 export default function Notify(prop, name) {
-  store.addNotification({
-    ...notificationError,
-    message: prop,
-    title: `Привет, дорогой ${
-      name ? name : 'Гость'
-    }! Что-то пошло не так, попробуй еще раз!`,
-  });
+  if (prop.status === 'Success') {
+    store.addNotification({
+      ...notificationError,
+      type: 'success',
+      message: prop.status,
+      title: `Привет, дорогой ${
+        name ? name : 'Гость'
+      }! На Вашу электронную почту ${
+        prop.payload.email
+      } отправлено письмо для верификации!`,
+    });
+  } else {
+    store.addNotification({
+      ...notificationError,
+      type: 'danger',
+      message: prop,
+      title: `Привет, дорогой ${
+        name ? name : 'Гость'
+      }! Что-то пошло не так, попробуй еще раз!`,
+    });
+  }
 }
