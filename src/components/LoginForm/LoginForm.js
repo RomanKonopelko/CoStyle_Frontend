@@ -37,7 +37,7 @@ export default function LoginForm() {
     onSubmit: values => {
       const { email, password } = values;
       // console.log(email, password);
-      dispatch(OperationsAuth.LoginUser({ email, password }));
+      dispatch(OperationsAuth.loginUser({ email, password }));
     },
   });
 

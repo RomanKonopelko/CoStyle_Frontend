@@ -1,10 +1,15 @@
 import { OperationsAuth } from '../../redux/auth';
 
 const GetError = errorData => dispatch => {
-  const { error, requestCallback, requestData } = errorData;
+  const { error, requestedCallback, requestData } = errorData;
   console.log(error);
+  console.log(requestData);
+  console.log(requestedCallback);
   if (error === 401) {
-    dispatch(OperationsAuth.RefreshToken(requestCallback));
+    requestData
+      ? dispatch(OperationsAuth.refreshToken(requestedCallback, requestData))
+      : dispatch(OperationsAuth.refreshToken(requestedCallback));
+
     console.log('Error was caught');
   }
 };

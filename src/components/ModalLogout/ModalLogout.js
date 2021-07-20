@@ -6,7 +6,7 @@ export default function ModalLogout() {
   const dispatch = useDispatch();
 
   const onLogout = () => {
-    dispatch(OperationsAuth.LogoutUser());
+    dispatch(OperationsAuth.logoutUser());
   };
 
   return (

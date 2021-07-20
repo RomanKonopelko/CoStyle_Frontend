@@ -71,7 +71,7 @@ const registerUser = credentials => async dispatch => {
   }
 };
 
-const LoginUser = credentials => async dispatch => {
+const loginUser = credentials => async dispatch => {
   dispatch(userLoginRequest());
 
   try {
@@ -84,7 +84,7 @@ const LoginUser = credentials => async dispatch => {
   }
 };
 
-const LogoutUser = () => async dispatch => {
+const logoutUser = () => async dispatch => {
   dispatch(userLogoutRequest());
 
   try {
@@ -92,6 +92,14 @@ const LogoutUser = () => async dispatch => {
     dispatch(userLogoutSuccess());
     token.unset();
   } catch (error) {
+    dispatch(
+      GetError({
+        error: error.response.data.code,
+        requestedCallback: logoutUser,
+      }),
+    );
+    console.log(error.message);
+    console.log(error.response.data.code);
     dispatch(userLogoutError(error.message));
     // Notify(error.response.data.message);
   }
@@ -99,7 +107,10 @@ const LogoutUser = () => async dispatch => {
 
 // Will be Operation for REFRESH TOKEN
 
-const RefreshToken = callbackFunction => async (dispatch, getState) => {
+const refreshToken = (callbackFunction, requestData) => async (
+  dispatch,
+  getState,
+) => {
   const {
     auth: { refreshToken: refresh },
   } = getState();
@@ -113,11 +124,16 @@ const RefreshToken = callbackFunction => async (dispatch, getState) => {
   try {
     const { data } = await axios.get('/api/users/token');
     dispatch(getUpdatedTokenSuccess(data.payload));
-    // console.log(getCurrentUser());
-    dispatch(getCurrentUser());
+    token.set(data.payload.token);
+    console.log(callbackFunction);
+    console.log('REQUESTED DATA', requestData);
+    requestData
+      ? dispatch(callbackFunction(requestData))
+      : dispatch(callbackFunction());
   } catch (error) {
     dispatch(getUpdatedTokenError(error.message));
+    token.unset();
   }
 };
 
-export { registerUser, LoginUser, LogoutUser, getCurrentUser, RefreshToken };
+export { registerUser, loginUser, logoutUser, getCurrentUser, refreshToken };

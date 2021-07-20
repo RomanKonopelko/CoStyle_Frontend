@@ -16,6 +16,11 @@ import {
   getTransactionsStatisticError,
 } from './transactions-actions';
 
+import {
+  userLogoutSuccess,
+  getUpdatedTokenSuccess,
+} from '../auth/auth-actions';
+
 import { createReducer } from '@reduxjs/toolkit';
 
 const initialState = [];
@@ -36,11 +41,13 @@ const itemsReducers = createReducer(initialState, {
   ],
   [deleteTransactionSuccess]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
+  [userLogoutSuccess]: (_, __) => initialState,
 });
 
 const itemsReducersStatistic = createReducer(initialStatistic, {
   [getTransactionsStatisticSuccess]: (_, { payload }) => payload,
   [getFilterTransactionsStatisticSuccess]: (_, { payload }) => payload,
+  [userLogoutSuccess]: (_, __) => initialStatistic,
 });
 
 // const filterReducer = createReducer(initialFilter, {
@@ -65,11 +72,29 @@ const loading = createReducer(false, {
   [getTransactionsStatisticError]: () => false,
 });
 
+const setError = (_, { payload }) => payload;
+
+const errorTransactionsReducers = createReducer(null, {
+  [getTransactionsStatisticError]: setError,
+  [getFilterTransactionsStatisticError]: setError,
+  [getTransactionsError]: setError,
+  [addTransactionError]: setError,
+  [deleteTransactionError]: setError,
+  [getUpdatedTokenSuccess]: (_, __) => '',
+  [getTransactionsSuccess]: (_, __) => '',
+  [addTransactionSuccess]: (_, __) => '',
+  [deleteTransactionSuccess]: (_, __) => '',
+  [getFilterTransactionsStatisticSuccess]: (_, __) => '',
+  [getTransactionsStatisticSuccess]: (_, __) => '',
+  [userLogoutSuccess]: (_, __) => '',
+});
+
 const reducers = {
   itemsReducers,
   itemsReducersStatistic,
   // filterReducer,
   loading,
+  errorTransactionsReducers,
 };
 
 export default reducers;

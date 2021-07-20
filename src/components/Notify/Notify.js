@@ -18,9 +18,9 @@ export default function Notify(prop, name) {
       message: prop.status,
       title: `Привет, дорогой ${
         name ? name : 'Гость'
-      }! Вы были успешно зарегестрированы. На Вашу электронную почту ${
+      }! На Вашу электронную почту ${
         prop.payload.email
-      }отправлено письмо для верификации!`,
+      } отправлено письмо для верификации!`,
     });
   } else {
     store.addNotification({

@@ -23,10 +23,15 @@ const getLoading = state => {
   return state.transactions.loading;
 };
 
+const getError = state => {
+  return state.transactions.errorStat;
+};
+
 export {
   getAllTransactions,
   getLoading,
   // getFilterValue,
   // getSearchedContacts
   getTransactionsStatistic,
+  getError,
 };
