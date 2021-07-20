@@ -46,7 +46,7 @@ export default function LoginForm() {
       <form className="form" onSubmit={formik.handleSubmit}>
         <div className="logo">
           <img className="img" src={headerLogo} alt="logo" />
-          <h1 className="title">Wallet</h1>
+          <h1 className="title">Lama-Wallet</h1>
         </div>
 
         <TextField
