@@ -7,7 +7,7 @@ import GetCurrencyRate from '../../PrivatApi/PrivatApi';
 import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
-const CURRENCY_EXCHANGE = ['EUR', 'USD', 'RUB'];
+const CURRENCY_EXCHANGE = ['EUR', 'USD', 'RUR'];
 const TIME_NORMOLIZE = 60000;
 
 const pad = n => {
