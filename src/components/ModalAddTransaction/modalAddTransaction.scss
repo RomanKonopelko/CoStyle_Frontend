@@ -9,7 +9,6 @@
     padding: 20px;
 
     @include for-size(tablet) {
-      // для планшета и для  десктоп
       max-width: 540px;
 
       padding-right: 65px;
@@ -29,7 +28,6 @@
     margin-bottom: 40px;
 
     @include for-size(tablet) {
-      // для планшета и для  десктоп
       font-size: 30px;
     }
   }
@@ -54,9 +52,7 @@
 
   .MuiFormControl-root {
     font-family: $primary-font-family;
-
     font-size: 18px;
-    font-weight: 400;
     line-height: 1.5;
     letter-spacing: 0.9px;
     border-bottom: 1px solid #e0e0e0;
@@ -68,11 +64,13 @@
     font-family: $primary-font-family;
     font-size: 18px;
     line-height: 1.5;
+    color: $primary-text-color;
   }
 
   .MuiInputBase-input {
     padding-top: 10px;
     padding-bottom: 12px;
+    margin-left: 20px;
   }
 
   .MuiInput-underline:after,
@@ -120,13 +118,12 @@
 
   .MuiFormLabel-root {
     margin-left: 20px;
-    font-family: primary-font-family;
+    font-family: $primary-font-family;
     font-size: 18px;
-    font-weight: 400;
     line-height: 1.5;
     letter-spacing: 0.9px;
 
-    color: #bdbdbd;
+    color: $primary-text-color;
   }
 
   .makeStyles-formControl-13 {
@@ -151,7 +148,6 @@
 
   .data-money-form {
     @include for-size(tablet) {
-      // для планшета и для  десктоп
       display: flex;
       justify-content: space-around;
       align-content: flex-start;
@@ -172,19 +168,19 @@
     margin-right: auto;
 
     @include for-size(tablet) {
-      // для планшета и для  десктоп
       margin-bottom: 0px;
-      width: 190px;
       margin-right: 30px;
+      width: 190px;
     }
   }
 
   .money-input .MuiInputBase-input {
-    text-align: center;
-  }
-
-  .money-input[placeholder] {
-    text-align: center;
+    margin-left: 20px;
+    font-family: $primary-font-family;
+    font-size: 18px;
+    line-height: 1.5;
+    letter-spacing: 0.9px;
+    color: $primary-text-color;
   }
 
   .date-input {
@@ -195,7 +191,6 @@
     margin-right: auto;
 
     @include for-size(tablet) {
-      // для планшета и для  десктоп
       margin-bottom: 0px;
       width: 190px;
     }
@@ -233,7 +228,6 @@
     text-transform: uppercase;
 
     @include for-size(tablet) {
-      // для планшета и для  десктоп
       width: 280px;
     }
   }
@@ -280,5 +274,12 @@
       top: 6px;
       right: 20px;
     }
+  }
+  .MuiFormLabel-root.Mui-focused {
+    color: $accent-color;
+    font-family: $primary-font-family;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 26, 53px;
   }
 }
