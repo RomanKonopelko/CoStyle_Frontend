@@ -101,7 +101,6 @@ const logoutUser = () => async dispatch => {
     console.log(error.message);
     console.log(error.response.data.code);
     dispatch(userLogoutError(error.message));
-    // Notify(error.response.data.message);
   }
 };
 

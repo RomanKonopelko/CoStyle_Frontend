@@ -32,8 +32,6 @@ export default function DashboardPage() {
     query: '(max-device-width: 767px)',
   });
 
-  // Added new logic by Chernyshenko
-
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(Operations.getTransaction());
@@ -41,7 +39,6 @@ export default function DashboardPage() {
   }, [dispatch]);
 
   const transactionsList = useSelector(Selectors.getAllTransactions);
-  //console.log(`transactionsList.payload`, transactionsList);
 
   return (
     <>

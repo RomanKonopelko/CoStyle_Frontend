@@ -6,7 +6,6 @@ import { selectorsAuth } from '../../redux/auth';
 
 export default function PublicRoute({ children, ...routeProps }) {
   const isAuthenticated = useSelector(selectorsAuth.getIsAuthenticated);
-  // console.log(isAuthenticated);
   return (
     <Route {...routeProps}>
       {isAuthenticated && routeProps.restricted ? (

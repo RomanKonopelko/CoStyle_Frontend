@@ -95,7 +95,6 @@ const getTransactionsStatistic = () => async dispatch => {
 
 const getFilterTransactionsStatistic = date => async dispatch => {
   dispatch(getFilterTransactionsStatisticRequest());
-  // console.log('OPERATION', month, year);
   const { month, year } = date;
 
   try {

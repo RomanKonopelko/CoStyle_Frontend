@@ -132,10 +132,6 @@ export default function ModalAddTransaction() {
       }),
     );
     reset();
-    // if (!getError) {
-    //   await dispatch(Operations.getTransactionsStatistic());
-    //   reset();
-    // }
   };
 
   const cancelInput = () => {

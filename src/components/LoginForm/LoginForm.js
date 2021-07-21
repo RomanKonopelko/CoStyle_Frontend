@@ -36,7 +36,6 @@ export default function LoginForm() {
     validationSchema: validationSchema,
     onSubmit: values => {
       const { email, password } = values;
-      // console.log(email, password);
       dispatch(OperationsAuth.loginUser({ email, password }));
     },
   });

@@ -18,18 +18,8 @@ function MyTable({ tableData }) {
   const dispatch = useDispatch();
   const [selected, setSelected] = useState({ month: '', year: '' });
 
-  //console.log(`selected`, selected);
-
-  // if (selected.month === 'undefined' && selected.year === 'undefined') {
-  //   dispatch(Operations.getTransactionsStatistic());
-
-  //   reset();
-  // }
-
   const handleChange = e => {
     const { name, value } = e.target;
-    // console.log(`name`, name);
-    // console.log(`value`, value);
 
     switch (name) {
       case 'month':

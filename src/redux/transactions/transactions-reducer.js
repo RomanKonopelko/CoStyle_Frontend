@@ -30,9 +30,6 @@ const initialStatistic = {
   consumptionValue: 0,
 };
 
-// const initialFilter = '';
-
-// ========ToolKit =======
 const itemsReducers = createReducer(initialState, {
   [getTransactionsSuccess]: (_, { payload }) => payload.transactions,
   [addTransactionSuccess]: (state, { payload }) => [
@@ -49,10 +46,6 @@ const itemsReducersStatistic = createReducer(initialStatistic, {
   [getFilterTransactionsStatisticSuccess]: (_, { payload }) => payload,
   [userLogoutSuccess]: (_, __) => initialStatistic,
 });
-
-// const filterReducer = createReducer(initialFilter, {
-//   [getFilterTransactionsStatisticSuccess]: (_, { payload }) => payload,
-// });
 
 const loading = createReducer(false, {
   [getTransactionsRequest]: () => true,
@@ -92,7 +85,6 @@ const errorTransactionsReducers = createReducer(null, {
 const reducers = {
   itemsReducers,
   itemsReducersStatistic,
-  // filterReducer,
   loading,
   errorTransactionsReducers,
 };

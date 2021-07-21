@@ -6,7 +6,6 @@ import AlpacaStat from '../Alpaca/AlpacaStat';
 import Chart from '../Chart';
 import Table from '../Table';
 
-// import { Operations } from '../../redux/transactions';
 import { Selectors } from '../../redux/transactions';
 
 export default function DiagramTab() {
@@ -22,20 +21,13 @@ export default function DiagramTab() {
           {lengthOfObject !== 0 ? (
             <div>
               <h2 className="titleStatistic">Статистика</h2>
-              <Chart
-                tableData={transactionsList}
-                // handleChange={handleChange}
-              />
+              <Chart tableData={transactionsList} />
             </div>
           ) : (
             <AlpacaStat />
           )}
           <div>
-            <Table
-              tableData={transactionsList}
-              // selected={selected}
-              // handleChange={handleChange}
-            />
+            <Table tableData={transactionsList} />
           </div>
         </div>
       </div>

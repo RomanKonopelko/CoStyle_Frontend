@@ -5,11 +5,9 @@
   line-height: 1.5;
   color: $title-text-color;
 
-  // для мобилки
   margin-bottom: 10px;
 
   @include for-size(tablet) {
-    // для планшета и для  десктоп
     margin-bottom: 20px;
   }
 }
@@ -37,7 +35,6 @@
 
 .diagrmTab {
   @include for-size(tablet) {
-    // для планшета и для  десктоп
     display: flex;
   }
 }

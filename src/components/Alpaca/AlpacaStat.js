@@ -1,7 +1,5 @@
 import img from '../../images/lamaAvatars.png';
 export default function AlpacaStat() {
-  // const name = useSelector(selectorsAuth.getUsername);
-
   return (
     <>
       <div className="alpacaStat">
