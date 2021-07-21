@@ -6,19 +6,14 @@ const Chart = ({ tableData, handleChange }) => {
   const resultСategoriesSummary = Object.entries(categoriesSummary);
 
   const result = [];
-  const tableAmountFilter = resultСategoriesSummary.map(r =>
-    result.push(r[1].value),
-  );
+  resultСategoriesSummary.map(r => result.push(r[1].value));
 
   const resultColor = [];
-  const colorFilter = resultСategoriesSummary.map(r =>
-    resultColor.push(r[1].color),
-  );
+  resultСategoriesSummary.map(r => resultColor.push(r[1].color));
 
   return (
     <div className="doughnutSize">
       <Doughnut
-        // onChange={handleChange}
         data={{
           datasets: [
             {

@@ -14,15 +14,12 @@
 }
 
 .dashboradPage {
-  //height: 100vh;
-
   display: flex;
 
   padding-top: 36px;
   padding-bottom: 20px;
 
   @media screen and (max-width: 1279px) {
-    // height: 100vh;
     display: block;
 
     padding-top: 26px;

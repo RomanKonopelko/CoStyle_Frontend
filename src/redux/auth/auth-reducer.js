@@ -17,7 +17,6 @@ import { createReducer, combineReducers } from '@reduxjs/toolkit';
 const initialState = { email: null, name: null };
 
 const userReducer = createReducer(initialState, {
-  // [userRegisterSuccess]: (_, { payload }) => payload,
   [userLoginSuccess]: (_, { payload: { token, refreshToken, ...userData } }) =>
     userData,
   [getCurrentUserSuccess]: (_, { payload }) => payload,
@@ -25,7 +24,6 @@ const userReducer = createReducer(initialState, {
 });
 
 const tokenReducer = createReducer(initialState, {
-  // [userRegisterSuccess]: (_, { payload }) => payload.token,
   [userLoginSuccess]: (_, { payload }) => payload.token,
   [getUpdatedTokenSuccess]: (_, { payload }) => payload.token,
   [userLogoutSuccess]: () => null,
@@ -33,7 +31,6 @@ const tokenReducer = createReducer(initialState, {
 });
 
 const refreshTokenReducer = createReducer(initialState, {
-  // [userRegisterSuccess]: (_, { payload }) => payload.refreshToken,
   [userLoginSuccess]: (_, { payload }) => payload.refreshToken,
   [getUpdatedTokenSuccess]: (_, { payload }) => payload.refreshToken,
   [userLogoutSuccess]: () => null,
@@ -41,7 +38,6 @@ const refreshTokenReducer = createReducer(initialState, {
 });
 
 const isAutorizedReducer = createReducer(false, {
-  // [userRegisterSuccess]: () => true,
   [getCurrentUserSuccess]: () => true,
   [userLoginSuccess]: () => true,
   [userLoginError]: () => false,

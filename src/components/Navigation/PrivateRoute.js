@@ -5,7 +5,6 @@ import { selectorsAuth } from '../../redux/auth';
 
 export default function PrivateRoute({ children, ...routeProps }) {
   const isAuthenticated = useSelector(selectorsAuth.getIsAuthenticated);
-  // console.log(isAuthenticated);
   return (
     <Route {...routeProps}>
       {isAuthenticated ? children : <Redirect to={routeProps.redirectTo} />}

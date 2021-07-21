@@ -47,7 +47,6 @@ export default function RegistrationForm() {
     validationSchema: validationSchema,
     onSubmit: values => {
       const { name, email, password } = values;
-      //console.log(name, email, password);
       dispatch(OperationsAuth.registerUser({ name, email, password }));
     },
   });

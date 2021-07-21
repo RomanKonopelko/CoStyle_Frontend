@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
 import { selectorsAuth } from '../../redux/auth';
-import img from '../../images/lama2.png';
 
 export default function Alpaca() {
   const name = useSelector(selectorsAuth.getUsername);

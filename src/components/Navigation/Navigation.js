@@ -6,11 +6,6 @@ import home from '../../images/home.png';
 import stat from '../../images/stat.png';
 import currency from '../../images/currency.png';
 
-import { Typography } from '@material-ui/core';
-// import LockIcon from '@material-ui/icons/Lock';
-// import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
-// import EqualizerOutlinedIcon from '@material-ui/icons/EqualizerOutlined';
-
 export default function Navigation() {
   const isTabletToDesktop = useMediaQuery({
     query: '(min-device-width: 768px)',

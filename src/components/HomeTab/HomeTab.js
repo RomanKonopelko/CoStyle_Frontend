@@ -10,12 +10,10 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
-import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 import Alpaca from '../Alpaca/Alpaca';
-import { SignalWifi1BarLockSharp } from '@material-ui/icons';
 
 const columns = [
   { id: 'date', label: 'Дата' },
@@ -57,11 +55,7 @@ export default function StickyHeadTable({ tableData }) {
   };
   const isLoading = useSelector(Selectors.getLoading);
 
-  // const [page, setPage] = React.useState(0);
-  // const [rowsPerPage, setRowsPerPage] = React.useState(10);
-
   let rows = [];
-  //console.log('TABLE_DATA', tableData);
 
   tableData.map(t => {
     const time = t.time ? t.time.date.substr(0, 10) : '';
@@ -79,18 +73,6 @@ export default function StickyHeadTable({ tableData }) {
     );
     return rows;
   });
-
-  // console.log(tableData, 'tableData');
-  // console.log(rows, 'rows');
-
-  // const handleChangePage = (event, newPage) => {
-  //   setPage(newPage);
-  // };
-
-  // const handleChangeRowsPerPage = event => {
-  //   setRowsPerPage(+event.target.value);
-  //   setPage(0);
-  // };
 
   return (
     <>
@@ -135,62 +117,48 @@ export default function StickyHeadTable({ tableData }) {
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {rows
-                      // .slice(
-                      //   page * rowsPerPage,
-                      //   page * rowsPerPage + rowsPerPage,
-                      // )
-                      .map(row => {
-                        return (
-                          <>
-                            <TableRow
-                              hover
-                              role="checkbox"
-                              tabIndex={-1}
-                              key={row.id}
-                              className={
-                                row.type === '-' ? 'row expenses' : 'row income'
-                              }
-                            >
-                              {columns.map(column => {
-                                const value = row[column.id];
-                                return (
-                                  <TableCell
-                                    key={`${row.id}${column.id}`}
-                                    align={column.align}
-                                    className={`cellBody ${column.id}`}
-                                  >
-                                    {typeof value === 'number'
-                                      ? new Intl.NumberFormat('ru-RU').format(
-                                          value,
-                                        )
-                                      : value}
-                                  </TableCell>
-                                );
-                              })}
-                              <td className="deleteBtn">
-                                <DeleteForeverIcon
-                                  key="deleteIcon"
-                                  onClick={() => deleteTransaction(row.id)}
-                                  className="deleteIcon"
-                                />
-                              </td>
-                            </TableRow>
-                          </>
-                        );
-                      })}
+                    {rows.map(row => {
+                      return (
+                        <>
+                          <TableRow
+                            hover
+                            role="checkbox"
+                            tabIndex={-1}
+                            key={row.id}
+                            className={
+                              row.type === '-' ? 'row expenses' : 'row income'
+                            }
+                          >
+                            {columns.map(column => {
+                              const value = row[column.id];
+                              return (
+                                <TableCell
+                                  key={`${row.id}${column.id}`}
+                                  align={column.align}
+                                  className={`cellBody ${column.id}`}
+                                >
+                                  {typeof value === 'number'
+                                    ? new Intl.NumberFormat('ru-RU').format(
+                                        value,
+                                      )
+                                    : value}
+                                </TableCell>
+                              );
+                            })}
+                            <td className="deleteBtn">
+                              <DeleteForeverIcon
+                                key="deleteIcon"
+                                onClick={() => deleteTransaction(row.id)}
+                                className="deleteIcon"
+                              />
+                            </td>
+                          </TableRow>
+                        </>
+                      );
+                    })}
                   </TableBody>
                 </Table>
               </TableContainer>
-              {/* <TablePagination
-                rowsPerPageOptions={[10, 20, 100]}
-                component="div"
-                count={rows.length}
-                rowsPerPage={rowsPerPage}
-                page={page}
-                onPageChange={handleChangePage}
-                onRowsPerPageChange={handleChangeRowsPerPage}
-              /> */}
             </Paper>
           </div>
           {/* Mobile */}

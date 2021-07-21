@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
 import GetCurrencyRate from '../../PrivatApi/PrivatApi';
-import img from '../../images/lama2.png';
 
 import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
