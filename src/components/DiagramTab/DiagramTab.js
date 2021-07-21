@@ -1,6 +1,4 @@
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import moment from 'moment';
+import { useSelector } from 'react-redux';
 import AlpacaStat from '../Alpaca/AlpacaStat';
 
 import Chart from '../Chart';

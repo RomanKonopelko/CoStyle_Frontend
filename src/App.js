@@ -1,8 +1,6 @@
 import React, { useEffect, Suspense, lazy } from 'react';
-import axios from 'axios';
 
 import routes from './routes';
-import Container from './components/Container/Container';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { Switch } from 'react-router';
@@ -34,7 +32,6 @@ export default function App() {
     <>
       <ReactNotification />
       {isAuth && <Header />}
-      {/* <Container> */}
       <Suspense fallback={Load()}>
         <Switch>
           <PublicRoute path={routes.login} restricted redirectTo={routes.home}>
@@ -61,7 +58,6 @@ export default function App() {
           <Redirect to={routes.login} />
         </Switch>
       </Suspense>
-      {/* </Container> */}
     </>
   );
 }

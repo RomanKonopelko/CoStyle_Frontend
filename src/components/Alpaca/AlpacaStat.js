@@ -1,4 +1,3 @@
-import img from '../../images/lamaAvatars.png';
 export default function AlpacaStat() {
   return (
     <>

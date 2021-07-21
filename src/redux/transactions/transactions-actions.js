@@ -1,6 +1,5 @@
 import { createAction } from '@reduxjs/toolkit';
 
-// ========ToolKit =======
 const getTransactionsRequest = createAction(
   'transaction/getTransactionsRequest',
 );
