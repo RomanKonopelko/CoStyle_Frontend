@@ -11,6 +11,16 @@ const Load = () => {
       </div>
     </div>
   );
+  // for scss
+  return (
+    <div className="wrapper">
+      <div className="container">
+        <div className="box box-1"></div>
+        <div className="box box-2"></div>
+        <div className="box box-3"></div>
+      </div>
+    </div>
+  );
 };
 
 export default Load;
