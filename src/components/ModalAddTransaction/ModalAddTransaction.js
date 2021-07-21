@@ -78,7 +78,6 @@ export default function ModalAddTransaction() {
   });
   const { category, time, amount, type, commentary } = transaction;
 
-  console.log(transaction);
   // Switch for State
   const dispatch = useDispatch();
 
@@ -113,7 +112,6 @@ export default function ModalAddTransaction() {
         setTransaction(prevState => ({ ...prevState, [name]: value }));
         break;
       default:
-        console.log("There aren't such data");
     }
   };
 

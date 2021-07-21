@@ -25,7 +25,6 @@ const getTransaction = () => async dispatch => {
 
   try {
     const { data } = await axios.get('/api/transactions/?limit=30');
-    console.log(`GET_TRANSACTION`, data);
     dispatch(getTransactionsSuccess(data.payload));
   } catch (error) {
     dispatch(
@@ -43,7 +42,6 @@ const addTransaction = transaction => async dispatch => {
 
   try {
     const { data } = await axios.post('/api/transactions', transaction);
-    console.log('ADD_TRANSACTION', data.payload.transaction);
     dispatch(addTransactionSuccess(data.payload));
     dispatch(getTransactionsStatistic());
   } catch (error) {
@@ -60,7 +58,6 @@ const addTransaction = transaction => async dispatch => {
 
 const deleteTransaction = id => async dispatch => {
   dispatch(deleteTransactionRequest());
-  console.log('deleteTransaction', id);
   try {
     await axios.delete(`/api/transactions/${id}`);
     dispatch(deleteTransactionSuccess(id));
@@ -102,8 +99,6 @@ const getFilterTransactionsStatistic = date => async dispatch => {
       `/api/transactions/statistic?month=${month}&year=${year}`,
     );
     dispatch(getFilterTransactionsStatisticSuccess(data.payload));
-    console.log(`data`, data);
-    console.log(`data.payload`, data.payload);
   } catch (error) {
     dispatch(
       GetError({

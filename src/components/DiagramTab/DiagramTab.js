@@ -13,7 +13,6 @@ export default function DiagramTab() {
 
   const lengthOfObject = Object.keys(transactionsList.categoriesSummary).length;
 
-  console.log(lengthOfObject, 'length');
   return (
     <>
       <div className="diagram-tab-container">

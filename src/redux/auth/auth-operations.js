@@ -47,7 +47,6 @@ const getCurrentUser = () => async (dispatch, getState) => {
     const { data } = await axios.get('/api/users/current');
     dispatch(getCurrentUserSuccess(data.payload));
   } catch (error) {
-    console.log('ERRORE', error.response.data.code);
     dispatch(
       GetError({
         error: error.response.data.code,
@@ -98,8 +97,6 @@ const logoutUser = () => async dispatch => {
         requestedCallback: logoutUser,
       }),
     );
-    console.log(error.message);
-    console.log(error.response.data.code);
     dispatch(userLogoutError(error.message));
   }
 };
@@ -124,8 +121,6 @@ const refreshToken = (callbackFunction, requestData) => async (
     const { data } = await axios.get('/api/users/token');
     dispatch(getUpdatedTokenSuccess(data.payload));
     token.set(data.payload.token);
-    console.log(callbackFunction);
-    console.log('REQUESTED DATA', requestData);
     requestData
       ? dispatch(callbackFunction(requestData))
       : dispatch(callbackFunction());

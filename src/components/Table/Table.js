@@ -33,7 +33,6 @@ function MyTable({ tableData }) {
         break;
 
       default:
-        console.log("There aren't such data");
     }
   };
 
