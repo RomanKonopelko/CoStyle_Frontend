@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { selectorsAuth } from '../../redux/auth';
+import alpacaImg from '../../images/Alpaca.gif';
 
 export default function Alpaca() {
   const name = useSelector(selectorsAuth.getUsername);
@@ -10,11 +11,7 @@ export default function Alpaca() {
         <p>
           Привет, <span className="userName">{name}</span>!
         </p>
-        <img
-          className="alpacaImg"
-          src="https://media1.giphy.com/media/ORjeGbJQP8bSKO9ZrQ/giphy.gif?cid=6c09b952acb22b31766abb3d50bb216699cf2517a7a53b11&rid=giphy.gif&ct=s"
-          alt="alpaca"
-        />
+        <img className="alpacaImg" src={alpacaImg} alt="alpaca" />
         <p> Я твой персональний финасовый менеджер.</p>
         <p>Вместе мы проконтролируем твои расходы, </p>
         <p>чтобы ты смог собрать деньги на мечту!</p>
