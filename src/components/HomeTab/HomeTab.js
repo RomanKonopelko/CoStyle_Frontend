@@ -80,144 +80,152 @@ export default function StickyHeadTable({ tableData }) {
         <Alpaca />
       ) : (
         <>
-          <div key="homeTab" className="homeTab">
-            <Paper
-              key="Paper"
-              className={`${classes.root} paper`}
-              style={{
-                backgroundColor: '#11ffee00',
-                borderCollapse: 'collapse',
-                boxShadow: '0px 0px 0px 0px',
-              }}
-            >
-              <TableContainer
-                key="container"
-                className={`${classes.container} tableContainer`}
-              >
-                <Table
-                  key="table"
-                  stickyHeader
-                  aria-label="sticky table"
-                  className="table"
+          {tableData.length !== 0 && (
+            <>
+              <div key="homeTab" className="homeTab">
+                <Paper
+                  key="Paper"
+                  className={`${classes.root} paper`}
                   style={{
-                    width: 'none',
+                    backgroundColor: '#11ffee00',
+                    borderCollapse: 'collapse',
+                    boxShadow: '0px 0px 0px 0px',
                   }}
                 >
-                  <TableHead key="thead" className="thead">
-                    <TableRow key="TableRow" className="tableHeader">
-                      {columns.map(column => (
-                        <TableCell
-                          key={column.id}
-                          align={column.align}
-                          className="rowHeader"
-                        >
-                          {column.label}
-                        </TableCell>
-                      ))}
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {rows.map(row => {
-                      return (
-                        <>
-                          <TableRow
-                            hover
-                            role="checkbox"
-                            tabIndex={-1}
-                            key={row.id}
-                            className={
-                              row.type === '-' ? 'row expenses' : 'row income'
-                            }
-                          >
-                            {columns.map(column => {
-                              const value = row[column.id];
-                              return (
-                                <TableCell
-                                  key={`${row.id}${column.id}`}
+                  <TableContainer
+                    key="container"
+                    className={`${classes.container} tableContainer`}
+                  >
+                    <Table
+                      key="table"
+                      stickyHeader
+                      aria-label="sticky table"
+                      className="table"
+                      style={{
+                        width: 'none',
+                      }}
+                    >
+                      <TableHead key="thead" className="thead">
+                        <TableRow key="TableRow" className="tableHeader">
+                          {columns.map(column => (
+                            <TableCell
+                              key={column.id}
+                              align={column.align}
+                              className="rowHeader"
+                            >
+                              {column.label}
+                            </TableCell>
+                          ))}
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        {rows.map(row => {
+                          return (
+                            <>
+                              <TableRow
+                                hover
+                                role="checkbox"
+                                tabIndex={-1}
+                                key={row.id}
+                                className={
+                                  row.type === '-'
+                                    ? 'row expenses'
+                                    : 'row income'
+                                }
+                              >
+                                {columns.map(column => {
+                                  const value = row[column.id];
+                                  return (
+                                    <TableCell
+                                      key={`${row.id}${column.id}`}
+                                      align={column.align}
+                                      className={`cellBody ${column.id}`}
+                                    >
+                                      {typeof value === 'number'
+                                        ? new Intl.NumberFormat('ru-RU').format(
+                                            value,
+                                          )
+                                        : value}
+                                    </TableCell>
+                                  );
+                                })}
+                                <td className="deleteBtn">
+                                  <DeleteForeverIcon
+                                    key="deleteIcon"
+                                    onClick={() => deleteTransaction(row.id)}
+                                    className="deleteIcon"
+                                  />
+                                </td>
+                              </TableRow>
+                            </>
+                          );
+                        })}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
+                </Paper>
+              </div>
+              {/* Mobile */}
+
+              <table
+                key="tableMobile"
+                aria-label="sticky table"
+                className="tableMobile"
+              >
+                {rows.map(row => {
+                  return (
+                    <>
+                      <tbody
+                        key={row.id}
+                        className={
+                          row.type === '-'
+                            ? 'sectionMobile expensesM'
+                            : 'sectionMobile incomeM'
+                        }
+                      >
+                        {columns.map(column => {
+                          const value = row[column.id];
+                          return (
+                            <>
+                              <tr className="rowMobile">
+                                <th
+                                  key={`${row.id}${column.id}mobile`}
                                   align={column.align}
-                                  className={`cellBody ${column.id}`}
+                                  className="cellHeader "
+                                >
+                                  {column.label}
+                                </th>
+
+                                <td
+                                  key={`${column.id}tdmobile`}
+                                  align={column.align}
+                                  className={`cellValue ${column.id}`}
                                 >
                                   {typeof value === 'number'
                                     ? new Intl.NumberFormat('ru-RU').format(
                                         value,
                                       )
                                     : value}
-                                </TableCell>
-                              );
-                            })}
-                            <td className="deleteBtn">
-                              <DeleteForeverIcon
-                                key="deleteIcon"
-                                onClick={() => deleteTransaction(row.id)}
-                                className="deleteIcon"
-                              />
-                            </td>
-                          </TableRow>
-                        </>
-                      );
-                    })}
-                  </TableBody>
-                </Table>
-              </TableContainer>
-            </Paper>
-          </div>
-          {/* Mobile */}
-
-          <table
-            key="tableMobile"
-            aria-label="sticky table"
-            className="tableMobile"
-          >
-            {rows.map(row => {
-              return (
-                <>
-                  <tbody
-                    key={row.id}
-                    className={
-                      row.type === '-'
-                        ? 'sectionMobile expensesM'
-                        : 'sectionMobile incomeM'
-                    }
-                  >
-                    {columns.map(column => {
-                      const value = row[column.id];
-                      return (
-                        <>
-                          <tr className="rowMobile">
-                            <th
-                              key={`${row.id}${column.id}mobile`}
-                              align={column.align}
-                              className="cellHeader "
-                            >
-                              {column.label}
-                            </th>
-
-                            <td
-                              key={`${column.id}tdmobile`}
-                              align={column.align}
-                              className={`cellValue ${column.id}`}
-                            >
-                              {typeof value === 'number'
-                                ? new Intl.NumberFormat('ru-RU').format(value)
-                                : value}
-                            </td>
-                          </tr>
-                        </>
-                      );
-                    })}
-                    <tr>
-                      <td className="deleteIconM">
-                        <DeleteForeverIcon
-                          key="deleteIconM"
-                          onClick={() => deleteTransaction(row.id)}
-                        />
-                      </td>
-                    </tr>
-                  </tbody>
-                </>
-              );
-            })}
-          </table>
+                                </td>
+                              </tr>
+                            </>
+                          );
+                        })}
+                        <tr>
+                          <td className="deleteIconM">
+                            <DeleteForeverIcon
+                              key="deleteIconM"
+                              onClick={() => deleteTransaction(row.id)}
+                            />
+                          </td>
+                        </tr>
+                      </tbody>
+                    </>
+                  );
+                })}
+              </table>
+            </>
+          )}
         </>
       )}
       <ButtonAddTransaction />
