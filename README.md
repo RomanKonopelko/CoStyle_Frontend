@@ -119,7 +119,6 @@
 <a href="https://github.com/" title="GitHub"><img height="60" src="assets/Andrey.png" /></a>
 
 [![Linkedin][linkedin]](https://www.linkedin.com/in/andrey-kulba-50503ab3/)
-
 [![Git][git]](https://github.com/andriikulba)
 
 ## About The Project
@@ -220,19 +219,19 @@ Project Link:
 [lama-screen]: assets/screenshots/lama.png
 [transactions-screen]: assets/screenshots/transactions.png
 [contributors-shield]:
-  https://img.shields.io/github/contributors/RomanKonopelko/CoStyle_Backend.svg?style=for-the-badge
+  https://img.shields.io/github/contributors/RomanKonopelko/CoStyle_Frontend.svg?style=for-the-badge
 [contributors-url]:
   https://github.com/RomanKonopelko/CoStyle_Frontend/graphs/contributors
 [forks-shield]:
-  https://img.shields.io/github/forks/RomanKonopelko/CoStyle_Backend.svg?style=for-the-badge
+  https://img.shields.io/github/forks/RomanKonopelko/CoStyle_Frontend.svg?style=for-the-badge
 [forks-url]: https://github.com/RomanKonopelko/CoStyle_Frontend/network/members
 [stars-shield]:
-  https://img.shields.io/github/stars/RomanKonopelko/CoStyle_Backend.svg?style=for-the-badge
+  https://img.shields.io/github/stars/RomanKonopelko/CoStyle_Frontend.svg?style=for-the-badge
 [linkedin]: https://img.shields.io/badge/linkedin-social-blue
 [git]: https://img.shields.io/badge/GIT-repo-lightgrey
 [stars-url]: https://github.com/RomanKonopelko/CoStyle_Frontend/stargazers
 [issues-shield]:
-  https://img.shields.io/github/issues/RomanKonopelko/CoStyle_Backend.svg?style=for-the-badge
+  https://img.shields.io/github/issues/RomanKonopelko/CoStyle_Frontend.svg?style=for-the-badge
 [issues-url]: https://github.com/RomanKonopelko/CoStyle_Frontend/issues
 [license-shield]:
   https://img.shields.io/github/license/RomanKonopelko/CoStyle_Backend.svg?style=for-the-badge
