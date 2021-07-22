@@ -21,7 +21,7 @@ export default function Balance() {
           </span>
         </div>
       ) : (
-        <Loader color="#24cca7" />
+        <Loader className="loaderBalance" color="#24cca7" />
       )}
     </>
   );

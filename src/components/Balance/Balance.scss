@@ -60,4 +60,18 @@
     line-height: 45px;
     color: #000000;
   }
+  // svg [Attributes Style]{
+  //   display: flexbox;
+  //   width: 80px;
+  //   margin-right: 213px;
+
+  // }
+}
+
+.loaderBalance {
+  margin-left: 100px;
+  @include for-size(tablet) {
+    margin-left: 10px;
+    margin-bottom: 20px;
+  }
 }
