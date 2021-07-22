@@ -222,18 +222,18 @@ Project Link:
 [contributors-shield]:
   https://img.shields.io/github/contributors/RomanKonopelko/CoStyle_Backend.svg?style=for-the-badge
 [contributors-url]:
-  https://github.com/RomanKonopelko/CoStyle_Backend/graphs/contributors
+  https://github.com/RomanKonopelko/CoStyle_Frontend/graphs/contributors
 [forks-shield]:
   https://img.shields.io/github/forks/RomanKonopelko/CoStyle_Backend.svg?style=for-the-badge
-[forks-url]: https://github.com/RomanKonopelko/CoStyle_Backend/network/members
+[forks-url]: https://github.com/RomanKonopelko/CoStyle_Frontend/network/members
 [stars-shield]:
   https://img.shields.io/github/stars/RomanKonopelko/CoStyle_Backend.svg?style=for-the-badge
 [linkedin]: https://img.shields.io/badge/linkedin-social-blue
 [git]: https://img.shields.io/badge/GIT-repo-lightgrey
-[stars-url]: https://github.com/RomanKonopelko/CoStyle_Backend/stargazers
+[stars-url]: https://github.com/RomanKonopelko/CoStyle_Frontend/stargazers
 [issues-shield]:
   https://img.shields.io/github/issues/RomanKonopelko/CoStyle_Backend.svg?style=for-the-badge
-[issues-url]: https://github.com/RomanKonopelko/CoStyle_Backend/issues
+[issues-url]: https://github.com/RomanKonopelko/CoStyle_Frontend/issues
 [license-shield]:
   https://img.shields.io/github/license/RomanKonopelko/CoStyle_Backend.svg?style=for-the-badge
 [license-url]:
