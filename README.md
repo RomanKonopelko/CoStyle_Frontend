@@ -43,7 +43,6 @@
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 </details>
 
@@ -188,7 +187,7 @@ for a list of proposed features (and known issues).
 
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the MIT License. See [![license-shield][license-url]] for more information.
 
 <!-- CONTACT -->
 
