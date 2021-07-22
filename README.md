@@ -187,7 +187,7 @@ for a list of proposed features (and known issues).
 
 ## License
 
-Distributed under the MIT License. See [license-shield][license-url] for more information.
+Distributed under the MIT License. See [`lICENSE`][license-url] for more information.
 
 <!-- CONTACT -->
 
