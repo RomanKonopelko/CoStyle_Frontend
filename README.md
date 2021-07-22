@@ -53,9 +53,7 @@
 
 # Backend/Teamlead
 
-**Roman**
-
--Teamlead
+**Roman-Teamlead**
 
 <a href="https://github.com/" title="Roman"><img height="60" src="assets/Roman.png" /></a>
 
@@ -64,9 +62,7 @@
 
 # Frontend
 
-**Katya**
-
--Scrum Master
+**Katya -Scrum Master**
 
 <a href="https://github.com/" title="GitHub"><img height="60" src="assets/Katya.png" /></a>
 
@@ -75,45 +71,37 @@
 
 -Lama UI team:
 
-**Jenya**
+**Jenya -Boss of the React**
 
--Boss of the React
+
 
 <a href="https://github.com/" title="GitHub"><img height="60" src="assets/Jenya.png" /></a>
 
 [![Linkedin][linkedin]](https://www.linkedin.com/in/roman-konopelko-b78668189/)
 [![Git][git]](https://github.com/evgenmag)
 
-**Sanya aka Huracan**
-
--Sass master
+**Sanya aka Huracan -Sass master**
 
 <a href="https://github.com/" title="GitHub"><img height="60" src="assets/Huracan.png" /></a>
 
 [![Linkedin][linkedin]](http://linkedin.com/in/alexander-huracan-1b8229119/)
 [![Git][git]](https://github.com/huracan22505)
 
-**Sveta**
-
--Bootstrap women
+**Sveta -UI women**
 
 <a href="https://github.com/" title="GitHub"><img height="60" src="assets/Sveta.png" /></a>
 
 [![Linkedin][linkedin]](https://www.linkedin.com/in/svetlanakhvastova/)
 [![Git][git]](https://github.com/svetlanakhvastova)
 
-**Ravshan**
-
--Site Adaptivator 2000
+**Ravshan -Site Adaptivator 2000**
 
 <a href="https://github.com/" title="GitHub"><img height="60" src="assets/Ravshan.png" /></a>
 
 [![Linkedin][linkedin]](https://www.linkedin.com/in/ravshanmahmudov/)
 [![Git][git]](https://github.com/rmhmdv)
 
-**Andrey**
-
--Redux brain
+**Andrey -Redux brain**
 
 <a href="https://github.com/" title="GitHub"><img height="60" src="assets/Andrey.png" /></a>
 
