@@ -24,22 +24,22 @@ export default function Currency() {
     query: '(max-device-width: 767px)',
   });
 
+  const getCurrency = () => {
+    GetCurrencyRate.fetchRates().then(data => {
+      setCurrency(data);
+      localStorage.setItem('currency', JSON.stringify(data));
+    });
+    localStorage.setItem('time', JSON.stringify(new Date().valueOf()));
+  };
+
   useEffect(() => {
     if (!currencyOnLocalstorage && !timeOnLocalstorage) {
-      GetCurrencyRate.fetchRates().then(data => {
-        setCurrency(data);
-        localStorage.setItem('currency', JSON.stringify(data));
-      });
-      localStorage.setItem('time', JSON.stringify(new Date().valueOf()));
+      getCurrency();
       return;
     }
 
     if (new Date().valueOf() > timeOnLocalstorage + TIME_NORMOLIZE) {
-      GetCurrencyRate.fetchRates().then(data => {
-        setCurrency(data);
-        localStorage.setItem('currency', JSON.stringify(data));
-      });
-      localStorage.setItem('time', JSON.stringify(new Date().valueOf()));
+      getCurrency();
       return;
     }
 
@@ -51,11 +51,7 @@ export default function Currency() {
 
     if (currency.length === 0) {
       setTimeout(() => {
-        GetCurrencyRate.fetchRates().then(data => {
-          setCurrency(data);
-          localStorage.setItem('currency', JSON.stringify(data));
-        });
-        localStorage.setItem('time', JSON.stringify(new Date().valueOf()));
+        getCurrency();
       }, 2000);
     }
   }, []);
