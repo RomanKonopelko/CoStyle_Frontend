@@ -192,9 +192,8 @@ Distributed under the MIT License. See [`lICENSE`][license-url] for more informa
 <!-- CONTACT -->
 
 ## Contact
-
-Project Link:
-[https://costyl-swiss-wallet.netlify.app/home](https://costyl-swiss-wallet.netlify.app/home)
+  
+Project Link: [https://lama-wallet.netlify.app](https://lama-wallet.netlify.app)
 
 <!-- ACKNOWLEDGEMENTS -->
 
