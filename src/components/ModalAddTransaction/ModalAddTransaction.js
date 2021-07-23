@@ -68,14 +68,14 @@ const AntSwitch = withStyles(theme => ({
 
 export default function ModalAddTransaction() {
   const classes = useStyles();
-
-  const [transaction, setTransaction] = React.useState({
+  const initialState = {
     category: '',
     time: '',
     amount: '',
     type: false,
     commentary: '',
-  });
+  };
+  const [transaction, setTransaction] = React.useState(initialState);
   const { category, time, amount, type, commentary } = transaction;
 
   // Switch for State
@@ -133,23 +133,11 @@ export default function ModalAddTransaction() {
   };
 
   const cancelInput = () => {
-    setTransaction({
-      category: '',
-      time: '',
-      amount: 0,
-      type: false,
-      commentary: '',
-    });
+    setTransaction(initialState);
   };
 
   const reset = () => {
-    setTransaction({
-      category: '',
-      time: '',
-      amount: 0,
-      type: false,
-      commentary: '',
-    });
+    setTransaction(initialState);
   };
 
   let activateSubmitBtn = true;
