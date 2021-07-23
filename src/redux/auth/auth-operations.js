@@ -19,7 +19,7 @@ import {
   getUpdatedTokenError,
 } from './auth-actions';
 
-import { GetError } from '../../components/HandleErrors/HandleErrors';
+import { GetError } from '../../helpers/HandleErrors/HandleErrors';
 
 axios.defaults.baseURL = 'https://costyle-wallet-app.herokuapp.com/';
 
@@ -63,9 +63,11 @@ const registerUser = credentials => async dispatch => {
   try {
     const { data } = await axios.post('/api/users/register', credentials);
     dispatch(userRegisterSuccess(data.payload));
+
     Notify(data, credentials.name);
   } catch (error) {
     dispatch(userRegisterError(error.message));
+    console.log(error.message, 'data');
     Notify(error.message, credentials.name);
   }
 };
@@ -78,6 +80,7 @@ const loginUser = credentials => async dispatch => {
     token.set(data.payload.token);
     dispatch(userLoginSuccess(data.payload));
   } catch (error) {
+    console.log(error, 'data');
     dispatch(userLoginError(error.message));
     Notify(error.message);
   }
