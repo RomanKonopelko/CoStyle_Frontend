@@ -2,7 +2,8 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { OperationsAuth } from '../../redux/auth';
 import { useFormik } from 'formik';
-import * as yup from 'yup';
+
+import validationSchemaLogin from '../Shared/ValidationSchema/ValidationSchemaLogin';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Icon from '@material-ui/core/Icon';
@@ -13,18 +14,6 @@ import headerLogo from '../../images/header-logo.png';
 import { NavLink } from 'react-router-dom';
 import routes from '../../routes';
 
-const validationSchema = yup.object({
-  email: yup
-    .string('Enter your email')
-    .email('Enter a valid email')
-    .required('Email is required'),
-  password: yup
-    .string('Enter your password')
-    .min(6, 'Password should be of minimum 6 characters length')
-    .max(12, 'Password should be of maximum 12 characters length')
-    .required('Password is required'),
-});
-
 export default function LoginForm() {
   const dispatch = useDispatch();
 
@@ -33,7 +22,7 @@ export default function LoginForm() {
       email: '',
       password: '',
     },
-    validationSchema: validationSchema,
+    validationSchema: validationSchemaLogin,
     onSubmit: values => {
       const { email, password } = values;
       dispatch(OperationsAuth.loginUser({ email, password }));

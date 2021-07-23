@@ -11,6 +11,61 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Operations } from '../../redux/transactions';
 
+const month = [
+  {
+    value: 'All',
+    month: 'All Period',
+  },
+  {
+    value: '01',
+    month: 'Январь',
+  },
+  {
+    value: '02',
+    month: 'Февраль',
+  },
+  {
+    value: '03',
+    month: 'Март',
+  },
+  {
+    value: '04',
+    month: 'Апрель',
+  },
+  {
+    value: '05',
+    month: 'Май',
+  },
+  {
+    value: '06',
+    month: 'Июнь',
+  },
+  {
+    value: '07',
+    month: 'Июль',
+  },
+  {
+    value: '08',
+    month: 'Август',
+  },
+  {
+    value: '09',
+    month: 'Сентябрь',
+  },
+  {
+    value: '10',
+    month: 'Октябрь',
+  },
+  {
+    value: '11',
+    month: 'Ноябрь',
+  },
+  {
+    value: '12',
+    month: 'Декабрь',
+  },
+];
+
 function MyTable({ tableData }) {
   const { categoriesSummary, incomeValue, consumptionValue } = tableData;
   const result = Object.entries(categoriesSummary);
@@ -72,19 +127,10 @@ function MyTable({ tableData }) {
             <MenuItem value={selected.month}>
               <em className="formControlEm">Месяц</em>
             </MenuItem>
-            <MenuItem value="All">All Period</MenuItem>
-            <MenuItem value="01">Январь</MenuItem>
-            <MenuItem value="02">Февраль</MenuItem>
-            <MenuItem value="03">Март</MenuItem>
-            <MenuItem value="04">Апрель</MenuItem>
-            <MenuItem value="05">Май</MenuItem>
-            <MenuItem value="06">Июнь</MenuItem>
-            <MenuItem value="7">Июль</MenuItem>
-            <MenuItem value="08">Август</MenuItem>
-            <MenuItem value="09">Сентябрь</MenuItem>
-            <MenuItem value="10">Октябрь</MenuItem>
-            <MenuItem value="11">Ноябрь</MenuItem>
-            <MenuItem value="12">Декабрь</MenuItem>
+
+            {month.map(el => {
+              return <MenuItem value={el.value}>{el.month}</MenuItem>;
+            })}
           </Select>
         </FormControl>
 

@@ -2,7 +2,8 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { OperationsAuth } from '../../redux/auth';
 import { useFormik } from 'formik';
-import * as yup from 'yup';
+
+import validationSchemaRegistr from '../Shared/ValidationSchema/ValidationSchemaRegistr';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Icon from '@material-ui/core/Icon';
@@ -12,27 +13,6 @@ import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import { NavLink } from 'react-router-dom';
 import routes from '../../routes';
 import headerLogo from '../../images/header-logo.png';
-
-const validationSchema = yup.object({
-  email: yup
-    .string('Enter your email')
-    .email('Enter a valid email')
-    .required('Email is required'),
-  password: yup
-    .string('Enter your password')
-    .min(6, 'Password should be of minimum 6 characters length')
-    .max(12, 'Password should be of maximum 12 characters length')
-    .required('Password is required'),
-  confirmPassword: yup
-    .string('Enter your password')
-    .oneOf([yup.ref('password'), null], 'Password must match')
-    .required('Confirm Password is required'),
-  name: yup
-    .string()
-    .min(1, 'Too Short!')
-    .max(12, 'Too Long!')
-    .required('Required'),
-});
 
 export default function RegistrationForm() {
   const dispatch = useDispatch();
@@ -44,7 +24,7 @@ export default function RegistrationForm() {
       confirmPassword: '',
       name: '',
     },
-    validationSchema: validationSchema,
+    validationSchema: validationSchemaRegistr,
     onSubmit: values => {
       const { name, email, password } = values;
       dispatch(OperationsAuth.registerUser({ name, email, password }));
