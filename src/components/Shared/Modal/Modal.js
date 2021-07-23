@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectorsAuth, ActionAuth } from '../../redux/auth';
+import { selectorsAuth, ActionAuth } from '../../../redux/auth';
 
 export default function Modal({ children }) {
   const dispatch = useDispatch();
@@ -12,7 +12,9 @@ export default function Modal({ children }) {
 
   const toggleModal = () => {
     dispatch(ActionAuth.showModal(!isShowModal));
+    window.removeEventListener('keydown', handleKeyDown);
   };
+
   const handleKeyDown = e => {
     if (e.code === 'Escape') {
       toggleModal();

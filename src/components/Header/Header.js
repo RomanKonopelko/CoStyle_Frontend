@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import ModalLogout from '../ModalLogout/ModalLogout';
-import headerLogo from './header-logo.png';
+import headerLogo from '../../images/header-logo.png';
 import { selectorsAuth } from '../../redux/auth';
 import Avatar from '@material-ui/core/Avatar';
 import Container from '../Container/Container';
