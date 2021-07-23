@@ -1,5 +1,6 @@
 [![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url] [![Stargazers][stars-shield]][stars-url]
+[![Forks][forks-shield]][forks-url] 
+[![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 
@@ -115,7 +116,7 @@ We created an Lamawesome online Wallet application, that easly will help you to
 keep an eye on your income and money consumptions. Light and fluff UI and usage
 that easy to understand!
 
-[![Lama Wallet manager][lama-screen]](https://costyl-swiss-wallet.netlify.app/home)
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/68011362/126766032-2b24d8bd-7a76-46d5-830b-80c789bb8db6.gif)
 
 If having any issues with our API, Lama Manager is always ready to help.
 
@@ -175,6 +176,8 @@ tokens in the system.
 
 ## SWAGGER docs
 
+![ezgif com-gif-maker (2)](https://user-images.githubusercontent.com/68011362/126766915-7eaff11f-5731-4cb1-a958-088cdce63230.gif)
+  
 <a href="https://costyle-wallet-app.herokuapp.com/api-docs/" title="swagger"><img src="assets/icons/swagger.png" /></a>
 
 If you wonder how to work with our API check the SWAGGER docs by clicking the
