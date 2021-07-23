@@ -50,7 +50,7 @@
 
 ## Lama Team
 
-# Backend/Teamlead
+# Backend
 
 **Roman-Teamlead**
 
