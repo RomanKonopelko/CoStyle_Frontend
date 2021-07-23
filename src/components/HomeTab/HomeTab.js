@@ -28,7 +28,7 @@ const columns = [
   },
   {
     id: 'sum',
-    label: 'Сума',
+    label: 'Сумма',
   },
   {
     id: 'balance',
